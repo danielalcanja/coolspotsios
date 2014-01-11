@@ -14,14 +14,25 @@
 @protocol CSLocationDelegate<NSObject>
 @required
 - (void) getBestLocationsSucceeded:(NSMutableArray*)dictionary;
+
 @optional
 - (void) getBestLocations:(NSError*)error;
 @end
+
+@protocol CSLocationInfoDelegate<NSObject>
+@required
+- (void) getBestLocationsInfoSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getBestLocationInfo:(NSError*)error;
+@end
+
+
 
 @interface CSAPI : NSObject
 
 + (id)sharedInstance;
 
 -(void)getBestLocationsWithPage:(NSNumber*)page delegate:(id<CSLocationDelegate>)delegate;
+-(void)getLocationInfoWithID:(NSNumber*)idLocation delegate:(id<CSLocationInfoDelegate>)delegate;
 
 @end

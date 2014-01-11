@@ -23,7 +23,7 @@
     return _sharedObject;
 }
 
--(void)jsonRequestWithParameters:(NSDictionary*)parameters path:(NSString*)path success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+-(void)httpRequestWithParameters:(NSDictionary*)parameters path:(NSString*)path success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.coolspots.com.br"]];
@@ -36,7 +36,7 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:page forKey:@"page"];
     
-    [self jsonRequestWithParameters:parameters path:@"/json/location" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self httpRequestWithParameters:parameters path:@"/json/location" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
@@ -63,7 +63,49 @@
             }
             
             [dictionary addObject:location];
+        }
+        
+        [delegate getBestLocationsSucceeded:dictionary];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate getBestLocations:error];
+    }];
+}
+
+-(void)getLocationInfoWithID:(NSNumber*)idLocation delegate:(id<CSLocationInfoDelegate>)delegate {
+    
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:idLocation forKey:@"id"];
+    
+    [self httpRequestWithParameters:parameters path:@"/json/locationinfo" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSData *responseData = operation.responseData;
+        id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+        
+        NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
+        NSMutableArray *dictionary = [[NSMutableArray alloc] init];
+        
+        for(int i=0;i<[tempObjects count];i++) {
             
+            CSLocation *location = [[CSLocation alloc] init];
+            location.id = [[tempObjects valueForKey:@"id"][i] intValue];
+            location.name =[tempObjects valueForKey:@"name"][i];
+            
+            NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+            location.pics  = [[NSMutableArray alloc] init];
+            
+            for(int i=0;i<[pics count];i++) {
+                
+                CSPic *pic = [[CSPic alloc] init];
+                pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
+                pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
+                pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
+                [location.pics addObject:pic];
+            }
+            
+            [dictionary addObject:location];
         }
         
         [delegate getBestLocationsSucceeded:dictionary];
