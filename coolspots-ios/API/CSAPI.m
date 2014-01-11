@@ -86,27 +86,17 @@
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
         
         NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
+        
         NSMutableArray *dictionary = [[NSMutableArray alloc] init];
         
         for(int i=0;i<[tempObjects count];i++) {
             
-            CSLocation *location = [[CSLocation alloc] init];
-            location.id = [[tempObjects valueForKey:@"id"][i] intValue];
-            location.name =[tempObjects valueForKey:@"name"][i];
+            CSPic *pic = [[CSPic alloc] init];
+            pic.standard_resolution = [tempObjects valueForKey:@"standardResolution"][i];
+            pic.thumbnail = [tempObjects valueForKey:@"thumbnail"][i];
+            pic.low_resolution = [tempObjects valueForKey:@"lowResolution"][i];
             
-            NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
-            location.pics  = [[NSMutableArray alloc] init];
-            
-            for(int i=0;i<[pics count];i++) {
-                
-                CSPic *pic = [[CSPic alloc] init];
-                pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
-                pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
-                pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
-                [location.pics addObject:pic];
-            }
-            
-            [dictionary addObject:location];
+            [dictionary addObject:pic];
         }
         
         [delegate getPhotosSucceeded:dictionary];
