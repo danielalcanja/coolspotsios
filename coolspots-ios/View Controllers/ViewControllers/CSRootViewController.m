@@ -162,35 +162,6 @@
 {
     CSLocation *location = [objects objectAtIndex:indexPath.row];
     
-    /*
-    selectedTypeCell = [CSUtil getRandomNumberBetween:0 to:1];
-    if(selectedTypeCell ==0) {
-    
-        NSString *CellIdentifier = [NSString stringWithFormat:@"locationLargeCoverCell"] ;
-        CSLocationLargeCoverCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[CSLocationLargeCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        [cell reloadCellWithLocation:location];
-        return cell;
-        
-    }
-    if(selectedTypeCell ==1) {
-        
-        NSString *CellIdentifier = [NSString stringWithFormat:@"locationTwoPicCoverCell"] ;
-        CSLocationTwoPicCoverCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[CSLocationTwoPicCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        [cell reloadCellWithLocation:location];
-        return cell;
-    }
-*/
-    
     NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
     CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
