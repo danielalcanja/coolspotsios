@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+#import "CSLocation.h"
+#import "CSPic.h"
 
+@protocol CSLocationDelegate<NSObject>
+@required
+- (void) getBestLocationsSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getBestLocations:(NSError*)error;
+@end
 
 @interface CSAPI : NSObject
 
-@property (strong, atomic) AFHTTPClient *httpClient;
-@property (strong, atomic) NSSet *additionalAcceptableContentTypes;
++ (id)sharedInstance;
+
+-(void)getBestLocationsWithPage:(NSNumber*)page delegate:(id<CSLocationDelegate>)delegate;
 
 @end
