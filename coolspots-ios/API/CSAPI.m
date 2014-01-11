@@ -73,13 +73,14 @@
     }];
 }
 
--(void)getLocationInfoWithID:(NSNumber*)idLocation delegate:(id<CSLocationInfoDelegate>)delegate {
+-(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate {
     
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:idLocation forKey:@"id"];
+    [parameters setObject:page forKey:@"page"];
     
-    [self httpRequestWithParameters:parameters path:@"/json/locationinfo" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self httpRequestWithParameters:parameters path:@"/json/photos" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
@@ -108,13 +109,12 @@
             [dictionary addObject:location];
         }
         
-        [delegate getBestLocationsSucceeded:dictionary];
+        [delegate getPhotosSucceeded:dictionary];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [delegate getBestLocations:error];
+        [delegate getPhotosError:error];
     }];
-    
     
 }
 @end
