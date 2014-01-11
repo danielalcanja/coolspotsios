@@ -1,0 +1,83 @@
+PODS:
+  - AFNetworking (1.3.3)
+  - AMScrollingNavbar (0.4.1)
+  - ASIHTTPRequest (1.8.1):
+    - ASIHTTPRequest/ASIWebPageRequest
+    - ASIHTTPRequest/CloudFiles
+    - ASIHTTPRequest/S3
+    - Reachability
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/CloudFiles (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.1):
+    - Reachability
+  - CURestKit (1.0.3):
+    - ASIHTTPRequest
+  - DCIntrospect-ARC (0.0.6)
+  - DejalActivityView (1.1)
+  - EGOTableViewPullRefresh (0.1.0)
+  - ISO8601DateFormatterValueTransformer (0.5.0):
+    - RKValueTransformers (~> 1.0.0)
+  - JRSwizzle (1.0)
+  - JSONModel (0.10.0)
+  - Mixpanel (2.0.0)
+  - Reachability (3.1.1)
+  - RestKit (0.22.0):
+    - RestKit/Core
+  - RestKit/Core (0.22.0):
+    - RestKit/CoreData
+    - RestKit/Network
+    - RestKit/ObjectMapping
+  - RestKit/CoreData (0.22.0)
+  - RestKit/Network (0.22.0):
+    - AFNetworking (~> 1.3.0)
+    - RestKit/ObjectMapping
+    - RestKit/Support
+    - SOCKit
+  - RestKit/ObjectMapping (0.22.0):
+    - ISO8601DateFormatterValueTransformer (~> 0.5.0)
+    - RestKit/Support
+    - RKValueTransformers (~> 1.0.1)
+  - RestKit/Support (0.22.0):
+    - TransitionKit (= 2.0.0)
+  - RKValueTransformers (1.0.1)
+  - SOCKit (1.1)
+  - TransitionKit (2.0.0)
+  - ViewUtils (1.1.1)
+  - YIFullScreenScroll (1.2.1):
+    - JRSwizzle (~> 1.0)
+    - ViewUtils (~> 1.1)
+
+DEPENDENCIES:
+  - AMScrollingNavbar (~> 0.4.1)
+  - CURestKit
+  - DCIntrospect-ARC (~> 0.0.3)
+  - DejalActivityView (~> 1.1)
+  - EGOTableViewPullRefresh (~> 0.1.0)
+  - JSONModel
+  - Mixpanel (= 2.0.0)
+  - RestKit (~> 0.22.0)
+  - YIFullScreenScroll (~> 1.2.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
+  AMScrollingNavbar: d56590aa89706c409d1f37c3d806b9d138af507a
+  ASIHTTPRequest: 162783e0cd71bdd3ff1ceed0cd5fa9505e0116a8
+  CURestKit: 0a95dbb18bfddb228050aa05335b6b3b6462670f
+  DCIntrospect-ARC: 41cae8dbe48748e77a4466963896df13889df041
+  DejalActivityView: 4cb7aacb4334003203f297d6cc7dcc233a7f3d86
+  EGOTableViewPullRefresh: 6ba637ce6dd3186b503d2d91e6b3a08a26d650f5
+  ISO8601DateFormatterValueTransformer: d0af1f50a9df42db72d7418db31938b8473e0af8
+  JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
+  JSONModel: cecca3c3a9ee1a248b56f7139e2d64b85ce536ec
+  Mixpanel: e4af97adb60a10541b7869929a83d734025058a6
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
+  RestKit: dc107a0aa4f962575ad0385bac5b3c5e4f591f4e
+  RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
+  SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
+  TransitionKit: 433284465abacdc07852d7db6dd0cc075010059a
+  ViewUtils: 9bb7bebfff73e891eb22c6229a7f798797248da1
+  YIFullScreenScroll: 57631b0da8348caf8a5f2a75ced8703bc4e813df
+
+COCOAPODS: 0.26.2
