@@ -14,6 +14,7 @@
 #import <YIFullScreenScroll.h>
 #import "MosaicLayoutDelegate.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CSAPI.h"
 
 
 #define kColumnsiPadLandscape 5
@@ -21,7 +22,7 @@
 #define kColumnsiPhoneLandscape 3
 #define kColumnsiPhonePortrait 2
 
-@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate>
+@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate,CSLocationDelegate>
 {
     __weak IBOutlet UICollectionView *_collectionView;
     CLLocationManager *locationManager;

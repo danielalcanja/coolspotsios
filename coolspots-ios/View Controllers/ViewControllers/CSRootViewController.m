@@ -120,155 +120,15 @@
 
 -(void)loadDataView {
     
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.coolspots.com.br"]];
-    
-    [client setParameterEncoding:AFJSONParameterEncoding];
-    
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
-    /*
-    if([city length]>0) {
-        [parameters setObject:city forKey:@"city"];
-    }
-    */
-    [client postPath:@"/json/location" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-        
-        NSData *responseData = operation.responseData;
-        id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
-        
-        NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
-        
-        for(int i=0;i<[tempObjects count];i++) {
-            
-            CSLocation *location = [[CSLocation alloc] init];
-            location.id = [[tempObjects valueForKey:@"id"][i] intValue];
-            location.name =[tempObjects valueForKey:@"name"][i];
-            
-            NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
-            for(int i=0;i<[pics count];i++) {
-                
-                CSPic *pic = [[CSPic alloc] init];
-                pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
-                pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
-                pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
-                location.pics  = [[NSMutableArray alloc] init];
-                [location.pics addObject:pic];
-            }
-            
-            [objects addObject:location];
-            
-        }
-        
-        [locationsTable reloadData];
-        [DejalBezelActivityView removeViewAnimated:YES];
-
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-
-    }];
-
+    [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] delegate:self];
 }
 
--(void)loadData {
+-(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {
     
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[CSLocation class]];
-    [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"id":   @"id",
-                                                  @"name":     @"name",
-                                                  @"slug":        @"slug",
-                                                  @"lastPhotos": @"pics"
-                                                  }];
+    objects = dictionary;
+    [locationsTable reloadData];
+    [DejalBezelActivityView removeViewAnimated:YES];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:nil keyPath:nil statusCodes:nil];
-    
-    //NSString *urlstring = [NSString stringWithFormat:@"http://coolspot/web/json/location?page=%d", page];
-    NSString *urlstring = [NSString stringWithFormat:@"http://api.coolspots.com.br"];
-
-    NSURL *url = [NSURL URLWithString:urlstring];
-    
-    RKObjectMapping* articleRequestMapping = [RKObjectMapping requestMapping ];
-    [articleRequestMapping addAttributeMappingsFromDictionary:@{
-                                                                @"id":   @"id",
-                                                                @"name":     @"name",
-                                                                @"slug":        @"slug",
-                                                                @"lastPhotos": @"pics"
-                                                                }];
-    
-    RKObjectManager *manager = [RKObjectManager managerWithBaseURL:url];
-    [manager addResponseDescriptor:responseDescriptor];
-    
-    NSDictionary *params = @{ @"" : @"{'page':1}"};
-    
-    [manager.HTTPClient setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
-    [manager.HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    
-    [manager postObject:params path:@"/json/location" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-
-        NSLog(@"We object mapped the response with the following result: %@", result);
-        /*
-        CSLocation *location = [result firstObject];
-        NSMutableArray *pics = location.pics;
-        CSPic *pic = [[CSPic alloc] init];
-        pic.standard_resolution = [pics objectAtIndex:0];
-        NSLog(@"The public timeline Tweets: %@ - %@", location.name, pic.standard_resolution);
-        */
-        NSMutableArray *tempObjects = [[result array] mutableCopy];
-        
-        for(int i=0;i<[tempObjects count];i++) {
-            
-            CSLocation *location = [tempObjects objectAtIndex:i];
-            [objects addObject:location];
-            
-        }
-        [locationsTable reloadData];
-        [DejalBezelActivityView removeViewAnimated:YES];
-        
-    } failure:nil];
-   
-    
-}
--(void)getResult {
-    
-    
-    
-}
-- (void)fetchList
-{
-    
-    CUJSONMapper *objectMapping = [[CUJSONMapper alloc] init];
-    [objectMapping registerClass:[CSLocation class] andMappingDescription:@{
-                                                                            @"id":   @"id",
-                                                                            @"name":     @"name",
-                                                                            @"slug":        @"slug",
-                                                                            @"lastPhotos": @"pics"
-                                                                            }];
-    
-    CUObjectManager *manager = [[CUObjectManager alloc] init];
-    
-    manager.baseURLString = @"http://api.coolspots.com.br";
-    
-    [manager registerMapper:objectMapping
-               atServerPath:@"/json/location"
-                andJSONPath:@"location"];
-    
-    ASIHTTPRequest *request =
-    [manager postObjectRequestAtPath:@"/json/location" parameters:@{@"page" : @"1" }
-                             success:^(ASIHTTPRequest *ASIRequest, NSArray *objects) {
-                                 NSLog(@"%@", objects);
-                                 
-                                 CSLocation *location = [objects firstObject];
-                                 NSMutableArray *pics = location.pics;
-                                 CSPic *pic = [[CSPic alloc] init];
-                                 pic.standard_resolution = [pics objectAtIndex:0];
-                                 NSLog(@"The public timeline Tweets: %@ - %@", location.name, pic.standard_resolution);
-                                 
-                             } error:^(ASIHTTPRequest *ASIRequest, NSString *errorMsg) {
-                                 NSLog(@"errrr %@", errorMsg);
-                             }];
-    
-    [request startSynchronous];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -280,7 +140,7 @@
             
             page++;
             
-            [self loadData];
+            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] delegate:self];
             
         }
     }
