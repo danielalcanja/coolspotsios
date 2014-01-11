@@ -30,7 +30,6 @@
 
 @implementation CSLocationDetailViewController {
     
-    UITableView *locationTable;
     NSMutableArray *objects;
     
     int page;
@@ -51,9 +50,6 @@
 	// Do any additional setup after loading the view.
     page = 1;
     
-    UIImageView *bgPlaceDetail = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar-detail-title-blue"]];
-    bgPlaceDetail.frame = CGRectMake(0, 0, 320, 70);
-    //[self.view addSubview:bgPlaceDetail];
     
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 300, 70)];
     labelTitle.text = self.location.name;
@@ -64,25 +60,12 @@
 
     self.navigationItem.titleView = labelTitle;
     
-    /*
-    
-    CGRect frameTable = self.view.frame;
-    //frameTable.origin.y = 70;
-    locationTable = [[UITableView alloc] initWithFrame:frameTable style:UITableViewStylePlain];
-    locationTable.delegate = self;
-    locationTable.dataSource = self;
-    locationTable.backgroundColor = [UIColor whiteColor];
-    locationTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:locationTable];
-    */
+   
     UIButton* backButton = [[BackButton alloc] backButtonWith:[UIImage imageNamed:@"button-back"] withTtle:@"" leftCapWidth:20];
     [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     backButton.titleLabel.textColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    /*
-    [DejalBezelActivityView activityViewForView:self.view];
-    
-     */
+   
     
     NSString *bgDetail = @"bar-places-museums";
     
@@ -233,45 +216,14 @@
 
 -(void)loadData {
     
-    //NSString *urlString = [[NSString stringWithFormat:@"http://coolspot/web/json/photos/%@/%@?page=%d", self.location.id, self.location.slug, page] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[CSAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInt:self.location.id] page:[NSNumber numberWithInt:page]  delegate:self];
+}
+-(void)getPhotosSucceeded:(NSMutableArray *)dictionary {
     
-    NSString *urlString = [[NSString stringWithFormat:@"http://api.coolspots.com.br/json/photos/%@/%@?page=%d", self.location.id, self.location.slug, page] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    //NSLog(@" local %@", urlString);
-    
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[CSPic class]];
-    [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"id":   @"id",
-                                                  @"lowResolution":     @"low_resolution",
-                                                  @"thumbnail":        @"thumbnail",
-                                                  @"standardResolution": @"standard_resolution",
-                                                  @"caption":        @"caption"
-                                                  }];
-    
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
-    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-        
-        NSMutableArray *tempObjects = [[result array] mutableCopy];
-        
-        for(int i=0;i<[tempObjects count];i++) {
-            
-            CSPic *pic = [tempObjects objectAtIndex:i];
-            [objects addObject:pic];
-            
-        }
-        
-        [picsCollectionView reloadData];
-        
-        //[DejalBezelActivityView removeViewAnimated:YES];
-        
-    } failure:nil];
-    [operation start];
+    objects = dictionary;
+    [picsCollectionView reloadData];
     
 }
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if([objects count] >= 18)
@@ -280,7 +232,7 @@
             
             page++;
             
-            [self loadData];
+            [[CSAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInt:self.location.id] page:[NSNumber numberWithInt:page]  delegate:self];
             
         }
     }
@@ -318,11 +270,8 @@
             cell = [[CSLocationTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withLocation:self.location];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        
-        //[cell reloadCellWithLocation:self.location];
-        
+
         return cell;
-        
         
     }else  {
         

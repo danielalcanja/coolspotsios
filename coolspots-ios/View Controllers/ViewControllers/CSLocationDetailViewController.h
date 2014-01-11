@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CSLocation.h"
 #import "MosaicLayoutDelegate.h"
+#import "CSAPI.h"
 
-@interface CSLocationDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate> {
+
+@interface CSLocationDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,CSPhotosDelegate> {
     UICollectionView *picsCollectionView;
 
 }
