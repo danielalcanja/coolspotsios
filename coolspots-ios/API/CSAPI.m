@@ -51,13 +51,14 @@
             location.name =[tempObjects valueForKey:@"name"][i];
             
             NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+            location.pics  = [[NSMutableArray alloc] init];
+
             for(int i=0;i<[pics count];i++) {
                 
                 CSPic *pic = [[CSPic alloc] init];
                 pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
                 pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
                 pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
-                location.pics  = [[NSMutableArray alloc] init];
                 [location.pics addObject:pic];
             }
             
