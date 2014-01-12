@@ -25,6 +25,13 @@
 @optional
 - (void) getBestLocationInfo:(NSError*)error;
 @end
+// json/location
+@protocol CSAddLocationDelegate<NSObject>
+@required
+- (void) getAddLocationSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getAddLocationError:(NSError*)error;
+@end
 // /json/photos
 @protocol CSPhotosDelegate<NSObject>
 @required
@@ -35,12 +42,20 @@
 
 
 
+
+
 @interface CSAPI : NSObject
+
+
 
 + (id)sharedInstance;
 
--(void)getBestLocationsWithPage:(NSNumber*)page delegate:(id<CSLocationDelegate>)delegate;
+
+
+-(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSLocationDelegate>)delegate ;
 -(void)getLocationInfoWithID:(NSNumber*)idLocation delegate:(id<CSLocationInfoDelegate>)delegate;
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate;
+
+-(void)addLocationWithIDInsta:(NSNumber*)idInstagram foursquareID:(NSString*)idFoursquare countryName:(NSString*)countryName countryCode:(NSString*)countryCode stateName:(NSString*)stateName stateAbbr:(NSString*)stateAbbr cityName:(NSString*)cityName categoryID:(NSString*)categoryID categoryEXID:(NSString*)categoryEXID categoryName:(NSString*)categoryName nameLocation:(NSString*)name address:(NSString*)address postalCode:(NSString*)postalCode phone:(NSString*)phone delegate:(id<CSAddLocationDelegate>)delegate;
 
 @end

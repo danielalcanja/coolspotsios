@@ -23,18 +23,27 @@
     return _sharedObject;
 }
 
--(void)httpRequestWithParameters:(NSDictionary*)parameters path:(NSString*)path success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
+-(void)httpRequestWithParameters:(NSDictionary*)parameters baseURL:(NSURL*)url path:(NSString*)path success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://api.coolspots.com.br"]];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
     
     [client setParameterEncoding:AFJSONParameterEncoding];
     [client postPath:path parameters:parameters success:success failure:failure];
+    
 }
--(void)getBestLocationsWithPage:(NSNumber*)page delegate:(id<CSLocationDelegate>)delegate {
+
+-(void)httpRequestWithParameters:(NSDictionary*)parameters path:(NSString*)path success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
+    
+    [self httpRequestWithParameters:parameters baseURL:[NSURL URLWithString:@"http://api.coolspots.com.br"] path:path success:success failure:failure];
+}
+-(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSLocationDelegate>)delegate {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:page forKey:@"page"];
+    [parameters setObject:city forKey:@"city"];
+
     
     [self httpRequestWithParameters:parameters path:@"/json/location" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -59,6 +68,8 @@
                 pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
                 pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
                 pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
+                pic.caption = [pics valueForKey:@"caption"][i];
+
                 [location.pics addObject:pic];
             }
             
@@ -95,6 +106,8 @@
             pic.standard_resolution = [tempObjects valueForKey:@"standardResolution"][i];
             pic.thumbnail = [tempObjects valueForKey:@"thumbnail"][i];
             pic.low_resolution = [tempObjects valueForKey:@"lowResolution"][i];
+            pic.caption = [tempObjects valueForKey:@"caption"][i];
+
             
             [dictionary addObject:pic];
         }
@@ -105,6 +118,12 @@
         
         [delegate getPhotosError:error];
     }];
+    
+}
+
+-(void)addLocationWithIDInsta:(NSNumber*)idInstagram foursquareID:(NSString*)idFoursquare countryName:(NSString*)countryName countryCode:(NSString*)countryCode stateName:(NSString*)stateName stateAbbr:(NSString*)stateAbbr cityName:(NSString*)cityName categoryID:(NSString*)categoryID categoryEXID:(NSString*)categoryEXID categoryName:(NSString*)categoryName nameLocation:(NSString*)name address:(NSString*)address postalCode:(NSString*)postalCode phone:(NSString*)phone delegate:(id<CSAddLocationDelegate>)delegate {
+    
+    
     
 }
 @end

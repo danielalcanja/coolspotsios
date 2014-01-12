@@ -16,6 +16,8 @@
 		8F211F071870888A000485B4 /* tb-icon-favorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211F031870888A000485B4 /* tb-icon-favorite@2x.png */; };
 		8F211F081870888A000485B4 /* tb-icon-explore.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211F041870888A000485B4 /* tb-icon-explore.png */; };
 		8F211F091870888A000485B4 /* tb-icon-explore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211F051870888A000485B4 /* tb-icon-explore@2x.png */; };
+		8F2731771881FAA300A59364 /* CSSharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2731761881FAA300A59364 /* CSSharedData.m */; };
+		8F27317B188223F100A59364 /* FSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F27317A188223F100A59364 /* FSLocation.m */; };
 		8F4FEC411870AB0D00D6D53B /* nav-back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4FEC3F1870AB0D00D6D53B /* nav-back-button.png */; };
 		8F4FEC421870AB0D00D6D53B /* nav-back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4FEC401870AB0D00D6D53B /* nav-back-button@2x.png */; };
 		8F532DD11861243400DDB7EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F532DD01861243400DDB7EC /* Foundation.framework */; };
@@ -38,7 +40,6 @@
 		8F8AA2C6187CF1D3001AED3E /* CSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2C5187CF1D3001AED3E /* CSAPI.m */; };
 		8F8AA2C8187E2F89001AED3E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */; };
 		8F8AA2CB187E32C4001AED3E /* NewCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2CA187E32C4001AED3E /* NewCityViewController.m */; };
-		8F8AA2CE187F4DB5001AED3E /* CSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2CD187F4DB5001AED3E /* CSShareData.m */; };
 		8F91CFB418638C9300C07D07 /* CSPic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F91CFB318638C9300C07D07 /* CSPic.m */; };
 		8F91CFC518638F7700C07D07 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F91CFBC18638F7700C07D07 /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8F91CFC618638F7700C07D07 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F91CFBF18638F7700C07D07 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -128,6 +129,10 @@
 		8F211F031870888A000485B4 /* tb-icon-favorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-favorite@2x.png"; sourceTree = "<group>"; };
 		8F211F041870888A000485B4 /* tb-icon-explore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-explore.png"; sourceTree = "<group>"; };
 		8F211F051870888A000485B4 /* tb-icon-explore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-explore@2x.png"; sourceTree = "<group>"; };
+		8F2731751881FAA300A59364 /* CSSharedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSharedData.h; path = API/CSSharedData.h; sourceTree = "<group>"; };
+		8F2731761881FAA300A59364 /* CSSharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSharedData.m; path = API/CSSharedData.m; sourceTree = "<group>"; };
+		8F273179188223F100A59364 /* FSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLocation.h; path = API/DataModel/FSLocation.h; sourceTree = "<group>"; };
+		8F27317A188223F100A59364 /* FSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLocation.m; path = API/DataModel/FSLocation.m; sourceTree = "<group>"; };
 		8F4FEC3F1870AB0D00D6D53B /* nav-back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back-button.png"; sourceTree = "<group>"; };
 		8F4FEC401870AB0D00D6D53B /* nav-back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back-button@2x.png"; sourceTree = "<group>"; };
 		8F532DCD1861243400DDB7EC /* coolspots-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coolspots-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,8 +162,6 @@
 		8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8F8AA2C9187E32C4001AED3E /* NewCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewCityViewController.h; path = "View Controllers/ViewControllers/NewCityViewController.h"; sourceTree = "<group>"; };
 		8F8AA2CA187E32C4001AED3E /* NewCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewCityViewController.m; path = "View Controllers/ViewControllers/NewCityViewController.m"; sourceTree = "<group>"; };
-		8F8AA2CC187F4DB5001AED3E /* CSShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSShareData.h; path = API/CSShareData.h; sourceTree = "<group>"; };
-		8F8AA2CD187F4DB5001AED3E /* CSShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSShareData.m; path = API/CSShareData.m; sourceTree = "<group>"; };
 		8F91CFB218638C9300C07D07 /* CSPic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSPic.h; path = API/DataModel/CSPic.h; sourceTree = "<group>"; };
 		8F91CFB318638C9300C07D07 /* CSPic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSPic.m; path = API/DataModel/CSPic.m; sourceTree = "<group>"; };
 		8F91CFBB18638F7700C07D07 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
@@ -571,8 +574,10 @@
 				8F91CFB318638C9300C07D07 /* CSPic.m */,
 				8F8AA2C4187CF1D3001AED3E /* CSAPI.h */,
 				8F8AA2C5187CF1D3001AED3E /* CSAPI.m */,
-				8F8AA2CC187F4DB5001AED3E /* CSShareData.h */,
-				8F8AA2CD187F4DB5001AED3E /* CSShareData.m */,
+				8F2731751881FAA300A59364 /* CSSharedData.h */,
+				8F2731761881FAA300A59364 /* CSSharedData.m */,
+				8F273179188223F100A59364 /* FSLocation.h */,
+				8F27317A188223F100A59364 /* FSLocation.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -837,6 +842,7 @@
 				8F91CFC718638F7700C07D07 /* EGOImageLoader.m in Sources */,
 				8FEF47BE1873213900FD2C19 /* CSImageView.m in Sources */,
 				8F93A97E1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m in Sources */,
+				8F27317B188223F100A59364 /* FSLocation.m in Sources */,
 				8F93A9591865DA4C003D5FA2 /* OMPageControl.m in Sources */,
 				8FEF47D718749FE600FD2C19 /* CSPicCollectionViewCell.m in Sources */,
 				8F9E8407186F86F50056E095 /* CustomDataSource.m in Sources */,
@@ -850,8 +856,8 @@
 				8F9E83FF186F854E0056E095 /* MosaicData.m in Sources */,
 				8FEF47D118732E6300FD2C19 /* BackButton.m in Sources */,
 				8F9E8400186F854E0056E095 /* MosaicCell.m in Sources */,
-				8F8AA2CE187F4DB5001AED3E /* CSShareData.m in Sources */,
 				8F9E83E1186E02E20056E095 /* GTScrollNavigationBar.m in Sources */,
+				8F2731771881FAA300A59364 /* CSSharedData.m in Sources */,
 				8F93A97218661FC3003D5FA2 /* CSLocationDetailViewController.m in Sources */,
 				8F93A94718651E5B003D5FA2 /* CSLocationTwoPicCoverCell.m in Sources */,
 				8FEF47DA1874A20700FD2C19 /* CSPicCollectionViewCell2.m in Sources */,

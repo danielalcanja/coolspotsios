@@ -15,6 +15,7 @@
 #import "MosaicLayoutDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 #import "CSAPI.h"
+#import "NewCityViewController.h"
 
 
 #define kColumnsiPadLandscape 5
@@ -27,6 +28,7 @@
     __weak IBOutlet UICollectionView *_collectionView;
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
+    NewCityViewController *newCityViewController;
 }
 
 

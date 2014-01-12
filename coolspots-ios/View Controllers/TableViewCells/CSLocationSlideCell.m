@@ -131,7 +131,7 @@
         labelCaption.numberOfLines = 3;
         labelCaption.backgroundColor  = [UIColor clearColor];
         labelCaption.textColor  = [UIColor whiteColor];
-        labelCaption.text = @"Cool paty, love it #withfriends";
+        labelCaption.text = pic.caption;
         [scrollView addSubview:labelCaption];
     }
 }

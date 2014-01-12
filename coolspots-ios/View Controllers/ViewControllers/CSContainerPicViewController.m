@@ -41,7 +41,6 @@ NSString *const CSPicCollectionViewCellIdentifier = @"picCollectionViewCell";
     
     currentPage = 0;
 
-    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setItemSize:CGSizeMake(320, 320)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];

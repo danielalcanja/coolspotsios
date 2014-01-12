@@ -1,14 +1,15 @@
 //
-//  CSShareData.m
+//  CSSharedData.m
 //  coolspots-ios
 //
-//  Created by Daniel Alcanja on 1/9/14.
+//  Created by Daniel Alcanja on 1/11/14.
 //  Copyright (c) 2014 coolspots. All rights reserved.
 //
 
-#import "CSShareData.h"
+#import "CSSharedData.h"
 
-@implementation CSShareData
+@implementation CSSharedData
+
 + (id)sharedInstance
 {
     static dispatch_once_t pred = 0;

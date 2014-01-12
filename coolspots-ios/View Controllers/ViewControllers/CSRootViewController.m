@@ -15,7 +15,7 @@
 #import <RestKit.h>
 #import "GTScrollNavigationBar.h"
 #import <CURestkit.h>
-#import "CSShareData.h"
+#import "CSSharedData.h"
 
 
 @interface CSRootViewController ()
@@ -28,6 +28,8 @@
     NSMutableArray *objects;
     int selectedTypeCell;
     int page;
+    
+    BOOL isFirstLoad;
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -47,15 +49,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+
+    isFirstLoad = YES;
     page = 1;
     
-    locationManager = [CLLocationManager new];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
-    
+   
+
     locationsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     locationsTable.delegate = self;
     locationsTable.dataSource = self;
@@ -65,7 +64,6 @@
     
     objects = [[NSMutableArray alloc] init];
     
-    [self loadDataView];
    
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     self.navigationItem.rightBarButtonItem =
@@ -88,20 +86,53 @@
     self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationsTable];
     self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
     self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
+    [self startStandardUpdates];
+    
+    newCityViewController = [[NewCityViewController alloc] init];
+    newCityViewController.view.frame = locationsTable.bounds;
+    newCityViewController.view.hidden = YES;
+    newCityViewController.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:newCityViewController.view];
+
+}
+
+- (void)startStandardUpdates
+{
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    
+    // Set a movement threshold for new events.
+    locationManager.distanceFilter = 500; // meters
+    
+    [locationManager startUpdatingLocation];
+    
+    #if TARGET_IPHONE_SIMULATOR
+        [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
+        [self loadDataView];
+    #endif
+
+}
+- (void)startSignificantChangeUpdates
+{
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    [locationManager startMonitoringSignificantLocationChanges];
 }
 
 #pragma mark CLLocationManager Delegate
-
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-    
-    NSLog(@"hereeeee");
-}
-
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     
     currentLocation = [locations objectAtIndex:0];
-    [locationManager stopUpdatingLocation];
-    NSLog(@"Detected Location : %f, %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
     [geocoder reverseGeocodeLocation:currentLocation
                    completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -109,22 +140,28 @@
                            NSLog(@"Geocode failed with error: %@", error);
                            return;
                        }
+                       
                        CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                       NSLog(@"placemark.ISOcountryCode %@",placemark.ISOcountryCode);
-                       NSLog(@"City %@",placemark.locality);
-                       
-                       [[CSShareData sharedInstance] setPlacemark:placemark];
-                       
+                       [[CSSharedData sharedInstance] setCurrentCity:placemark.locality];
+                       [[CSSharedData sharedInstance] setCurrentState:placemark.administrativeArea];
+                       [[CSSharedData sharedInstance] setCurrentCountryCode:placemark.ISOcountryCode];
+                       [[CSSharedData sharedInstance] setCurrentCountry:placemark.country];
+
                    }];
+    
+    [self loadDataView];
+
 }
+
 
 -(void)loadDataView {
     
-    [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] delegate:self];
+    [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[[CSSharedData sharedInstance] currentCity] delegate:self];
 }
 
 -(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {
     
+    isFirstLoad = NO;
     objects = dictionary;
     [locationsTable reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
@@ -140,7 +177,7 @@
             
             page++;
             
-            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] delegate:self];
+            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[[CSSharedData sharedInstance] currentCity] delegate:self];
             
         }
     }
@@ -156,22 +193,51 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [objects count];
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CSLocation *location = [objects objectAtIndex:indexPath.row];
     
-    NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
-    CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[CSLocationSlideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withViewController:self];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSInteger numberOfRows = [objects count];
+    if (numberOfRows == 0 && !isFirstLoad)
+    {
+        numberOfRows = 1;
     }
     
-    [cell reloadCellWithLocation:location];
-    return cell;
+    return numberOfRows;
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if([objects count] ==0 && !isFirstLoad) {
         
+        static NSString *CellIdentifier = @"cellEmptyView";
+        
+        UITableViewCell *cellEmptyView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cellEmptyView == nil) {
+            cellEmptyView = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        newCityViewController.view.hidden = NO;
+        
+        return cellEmptyView;
+        
+    }else {
+        
+        CSLocation *location = [objects objectAtIndex:indexPath.row];
+        
+        NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
+        CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[CSLocationSlideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withViewController:self];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        [cell reloadCellWithLocation:location];
+        return cell;
+        
+    }
+    
+    return nil;
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
