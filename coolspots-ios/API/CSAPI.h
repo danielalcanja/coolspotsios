@@ -10,6 +10,7 @@
 #import <AFNetworking.h>
 #import "CSLocation.h"
 #import "CSPic.h"
+#import "CSUser.h"
 
 // InstagramUserID
 @protocol CSInstagramUserInfoDelegate<NSObject>
@@ -85,5 +86,5 @@
 -(void)getInstagramIDLocationWithFoursquareID:(NSString*)foursquareID delegate:(id<CSTredingLocationDelegate>)delegate;
 -(void)getInstagramUserInfoWithToken:(NSString*)token delegate:(id<CSInstagramUserInfoDelegate>)delegate;
 -(void)addLocationWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddLocationDelegate>)delegate;
--(void)addUserWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddUserDelegate>)delegate;
+-(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate;
 @end

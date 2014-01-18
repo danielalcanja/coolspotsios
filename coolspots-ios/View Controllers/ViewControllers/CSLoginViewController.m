@@ -140,11 +140,8 @@ static NSString *const scope = @"basic+comments+likes";
     user.full_name = [dictionary valueForKey:@"full_name"];
     user.profile_picture = [dictionary valueForKey:@"profile_picture"];
 
-    NSMutableDictionary *dicUser = [[NSMutableDictionary alloc]init];
-    [dicUser setValue:appDelegate.instagram.accessToken forKey:@"access_token"];
-    [dicUser setValue:user forKey:@"user"];
 
-    [[CSAPI sharedInstance] addUserWithDictionary:dicUser delegate:self];
+    [[CSAPI sharedInstance] addUserWithUser:user token:appDelegate.instagram.accessToken delegate:self];
     
 }
 -(void)getInstagramUserInfoError:(NSError *)error {

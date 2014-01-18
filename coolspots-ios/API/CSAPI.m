@@ -10,6 +10,7 @@
 #import <AFNetworking.h>
 #import <RestKit.h>
 #import "CSSharedData.h"
+#import "CSUser.h"
 
 @implementation CSAPI
 
@@ -86,7 +87,7 @@
     [parameters setObject:city forKey:@"city"];
 
     
-    [self httpRequestWithParameters:parameters path:@"/json/location" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self httpRequestWithParameters:parameters path:@"/json/locations" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
@@ -177,28 +178,26 @@
     
     [self getInstagramIDJsonRequestOperationWithFoursquareID:foursquareID success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-
         NSMutableArray *tempObjects = [[JSON objectForKey:@"data"] mutableCopy];
-        
-        
         [delegate getInstagramIDLocationSucceeded:tempObjects];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        
         [delegate getInstagramIDLocationError:error];
+        
     }];
 }
 -(void)getInstagramUserInfoWithToken:(NSString*)token delegate:(id<CSInstagramUserInfoDelegate>)delegate {
     
     [self getInstagramUserInfoJsonRequestOperationWithToken:token success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        
         NSMutableArray *tempObjects = [[JSON objectForKey:@"data"] mutableCopy];
-        
-        
         [delegate getInstagramUserInfoSucceeded:tempObjects];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        
         [delegate getInstagramUserInfoError:error];
+        
     }];
 }
 
@@ -214,19 +213,29 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [delegate getAddLocationError:error ];
-    }];
-    
-    
-}
--(void)addUserWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddUserDelegate>)delegate {
-    
-    [self httpRequestWithParameters:dictionary path:@"/json/users/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [delegate getAddLocationError:error];
         
+    }];    
+}
+-(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate {
+    
+    NSMutableDictionary *dicUser = [[NSMutableDictionary alloc]init];
+    [dicUser setValue:user.id forKey:@"id"];
+    [dicUser setValue:user.username forKey:@"username"];
+    [dicUser setValue:user.full_name forKey:@"full_name"];
+    [dicUser setValue:user.profile_picture forKey:@"profile_picture"];
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:token forKey:@"access_token"];
+    [parameters setObject:dicUser forKey:@"user"];
+    
+    [self httpRequestWithParameters:parameters path:@"/json/users/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        /*
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
         NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"meta"] mutableCopy];
-        [delegate addUserSucceeded:tempObjects];
+         */
+        [delegate addUserSucceeded:nil];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
