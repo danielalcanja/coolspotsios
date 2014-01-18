@@ -102,6 +102,17 @@
 		8FEF47D118732E6300FD2C19 /* BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF47D018732E6300FD2C19 /* BackButton.m */; };
 		8FEF47D718749FE600FD2C19 /* CSPicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF47D618749FE600FD2C19 /* CSPicCollectionViewCell.m */; };
 		8FEF47DA1874A20700FD2C19 /* CSPicCollectionViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF47D91874A20700FD2C19 /* CSPicCollectionViewCell2.m */; };
+		8FF396D11886538300754634 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF396D01886538300754634 /* Instagram.m */; };
+		8FF396D4188653A300754634 /* CSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF396D3188653A300754634 /* CSLoginViewController.m */; };
+		8FF42693188AD28500F2781B /* CSWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF42692188AD28500F2781B /* CSWelcomeViewController.m */; };
+		8FF42696188AD55300F2781B /* btn-login-instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF42694188AD55300F2781B /* btn-login-instagram.png */; };
+		8FF42697188AD55300F2781B /* btn-login-instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF42695188AD55300F2781B /* btn-login-instagram@2x.png */; };
+		8FF4269B188ADA8C00F2781B /* bg-login.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF42698188ADA8C00F2781B /* bg-login.png */; };
+		8FF4269C188ADA8C00F2781B /* bg-login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF42699188ADA8C00F2781B /* bg-login@2x.png */; };
+		8FF4269D188ADA8C00F2781B /* bg-login-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF4269A188ADA8C00F2781B /* bg-login-568h@2x.png */; };
+		8FF426A0188ADC8600F2781B /* nav-login.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF4269E188ADC8600F2781B /* nav-login.png */; };
+		8FF426A1188ADC8600F2781B /* nav-login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF4269F188ADC8600F2781B /* nav-login@2x.png */; };
+		8FF426A4188AF4E200F2781B /* CSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426A3188AF4E200F2781B /* CSUser.m */; };
 		8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */; };
 		8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6C1869BDE800DE0D2C /* Default.png */; };
@@ -257,6 +268,21 @@
 		8FEF47D618749FE600FD2C19 /* CSPicCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSPicCollectionViewCell.m; sourceTree = "<group>"; };
 		8FEF47D81874A20700FD2C19 /* CSPicCollectionViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSPicCollectionViewCell2.h; path = "View Controllers/TableViewCells/CSPicCollectionViewCell2.h"; sourceTree = "<group>"; };
 		8FEF47D91874A20700FD2C19 /* CSPicCollectionViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSPicCollectionViewCell2.m; path = "View Controllers/TableViewCells/CSPicCollectionViewCell2.m"; sourceTree = "<group>"; };
+		8FF396CF1886538300754634 /* Instagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instagram.h; sourceTree = "<group>"; };
+		8FF396D01886538300754634 /* Instagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instagram.m; sourceTree = "<group>"; };
+		8FF396D2188653A300754634 /* CSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLoginViewController.h; path = "View Controllers/ViewControllers/CSLoginViewController.h"; sourceTree = "<group>"; };
+		8FF396D3188653A300754634 /* CSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLoginViewController.m; path = "View Controllers/ViewControllers/CSLoginViewController.m"; sourceTree = "<group>"; };
+		8FF42691188AD28500F2781B /* CSWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSWelcomeViewController.h; path = "View Controllers/ViewControllers/CSWelcomeViewController.h"; sourceTree = "<group>"; };
+		8FF42692188AD28500F2781B /* CSWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSWelcomeViewController.m; path = "View Controllers/ViewControllers/CSWelcomeViewController.m"; sourceTree = "<group>"; };
+		8FF42694188AD55300F2781B /* btn-login-instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-login-instagram.png"; sourceTree = "<group>"; };
+		8FF42695188AD55300F2781B /* btn-login-instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-login-instagram@2x.png"; sourceTree = "<group>"; };
+		8FF42698188ADA8C00F2781B /* bg-login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-login.png"; sourceTree = "<group>"; };
+		8FF42699188ADA8C00F2781B /* bg-login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-login@2x.png"; sourceTree = "<group>"; };
+		8FF4269A188ADA8C00F2781B /* bg-login-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-login-568h@2x.png"; sourceTree = "<group>"; };
+		8FF4269E188ADC8600F2781B /* nav-login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-login.png"; sourceTree = "<group>"; };
+		8FF4269F188ADC8600F2781B /* nav-login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-login@2x.png"; sourceTree = "<group>"; };
+		8FF426A2188AF4E200F2781B /* CSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSUser.h; path = API/DataModel/CSUser.h; sourceTree = "<group>"; };
+		8FF426A3188AF4E200F2781B /* CSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSUser.m; path = API/DataModel/CSUser.m; sourceTree = "<group>"; };
 		8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSContainerPicViewController.h; path = "View Controllers/ViewControllers/CSContainerPicViewController.h"; sourceTree = "<group>"; };
 		8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSContainerPicViewController.m; path = "View Controllers/ViewControllers/CSContainerPicViewController.m"; sourceTree = "<group>"; };
 		8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -379,6 +405,7 @@
 		8F91CFB918638F7700C07D07 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8FF396CE1886538300754634 /* Instagram */,
 				8F9E83F2186F854E0056E095 /* MosaicLayout */,
 				8F91CFBA18638F7700C07D07 /* EGOCache */,
 				8F91CFBD18638F7700C07D07 /* EGOImageLoader */,
@@ -419,6 +446,13 @@
 		8F91CFCC1863910200C07D07 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8FF4269E188ADC8600F2781B /* nav-login.png */,
+				8FF4269F188ADC8600F2781B /* nav-login@2x.png */,
+				8FF42698188ADA8C00F2781B /* bg-login.png */,
+				8FF42699188ADA8C00F2781B /* bg-login@2x.png */,
+				8FF4269A188ADA8C00F2781B /* bg-login-568h@2x.png */,
+				8FF42694188AD55300F2781B /* btn-login-instagram.png */,
+				8FF42695188AD55300F2781B /* btn-login-instagram@2x.png */,
 				8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */,
 				8FFF2D6C1869BDE800DE0D2C /* Default.png */,
 				8FFF2D6D1869BDE800DE0D2C /* Default@2x.png */,
@@ -578,6 +612,8 @@
 				8F2731761881FAA300A59364 /* CSSharedData.m */,
 				8F273179188223F100A59364 /* FSLocation.h */,
 				8F27317A188223F100A59364 /* FSLocation.m */,
+				8FF426A2188AF4E200F2781B /* CSUser.h */,
+				8FF426A3188AF4E200F2781B /* CSUser.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -630,6 +666,8 @@
 		8FB75F2218637B4E00AE36C9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8FF42691188AD28500F2781B /* CSWelcomeViewController.h */,
+				8FF42692188AD28500F2781B /* CSWelcomeViewController.m */,
 				8FB75F2318637B8A00AE36C9 /* CSRootViewController.h */,
 				8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */,
 				8F8AA2C9187E32C4001AED3E /* NewCityViewController.h */,
@@ -649,8 +687,19 @@
 				8F9E8408186F942D0056E095 /* CSPrincipalViewController.h */,
 				8F9E8409186F942D0056E095 /* CSPrincipalViewController.m */,
 				8F9E840A186F942D0056E095 /* CSPrincipalViewController.xib */,
+				8FF396D2188653A300754634 /* CSLoginViewController.h */,
+				8FF396D3188653A300754634 /* CSLoginViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8FF396CE1886538300754634 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				8FF396CF1886538300754634 /* Instagram.h */,
+				8FF396D01886538300754634 /* Instagram.m */,
+			);
+			path = Instagram;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -735,11 +784,13 @@
 				8F4FEC421870AB0D00D6D53B /* nav-back-button@2x.png in Resources */,
 				8F93A96C1865E4C2003D5FA2 /* button-bookmark-on.png in Resources */,
 				8F91CFD01863912B00C07D07 /* placeholder-image@2x.png in Resources */,
+				8FF426A0188ADC8600F2781B /* nav-login.png in Resources */,
 				8F93A9611865DACA003D5FA2 /* ajuda_dot_on@2x.png in Resources */,
 				8F211EFC18708735000485B4 /* tb-icon-event.png in Resources */,
 				8F6D01EF186486F500C7A29A /* icon@2x.png in Resources */,
 				8F211F081870888A000485B4 /* tb-icon-explore.png in Resources */,
 				8FFF2D731869C73E00DE0D2C /* button-close.png in Resources */,
+				8FF4269C188ADA8C00F2781B /* bg-login@2x.png in Resources */,
 				8F6D01EE186486F500C7A29A /* icon.png in Resources */,
 				8F93A96E1865E4C2003D5FA2 /* button-bookmark.png in Resources */,
 				8FFF2D741869C73E00DE0D2C /* button-close@2x.png in Resources */,
@@ -749,17 +800,21 @@
 				8F532DE91861243400DDB7EC /* Images.xcassets in Resources */,
 				8F91CFCF1863912B00C07D07 /* placeholder-image.png in Resources */,
 				8F93A94B1865D116003D5FA2 /* nav-bg-ios7@2x.png in Resources */,
+				8FF4269B188ADA8C00F2781B /* bg-login.png in Resources */,
 				8FEF47C918732D9B00FD2C19 /* bar-detail-title-blue@2x.png in Resources */,
 				8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */,
 				8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */,
 				8F9E83E3186E09820056E095 /* button-border.png in Resources */,
 				8FE6EECF1867491E005F120C /* Storyboard.storyboard in Resources */,
+				8FF42696188AD55300F2781B /* btn-login-instagram.png in Resources */,
 				8FFF2D701869BDE800DE0D2C /* Default@2x.png in Resources */,
 				8F93A9601865DACA003D5FA2 /* ajuda_dot_on.png in Resources */,
 				8FEF47CA18732D9B00FD2C19 /* bar-detail-title-blue.png in Resources */,
 				8F93A95F1865DACA003D5FA2 /* ajuda_dot_off@2x.png in Resources */,
 				8F93A95E1865DACA003D5FA2 /* ajuda_dot_off.png in Resources */,
 				8F211EFD18708735000485B4 /* tb-icon-event@2x.png in Resources */,
+				8FF4269D188ADA8C00F2781B /* bg-login-568h@2x.png in Resources */,
+				8FF426A1188ADC8600F2781B /* nav-login@2x.png in Resources */,
 				8F93A9671865E4B0003D5FA2 /* button-more.png in Resources */,
 				8F93A96F1865E4C2003D5FA2 /* button-bookmark@2x.png in Resources */,
 				8F93A97618662835003D5FA2 /* Museo700.otf in Resources */,
@@ -773,6 +828,7 @@
 				8FEF47C518732D9B00FD2C19 /* nav-detail-blue@2x.png in Resources */,
 				8FEF47CD18732DCA00FD2C19 /* button-back@2x.png in Resources */,
 				8F93A9651865E36C003D5FA2 /* bar-places-museums@2x.png in Resources */,
+				8FF42697188AD55300F2781B /* btn-login-instagram@2x.png in Resources */,
 				8F211F01187087FC000485B4 /* tb-icon-location@2x.png in Resources */,
 				8F93A96D1865E4C2003D5FA2 /* button-bookmark-on@2x.png in Resources */,
 				8F93A94A1865D116003D5FA2 /* nav-bg-ios7.png in Resources */,
@@ -853,9 +909,12 @@
 				8F9E840B186F942D0056E095 /* CSPrincipalViewController.m in Sources */,
 				8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */,
 				8F8AA2CB187E32C4001AED3E /* NewCityViewController.m in Sources */,
+				8FF396D4188653A300754634 /* CSLoginViewController.m in Sources */,
 				8F9E83FF186F854E0056E095 /* MosaicData.m in Sources */,
 				8FEF47D118732E6300FD2C19 /* BackButton.m in Sources */,
 				8F9E8400186F854E0056E095 /* MosaicCell.m in Sources */,
+				8FF426A4188AF4E200F2781B /* CSUser.m in Sources */,
+				8FF396D11886538300754634 /* Instagram.m in Sources */,
 				8F9E83E1186E02E20056E095 /* GTScrollNavigationBar.m in Sources */,
 				8F2731771881FAA300A59364 /* CSSharedData.m in Sources */,
 				8F93A97218661FC3003D5FA2 /* CSLocationDetailViewController.m in Sources */,
@@ -866,6 +925,7 @@
 				8F532DE11861243400DDB7EC /* AppDelegate.m in Sources */,
 				8F91CFC518638F7700C07D07 /* EGOCache.m in Sources */,
 				8F93A9521865D8CF003D5FA2 /* CSLocationSlideCell.m in Sources */,
+				8FF42693188AD28500F2781B /* CSWelcomeViewController.m in Sources */,
 				8F93A97B18663066003D5FA2 /* CSLocationDetailThreeCell.m in Sources */,
 				8F9E83FE186F854E0056E095 /* MosaicLayout.m in Sources */,
 				8FE6EED218674AB0005F120C /* CSLocationTopCell.m in Sources */,
@@ -990,8 +1050,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4D83C0A406043798881CE00 /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "coolspots-ios/coolspots-ios-Prefix.pch";
@@ -1005,8 +1063,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4D83C0A406043798881CE00 /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "coolspots-ios/coolspots-ios-Prefix.pch";

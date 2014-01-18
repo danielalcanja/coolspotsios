@@ -11,6 +11,27 @@
 #import "CSLocation.h"
 #import "CSPic.h"
 
+// InstagramUserID
+@protocol CSInstagramUserInfoDelegate<NSObject>
+@required
+- (void) getInstagramUserInfoSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getInstagramUserInfoError:(NSError*)error;
+@end
+// InstagramIDLocation
+@protocol CSInstagramIDLocationDelegate<NSObject>
+@required
+- (void) getInstagramIDLocationSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getInstagramIDLocationError:(NSError*)error;
+@end
+// treding/location
+@protocol CSTredingLocationDelegate<NSObject>
+@required
+- (void) getTredingLocationsSucceeded:(NSDictionary*)dictionary;
+@optional
+- (void) getTredingLocationsError:(NSError*)error;
+@end
 // json/location
 @protocol CSLocationDelegate<NSObject>
 @required
@@ -39,7 +60,13 @@
 @optional
 - (void) getPhotosError:(NSError*)error;
 @end
-
+// /json/users/add
+@protocol CSAddUserDelegate<NSObject>
+@required
+- (void) addUserSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) addUserError:(NSError*)error;
+@end
 
 
 
@@ -53,9 +80,10 @@
 
 
 -(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSLocationDelegate>)delegate ;
--(void)getLocationInfoWithID:(NSNumber*)idLocation delegate:(id<CSLocationInfoDelegate>)delegate;
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate;
-
--(void)addLocationWithIDInsta:(NSNumber*)idInstagram foursquareID:(NSString*)idFoursquare countryName:(NSString*)countryName countryCode:(NSString*)countryCode stateName:(NSString*)stateName stateAbbr:(NSString*)stateAbbr cityName:(NSString*)cityName categoryID:(NSString*)categoryID categoryEXID:(NSString*)categoryEXID categoryName:(NSString*)categoryName nameLocation:(NSString*)name address:(NSString*)address postalCode:(NSString*)postalCode phone:(NSString*)phone delegate:(id<CSAddLocationDelegate>)delegate;
-
+-(void)getTredingLocationWithDelegate:(id<CSTredingLocationDelegate>)delegate;
+-(void)getInstagramIDLocationWithFoursquareID:(NSString*)foursquareID delegate:(id<CSTredingLocationDelegate>)delegate;
+-(void)getInstagramUserInfoWithToken:(NSString*)token delegate:(id<CSInstagramUserInfoDelegate>)delegate;
+-(void)addLocationWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddLocationDelegate>)delegate;
+-(void)addUserWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddUserDelegate>)delegate;
 @end

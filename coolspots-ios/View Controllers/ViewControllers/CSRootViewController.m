@@ -30,6 +30,8 @@
     int page;
     
     BOOL isFirstLoad;
+    BOOL isAlreadyExecuted;
+
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -51,10 +53,10 @@
     [super viewDidLoad];
 
     isFirstLoad = YES;
+    isAlreadyExecuted = NO;
     page = 1;
     
    
-
     locationsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     locationsTable.delegate = self;
     locationsTable.dataSource = self;
@@ -113,7 +115,7 @@
     [locationManager startUpdatingLocation];
     
     #if TARGET_IPHONE_SIMULATOR
-        [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
+        [[CSSharedData sharedInstance] setCurrentCity:@"Everett"];
         [self loadDataView];
     #endif
 
@@ -146,17 +148,30 @@
                        [[CSSharedData sharedInstance] setCurrentState:placemark.administrativeArea];
                        [[CSSharedData sharedInstance] setCurrentCountryCode:placemark.ISOcountryCode];
                        [[CSSharedData sharedInstance] setCurrentCountry:placemark.country];
+                       
+                       NSString *city = [[CSSharedData sharedInstance] currentCity];
+                       if([city length] > 0) {
+                           
+                           [self loadDataView];
+
+                       }
 
                    }];
     
-    [self loadDataView];
+    
 
 }
 
 
 -(void)loadDataView {
     
-    [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[[CSSharedData sharedInstance] currentCity] delegate:self];
+    if(!isAlreadyExecuted) {
+        
+        isAlreadyExecuted = YES;
+        NSString *city = [[CSSharedData sharedInstance] currentCity];
+            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city]  delegate:self];
+    
+    }
 }
 
 -(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {

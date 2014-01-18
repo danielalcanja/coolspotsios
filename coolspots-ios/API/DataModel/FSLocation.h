@@ -12,8 +12,8 @@
 
 @property (strong, nonatomic) NSString *id_instagram;
 @property (strong, nonatomic) NSString *id_foursquare;
-@property (strong, nonatomic) NSMutableArray *geo;
-@property (strong, nonatomic) NSMutableArray *category;
+@property (strong, nonatomic) NSMutableDictionary *geo;
+@property (strong, nonatomic) NSMutableDictionary *category;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSString *postal_code;

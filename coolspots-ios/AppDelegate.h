@@ -10,11 +10,13 @@
 #import <DCIntrospect.h>
 #import <Mixpanel.h>
 #import "CSTabBarController.h"
-
+#import "Instagram.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) Instagram *instagram;
+
 
 
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSAPI.h"
+#import <DejalActivityView.h>
 
-@interface NewCityViewController : UIViewController
+
+@interface NewCityViewController : UIViewController<CSTredingLocationDelegate,CSInstagramIDLocationDelegate,CSAddLocationDelegate>
 
 @end

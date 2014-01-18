@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "CSNavigationController.h"
 #import "GTScrollNavigationBar.h"
+#import "CSLoginViewController.h"
+#import "CSWelcomeViewController.h"
+#import "CSNavigationController.h"
 
 #define MIXPANEL_TOKEN @"afc6f3a3605c0f7a10c5f5a76c7a586d"
 
@@ -22,10 +25,30 @@
 #endif
     
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    
+    self.instagram = [[Instagram alloc] init];
+
  
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    CSTabBarController *tabBarController = [[CSTabBarController alloc] init];
-    self.window.rootViewController = tabBarController;
+    
+    [self.instagram logout];
+
+    
+    if ([self.instagram isSessionValid]) {
+
+        CSTabBarController *tabBarController = [[CSTabBarController alloc] init];
+        self.window.rootViewController = tabBarController;
+        
+        
+    }else {
+        
+        CSWelcomeViewController *welcomScreen = [[CSWelcomeViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:welcomScreen];
+        [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-login"] forBarMetrics:UIBarMetricsDefault];
+
+        self.window.rootViewController = navController;
+        
+    }
     
     return YES;
 }
