@@ -20,6 +20,9 @@
     NSString *placeHolder;
     UISwitch *swtPublic;
     NSString *public;
+    UITextField *txtName;
+    UITextView *txtDescription;
+    UITextField *txtTag;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,6 +70,25 @@
 }
 -(IBAction)insertEvent:(id)sender {
     
+    int timestampDateStart = [self.dateStart timeIntervalSince1970];
+    int timestampDateEnd = [self.dateEnd timeIntervalSince1970];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *username = [prefs stringForKey:@"username"];
+    
+    
+    [[CSAPI sharedInstance] addEventWithUsername:username idLocation:[NSString stringWithFormat:@"%d", self.selectedIdLocation] name:txtName.text description:txtDescription.text tag:txtTag.text coverPic:@"" dateStart:[NSString stringWithFormat:@"%d", timestampDateStart] dateEnd:[NSString stringWithFormat:@"%d", timestampDateEnd] public:public delegate:self];
+}
+
+-(void)addEventSucceeded:(NSMutableArray *)dictionary {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+-(void)addEventError:(NSError *)error {
+    
+    NSLog(@"addEventError %@", error );
+    
 }
 
 #pragma mark - Table view data source
@@ -97,7 +119,7 @@
         
         if(row==0) {
             
-            UITextField *txtName = [[UITextField alloc] initWithFrame:CGRectMake(18, 5, 140, 50)];
+            txtName = [[UITextField alloc] initWithFrame:CGRectMake(18, 5, 140, 50)];
             txtName.placeholder = @"Name";
             [txtName setFont:[UIFont fontWithName:@"Museo-500" size:16]];
             [cell addSubview:txtName];
@@ -106,7 +128,7 @@
         if(row==1) {
             
             placeHolder = @"Description";
-            UITextView *txtDescription = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, 140, 100)];
+            txtDescription = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, 140, 100)];
             [txtDescription setFont:[UIFont fontWithName:@"Museo-500" size:16]];
             txtDescription.text = placeHolder;
             txtDescription.delegate = self;
@@ -116,10 +138,10 @@
         }
         if(row==2) {
             
-            UITextField *txtName = [[UITextField alloc] initWithFrame:CGRectMake(18, 5, 140, 50)];
-            txtName.placeholder = @"Tag";
-            [txtName setFont:[UIFont fontWithName:@"Museo-500" size:16]];
-            [cell addSubview:txtName];
+            txtTag = [[UITextField alloc] initWithFrame:CGRectMake(18, 5, 140, 50)];
+            txtTag.placeholder = @"Tag";
+            [txtTag setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+            [cell addSubview:txtTag];
             
         }
         if(row==3) {

@@ -11,6 +11,7 @@
 #import <RestKit.h>
 #import "CSSharedData.h"
 #import "CSUser.h"
+#import "CSEvent.h" 
 
 @implementation CSAPI
 
@@ -143,15 +144,15 @@
         
         for(int i=0;i<[tempObjects count];i++) {
             
-            CSLocation *location = [[CSLocation alloc] init];
-            location.id = [[tempObjects valueForKey:@"id"][i] intValue];
-            location.name =[tempObjects valueForKey:@"name"][i];
-            location.isFavorite = NO;
+            CSEvent *event = [[CSEvent  alloc] init];
+            event.id = [[tempObjects valueForKey:@"id"][i] intValue];
+            event.name =[tempObjects valueForKey:@"name"][i];
+            event.isFavorite = NO;
             
             
-            NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
-            location.pics  = [[NSMutableArray alloc] init];
-            
+            //NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+            event.pics  = [[NSMutableArray alloc] init];
+            /*
             for(int i=0;i<[pics count];i++) {
                 
                 CSPic *pic = [[CSPic alloc] init];
@@ -162,8 +163,9 @@
                 
                 [location.pics addObject:pic];
             }
+             */
             
-            [dictionary addObject:location];
+            [dictionary addObject:event];
         }
         
         [delegate getEventsSucceeded:dictionary];
@@ -349,6 +351,8 @@
     
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:name forKey:@"name"];
+
     [parameters setObject:username forKey:@"username"];
     [parameters setObject:idLocation forKey:@"id_location"];
     [parameters setObject:description forKey:@"description"];
@@ -358,7 +362,7 @@
     [parameters setObject:dtEnd forKey:@"dateEnd"];
     [parameters setObject:public forKey:@"public"];
 
-    [self httpRequestWithParameters:parameters path:@"/json/users/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self httpRequestWithParameters:parameters path:@"/json/events/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         /*
          NSData *responseData = operation.responseData;
          id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];

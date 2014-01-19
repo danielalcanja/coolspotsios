@@ -119,6 +119,7 @@
 		8FF426AE188C237800F2781B /* CSAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426AD188C237800F2781B /* CSAddEventViewController.m */; };
 		8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B0188C736700F2781B /* CSDatePickerViewController.m */; };
 		8FF426B6188C82E900F2781B /* CSSearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */; };
+		8FF426B9188C936A00F2781B /* CSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B8188C936A00F2781B /* CSEvent.m */; };
 		8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */; };
 		8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6C1869BDE800DE0D2C /* Default.png */; };
@@ -299,6 +300,8 @@
 		8FF426B0188C736700F2781B /* CSDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSDatePickerViewController.m; path = "View Controllers/ViewControllers/CSDatePickerViewController.m"; sourceTree = "<group>"; };
 		8FF426B4188C82E900F2781B /* CSSearchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSearchLocationViewController.h; path = "View Controllers/ViewControllers/CSSearchLocationViewController.h"; sourceTree = "<group>"; };
 		8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSearchLocationViewController.m; path = "View Controllers/ViewControllers/CSSearchLocationViewController.m"; sourceTree = "<group>"; };
+		8FF426B7188C936A00F2781B /* CSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSEvent.h; path = API/DataModel/CSEvent.h; sourceTree = "<group>"; };
+		8FF426B8188C936A00F2781B /* CSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSEvent.m; path = API/DataModel/CSEvent.m; sourceTree = "<group>"; };
 		8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSContainerPicViewController.h; path = "View Controllers/ViewControllers/CSContainerPicViewController.h"; sourceTree = "<group>"; };
 		8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSContainerPicViewController.m; path = "View Controllers/ViewControllers/CSContainerPicViewController.m"; sourceTree = "<group>"; };
 		8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -634,6 +637,8 @@
 				8F27317A188223F100A59364 /* FSLocation.m */,
 				8FF426A2188AF4E200F2781B /* CSUser.h */,
 				8FF426A3188AF4E200F2781B /* CSUser.m */,
+				8FF426B7188C936A00F2781B /* CSEvent.h */,
+				8FF426B8188C936A00F2781B /* CSEvent.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -959,6 +964,7 @@
 				8F93A9521865D8CF003D5FA2 /* CSLocationSlideCell.m in Sources */,
 				8FF42693188AD28500F2781B /* CSWelcomeViewController.m in Sources */,
 				8F93A97B18663066003D5FA2 /* CSLocationDetailThreeCell.m in Sources */,
+				8FF426B9188C936A00F2781B /* CSEvent.m in Sources */,
 				8F9E83FE186F854E0056E095 /* MosaicLayout.m in Sources */,
 				8FE6EED218674AB0005F120C /* CSLocationTopCell.m in Sources */,
 				8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */,

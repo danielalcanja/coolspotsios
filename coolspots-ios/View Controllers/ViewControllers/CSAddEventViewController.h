@@ -10,7 +10,7 @@
 #import "CSAPI.h"
 
 
-@interface CSAddEventViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
+@interface CSAddEventViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,CSAddEventDelegate>
 
 
 @property  (nonatomic,strong) NSDate *dateStart;
