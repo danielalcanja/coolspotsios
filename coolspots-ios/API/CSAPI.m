@@ -190,7 +190,7 @@
     [parameters setObject:idLocation forKey:@"id"];
     [parameters setObject:page forKey:@"page"];
     
-    [self httpRequestWithParameters:parameters path:@"/json/photos" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self httpRequestWithParameters:parameters path:@"/json/locations/photos" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
