@@ -22,7 +22,7 @@ typedef enum {
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *slug;
 @property (strong, nonatomic) NSMutableArray *pics;
-
+@property (assign) BOOL isFavorite;
 @property (assign) BOOL firstTimeShown;
 @property (assign) float relativeHeight;
 @property (assign) MosaicLayoutType1 layoutType;

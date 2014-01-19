@@ -100,6 +100,8 @@
             CSLocation *location = [[CSLocation alloc] init];
             location.id = [[tempObjects valueForKey:@"id"][i] intValue];
             location.name =[tempObjects valueForKey:@"name"][i];
+            location.isFavorite = NO;
+
             
             NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
             location.pics  = [[NSMutableArray alloc] init];
@@ -145,13 +147,16 @@
             
             for(int i=0;i<[tempObjects count];i++) {
                 
+                NSMutableArray *favoritesList = [tempObjects valueForKey:@"idLocation"][i];
+                
                 CSLocation *location = [[CSLocation alloc] init];
-                location.id = [[tempObjects valueForKey:@"id"][i] intValue];
-                location.name =[tempObjects valueForKey:@"name"][i];
+                location.id = [[favoritesList valueForKey:@"id"] intValue];
+                location.name =[favoritesList valueForKey:@"name"];
+                location.isFavorite = YES;
                 
-                NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+                //NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
                 location.pics  = [[NSMutableArray alloc] init];
-                
+                /*
                 for(int i=0;i<[pics count];i++) {
                     
                     CSPic *pic = [[CSPic alloc] init];
@@ -162,7 +167,7 @@
                     
                     [location.pics addObject:pic];
                 }
-                
+                */
                 [dictionary addObject:location];
             }
             
@@ -269,6 +274,28 @@
         
     }];    
 }
+
+-(void)addFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddFavoriteLocationDelegate>)delegate {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
+    [parameters setValue:idlocation forKey:@"id_location"];
+    [parameters setValue:username forKey:@"username"];
+    
+    [self httpRequestWithParameters:parameters path:@"/json/favorites/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSData *responseData = operation.responseData;
+        id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+        NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"meta"] mutableCopy];
+        [delegate addFavoriteLocationSucceeded:tempObjects];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate addFavoriteLocationError:error];
+        
+    }];
+    
+}
+
 -(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate {
     
     NSMutableDictionary *dicUser = [[NSMutableDictionary alloc]init];

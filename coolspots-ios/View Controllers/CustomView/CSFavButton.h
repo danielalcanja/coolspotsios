@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSAPI.h"
 
-@interface CSFavButton : UIView
+
+@interface CSFavButton : UIView<CSAddFavoriteLocationDelegate>
 
 @property   (assign) UIButton *button;
 @property (assign) BOOL isFavorite;
-- (id)initWithFrame:(CGRect)frame isFavorite:(BOOL)isFavorite;
+@property  (nonatomic,strong) NSString *idLocation;
 
+- (id)initWithFrame:(CGRect)frame isFavorite:(BOOL)isFavorite;
+-(void)reloadControlWithIdLocation:(NSString*)idLocation isFavorite:(BOOL)isFavorite;
 
 
 @end

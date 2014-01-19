@@ -21,6 +21,7 @@
     
     UIViewController *_controller;
     CSLocation *_location;
+    CSFavButton *buttonFav;
 
 }
 
@@ -49,7 +50,7 @@
         [self.contentView addSubview:buttonMore];
         [buttonMore addTarget:self action:@selector(goToDetailViewController:) forControlEvents:UIControlEventTouchUpInside];
         
-        CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(239, 325, 30,30) isFavorite:NO];
+        buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(239, 325, 30,30) isFavorite:NO];
         [self.contentView addSubview:buttonFav];
         
         labelTitlePlace = [[UILabel alloc] init];
@@ -92,6 +93,7 @@
 }
 -(void)reloadCellWithLocation:(CSLocation*)location {
     
+    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",location.id] isFavorite:location.isFavorite];
     [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 5, scrollView.frame.size.height)];
     labelTitlePlace.text = location.name;
     _location = location;

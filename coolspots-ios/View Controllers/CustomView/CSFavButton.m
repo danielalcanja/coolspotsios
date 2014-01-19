@@ -15,27 +15,56 @@
     self = [super initWithFrame:frame];
     if (self) {
 
+        self.isFavorite = isFavorite;
+
         CGRect frambutton = frame;
         frambutton.origin.x = 0;
         frambutton.origin.y = 0;
-        self.isFavorite = isFavorite;
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
         self.button.frame = frambutton;
         self.button.backgroundColor = [UIColor clearColor];
         [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
-        UIImage *buttonImageNormalFallow = [UIImage imageNamed:@"button-bookmark"];
-        if(self.isFavorite) {
-            buttonImageNormalFallow = [UIImage imageNamed:@"button-bookmark-on"];
-        }
-        UIImage *strechableButtonImageNormalFallow = [buttonImageNormalFallow stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-        [self.button setBackgroundImage:strechableButtonImageNormalFallow forState:UIControlStateNormal];
-        
+        [self setupButton:isFavorite];
+        [self.button addTarget:self action:@selector(favorite:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.button];
         
     }
     return self;
 }
+-(void)setupButton:(BOOL)isFavorite {
+    
+    UIImage *buttonImageNormalFallow = [UIImage imageNamed:@"button-bookmark"];
+    if(isFavorite) {
+        buttonImageNormalFallow = [UIImage imageNamed:@"button-bookmark-on"];
+    }
+    
+    [self.button setBackgroundImage:buttonImageNormalFallow forState:UIControlStateNormal];
+}
+-(void)reloadControlWithIdLocation:(NSString*)idLocation isFavorite:(BOOL)isFavorite{
 
-
+    self.idLocation = idLocation;
+    self.isFavorite = isFavorite;
+    
+    [self setupButton:isFavorite];
+    
+}
+-(IBAction)favorite:(id)sender {
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self setupButton:!self.isFavorite];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *username = [prefs stringForKey:@"username"];
+    
+    [[CSAPI sharedInstance] addFavoriteLocationWithLocationID:self.idLocation username:username delegate:self];
+    
+}
+-(void)addFavoriteLocationSucceeded:(NSMutableArray *)dictionary {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+-(void)addFavoriteLocationError:(NSError *)error {
+    
+    NSLog(@"addFavoriteLocationError %@", error );
+    
+}
 
 @end

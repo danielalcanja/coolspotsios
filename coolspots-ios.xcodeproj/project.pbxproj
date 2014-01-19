@@ -113,6 +113,7 @@
 		8FF426A0188ADC8600F2781B /* nav-login.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF4269E188ADC8600F2781B /* nav-login.png */; };
 		8FF426A1188ADC8600F2781B /* nav-login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF4269F188ADC8600F2781B /* nav-login@2x.png */; };
 		8FF426A4188AF4E200F2781B /* CSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426A3188AF4E200F2781B /* CSUser.m */; };
+		8FF426A7188C0A0400F2781B /* CSFavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426A6188C0A0400F2781B /* CSFavButton.m */; };
 		8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */; };
 		8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6C1869BDE800DE0D2C /* Default.png */; };
@@ -283,6 +284,8 @@
 		8FF4269F188ADC8600F2781B /* nav-login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-login@2x.png"; sourceTree = "<group>"; };
 		8FF426A2188AF4E200F2781B /* CSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSUser.h; path = API/DataModel/CSUser.h; sourceTree = "<group>"; };
 		8FF426A3188AF4E200F2781B /* CSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSUser.m; path = API/DataModel/CSUser.m; sourceTree = "<group>"; };
+		8FF426A5188C0A0400F2781B /* CSFavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSFavButton.h; path = "View Controllers/CustomView/CSFavButton.h"; sourceTree = "<group>"; };
+		8FF426A6188C0A0400F2781B /* CSFavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSFavButton.m; path = "View Controllers/CustomView/CSFavButton.m"; sourceTree = "<group>"; };
 		8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSContainerPicViewController.h; path = "View Controllers/ViewControllers/CSContainerPicViewController.h"; sourceTree = "<group>"; };
 		8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSContainerPicViewController.m; path = "View Controllers/ViewControllers/CSContainerPicViewController.m"; sourceTree = "<group>"; };
 		8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 				8F6D01E51864095D00C7A29A /* CSNavigationController.m */,
 				8FEF47BC1873213900FD2C19 /* CSImageView.h */,
 				8FEF47BD1873213900FD2C19 /* CSImageView.m */,
+				8FF426A5188C0A0400F2781B /* CSFavButton.h */,
+				8FF426A6188C0A0400F2781B /* CSFavButton.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -922,6 +927,7 @@
 				8FEF47DA1874A20700FD2C19 /* CSPicCollectionViewCell2.m in Sources */,
 				8F8AA2C6187CF1D3001AED3E /* CSAPI.m in Sources */,
 				8F9E83E8186E1E550056E095 /* CSEventsViewController.m in Sources */,
+				8FF426A7188C0A0400F2781B /* CSFavButton.m in Sources */,
 				8F532DE11861243400DDB7EC /* AppDelegate.m in Sources */,
 				8F91CFC518638F7700C07D07 /* EGOCache.m in Sources */,
 				8F93A9521865D8CF003D5FA2 /* CSLocationSlideCell.m in Sources */,
