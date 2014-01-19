@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EGOImageView.h"
 #import "CSLocation.h"
+#import "CSFavButton.h"
 
 @interface CSLocationSlideCell : UITableViewCell<UIScrollViewDelegate>
 -(void)reloadCellWithLocation:(CSLocation*)location;

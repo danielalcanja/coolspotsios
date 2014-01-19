@@ -49,19 +49,8 @@
         [self.contentView addSubview:buttonMore];
         [buttonMore addTarget:self action:@selector(goToDetailViewController:) forControlEvents:UIControlEventTouchUpInside];
         
-        UIButton *buttonFallow = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonFallow.frame = CGRectMake(239, 325, 30,30);
-        buttonFallow.backgroundColor = [UIColor clearColor];
-        [buttonFallow setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
-        UIImage *buttonImageNormalFallow = [UIImage imageNamed:@"button-bookmark"];
-        UIImage *strechableButtonImageNormalFallow = [buttonImageNormalFallow stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-        [buttonFallow setBackgroundImage:strechableButtonImageNormalFallow forState:UIControlStateNormal];
-        
-        UIImage *buttonImagePressed = [UIImage imageNamed:@"button-bookmark-on"];
-        UIImage *strechableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-        [buttonFallow setBackgroundImage:strechableButtonImagePressed forState:UIControlStateHighlighted];
-        
-        [self.contentView addSubview:buttonFallow];
+        CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(239, 325, 30,30) isFavorite:NO];
+        [self.contentView addSubview:buttonFav];
         
         labelTitlePlace = [[UILabel alloc] init];
         labelTitlePlace.frame = CGRectMake(6, 320, 230, 44);
