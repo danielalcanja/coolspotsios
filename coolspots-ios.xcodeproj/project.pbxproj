@@ -114,6 +114,8 @@
 		8FF426A1188ADC8600F2781B /* nav-login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF4269F188ADC8600F2781B /* nav-login@2x.png */; };
 		8FF426A4188AF4E200F2781B /* CSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426A3188AF4E200F2781B /* CSUser.m */; };
 		8FF426A7188C0A0400F2781B /* CSFavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426A6188C0A0400F2781B /* CSFavButton.m */; };
+		8FF426AA188C1FF200F2781B /* nav-bg-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF426A8188C1FF200F2781B /* nav-bg-blue.png */; };
+		8FF426AB188C1FF200F2781B /* nav-bg-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF426A9188C1FF200F2781B /* nav-bg-blue@2x.png */; };
 		8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */; };
 		8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6C1869BDE800DE0D2C /* Default.png */; };
@@ -286,6 +288,8 @@
 		8FF426A3188AF4E200F2781B /* CSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSUser.m; path = API/DataModel/CSUser.m; sourceTree = "<group>"; };
 		8FF426A5188C0A0400F2781B /* CSFavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSFavButton.h; path = "View Controllers/CustomView/CSFavButton.h"; sourceTree = "<group>"; };
 		8FF426A6188C0A0400F2781B /* CSFavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSFavButton.m; path = "View Controllers/CustomView/CSFavButton.m"; sourceTree = "<group>"; };
+		8FF426A8188C1FF200F2781B /* nav-bg-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg-blue.png"; sourceTree = "<group>"; };
+		8FF426A9188C1FF200F2781B /* nav-bg-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg-blue@2x.png"; sourceTree = "<group>"; };
 		8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSContainerPicViewController.h; path = "View Controllers/ViewControllers/CSContainerPicViewController.h"; sourceTree = "<group>"; };
 		8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSContainerPicViewController.m; path = "View Controllers/ViewControllers/CSContainerPicViewController.m"; sourceTree = "<group>"; };
 		8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -494,6 +498,8 @@
 				8F93A95D1865DACA003D5FA2 /* ajuda_dot_on@2x.png */,
 				8F93A9481865D116003D5FA2 /* nav-bg-ios7.png */,
 				8F93A9491865D116003D5FA2 /* nav-bg-ios7@2x.png */,
+				8FF426A8188C1FF200F2781B /* nav-bg-blue.png */,
+				8FF426A9188C1FF200F2781B /* nav-bg-blue@2x.png */,
 				8F6D01EC186486F500C7A29A /* icon.png */,
 				8F6D01ED186486F500C7A29A /* icon@2x.png */,
 				8F6D01E818641A9100C7A29A /* tarja-principal-pic.png */,
@@ -816,6 +822,7 @@
 				8F93A9601865DACA003D5FA2 /* ajuda_dot_on.png in Resources */,
 				8FEF47CA18732D9B00FD2C19 /* bar-detail-title-blue.png in Resources */,
 				8F93A95F1865DACA003D5FA2 /* ajuda_dot_off@2x.png in Resources */,
+				8FF426AB188C1FF200F2781B /* nav-bg-blue@2x.png in Resources */,
 				8F93A95E1865DACA003D5FA2 /* ajuda_dot_off.png in Resources */,
 				8F211EFD18708735000485B4 /* tb-icon-event@2x.png in Resources */,
 				8FF4269D188ADA8C00F2781B /* bg-login-568h@2x.png in Resources */,
@@ -827,6 +834,7 @@
 				8FEF47CE18732DCA00FD2C19 /* button-back.png in Resources */,
 				8F4FEC411870AB0D00D6D53B /* nav-back-button.png in Resources */,
 				8FEF47C818732D9B00FD2C19 /* bg-place-detail-blue.png in Resources */,
+				8FF426AA188C1FF200F2781B /* nav-bg-blue.png in Resources */,
 				8F93A9781866283E003D5FA2 /* Museo300.otf in Resources */,
 				8F6D01EB18641A9100C7A29A /* tarja-principal-pic@2x.png in Resources */,
 				8F532DDB1861243400DDB7EC /* InfoPlist.strings in Resources */,

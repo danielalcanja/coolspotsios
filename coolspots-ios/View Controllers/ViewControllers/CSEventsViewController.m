@@ -41,7 +41,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.title = @"Events";
+
+    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    labelTitle.text = @"Events";
+    [labelTitle setFont:[UIFont fontWithName:@"Museo-700" size:20]];
+    labelTitle.backgroundColor = [UIColor clearColor];
+    labelTitle.textAlignment = NSTextAlignmentCenter;
+    labelTitle.textColor = [UIColor whiteColor];
+    labelTitle.numberOfLines = 2;
+    self.navigationItem.titleView = labelTitle;
+    
     isFirstLoad = YES;
     page = 1;
     
