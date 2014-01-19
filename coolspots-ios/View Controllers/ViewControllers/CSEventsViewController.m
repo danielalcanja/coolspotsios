@@ -13,6 +13,7 @@
 #import "CSAPI.h"
 #import "CSSharedData.h"
 #import <YIFullScreenScroll.h>
+#import "CSAddEventViewController.h"
 
 @interface CSEventsViewController ()
 
@@ -63,7 +64,7 @@
     
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEvent:)];
     
     
     objects = [[NSMutableArray alloc] init];
@@ -88,6 +89,17 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:@"ADD_REMOVE_FAV" object:nil];
     [self loadData];
+    
+}
+-(IBAction)addEvent:(id)sender {
+    
+    CSAddEventViewController *addEvent = [[CSAddEventViewController alloc] init];
+
+    UINavigationController *eventNavController = [[UINavigationController alloc] initWithRootViewController:addEvent];
+    [eventNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
+    
+    eventNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:eventNavController animated:self completion:nil];
     
 }
 -(void)loadData{

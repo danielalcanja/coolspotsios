@@ -116,6 +116,9 @@
 		8FF426A7188C0A0400F2781B /* CSFavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426A6188C0A0400F2781B /* CSFavButton.m */; };
 		8FF426AA188C1FF200F2781B /* nav-bg-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF426A8188C1FF200F2781B /* nav-bg-blue.png */; };
 		8FF426AB188C1FF200F2781B /* nav-bg-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FF426A9188C1FF200F2781B /* nav-bg-blue@2x.png */; };
+		8FF426AE188C237800F2781B /* CSAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426AD188C237800F2781B /* CSAddEventViewController.m */; };
+		8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B0188C736700F2781B /* CSDatePickerViewController.m */; };
+		8FF426B6188C82E900F2781B /* CSSearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */; };
 		8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */; };
 		8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6C1869BDE800DE0D2C /* Default.png */; };
@@ -290,6 +293,12 @@
 		8FF426A6188C0A0400F2781B /* CSFavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSFavButton.m; path = "View Controllers/CustomView/CSFavButton.m"; sourceTree = "<group>"; };
 		8FF426A8188C1FF200F2781B /* nav-bg-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg-blue.png"; sourceTree = "<group>"; };
 		8FF426A9188C1FF200F2781B /* nav-bg-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg-blue@2x.png"; sourceTree = "<group>"; };
+		8FF426AC188C237800F2781B /* CSAddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAddEventViewController.h; path = "View Controllers/ViewControllers/CSAddEventViewController.h"; sourceTree = "<group>"; };
+		8FF426AD188C237800F2781B /* CSAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAddEventViewController.m; path = "View Controllers/ViewControllers/CSAddEventViewController.m"; sourceTree = "<group>"; };
+		8FF426AF188C736700F2781B /* CSDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSDatePickerViewController.h; path = "View Controllers/ViewControllers/CSDatePickerViewController.h"; sourceTree = "<group>"; };
+		8FF426B0188C736700F2781B /* CSDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSDatePickerViewController.m; path = "View Controllers/ViewControllers/CSDatePickerViewController.m"; sourceTree = "<group>"; };
+		8FF426B4188C82E900F2781B /* CSSearchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSearchLocationViewController.h; path = "View Controllers/ViewControllers/CSSearchLocationViewController.h"; sourceTree = "<group>"; };
+		8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSearchLocationViewController.m; path = "View Controllers/ViewControllers/CSSearchLocationViewController.m"; sourceTree = "<group>"; };
 		8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSContainerPicViewController.h; path = "View Controllers/ViewControllers/CSContainerPicViewController.h"; sourceTree = "<group>"; };
 		8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSContainerPicViewController.m; path = "View Controllers/ViewControllers/CSContainerPicViewController.m"; sourceTree = "<group>"; };
 		8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -689,6 +698,10 @@
 				8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */,
 				8F9E83E6186E1E550056E095 /* CSEventsViewController.h */,
 				8F9E83E7186E1E550056E095 /* CSEventsViewController.m */,
+				8FF426AC188C237800F2781B /* CSAddEventViewController.h */,
+				8FF426AD188C237800F2781B /* CSAddEventViewController.m */,
+				8FF426AF188C736700F2781B /* CSDatePickerViewController.h */,
+				8FF426B0188C736700F2781B /* CSDatePickerViewController.m */,
 				8F9E83E9186E1E6C0056E095 /* CSExploreViewController.h */,
 				8F9E83EA186E1E6C0056E095 /* CSExploreViewController.m */,
 				8F9E83EC186E1E800056E095 /* CSFavoritesViewController.h */,
@@ -700,6 +713,8 @@
 				8F9E840A186F942D0056E095 /* CSPrincipalViewController.xib */,
 				8FF396D2188653A300754634 /* CSLoginViewController.h */,
 				8FF396D3188653A300754634 /* CSLoginViewController.m */,
+				8FF426B4188C82E900F2781B /* CSSearchLocationViewController.h */,
+				8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -907,6 +922,7 @@
 				8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */,
 				8F9E83F1186E23AD0056E095 /* CSTabBarController.m in Sources */,
 				8F91CFB418638C9300C07D07 /* CSPic.m in Sources */,
+				8FF426AE188C237800F2781B /* CSAddEventViewController.m in Sources */,
 				8F91CFC618638F7700C07D07 /* EGOImageLoadConnection.m in Sources */,
 				8F91CFC718638F7700C07D07 /* EGOImageLoader.m in Sources */,
 				8FEF47BE1873213900FD2C19 /* CSImageView.m in Sources */,
@@ -915,8 +931,10 @@
 				8F93A9591865DA4C003D5FA2 /* OMPageControl.m in Sources */,
 				8FEF47D718749FE600FD2C19 /* CSPicCollectionViewCell.m in Sources */,
 				8F9E8407186F86F50056E095 /* CustomDataSource.m in Sources */,
+				8FF426B6188C82E900F2781B /* CSSearchLocationViewController.m in Sources */,
 				8F93A94418651E33003D5FA2 /* CSLocationLargeCoverCell.m in Sources */,
 				8F6D01E61864095D00C7A29A /* CSNavigationController.m in Sources */,
+				8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */,
 				8F9E8403186F85F50056E095 /* CSLocationsViewController.m in Sources */,
 				8F9E840F186FA10E0056E095 /* CSLocationCollectionViewCell.m in Sources */,
 				8F9E840B186F942D0056E095 /* CSPrincipalViewController.m in Sources */,

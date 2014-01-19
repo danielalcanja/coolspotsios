@@ -90,6 +90,14 @@
 - (void) addUserError:(NSError*)error;
 @end
 
+// /json/events/add
+@protocol CSAddEventDelegate<NSObject>
+@required
+- (void) addEventSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) addEventError:(NSError*)error;
+@end
+
 @interface CSAPI : NSObject
 
 + (id)sharedInstance;
@@ -103,6 +111,9 @@
 -(void)addLocationWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddLocationDelegate>)delegate;
 -(void)addRemoveFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddRemoveFavoriteLocationDelegate>)delegate remove:(BOOL)isRemove;
 -(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate;
+
+-(void)addEventWithUsername:(NSString*)username idLocation:(NSString*)idLocation name:(NSString*)name description:(NSString*)description tag:(NSString*)tag coverPic:(NSString*)coverpic dateStart:(NSString*)dtstart dateEnd:(NSString*)dtEnd public:(NSString*)public delegate:(id<CSAddEventDelegate>)delegate;
+
 
 -(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSEventsDelegate>)delegate;
 @end

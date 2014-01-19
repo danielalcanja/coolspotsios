@@ -345,7 +345,33 @@
     }];
     
 }
+-(void)addEventWithUsername:(NSString*)username idLocation:(NSString*)idLocation name:(NSString*)name description:(NSString*)description tag:(NSString*)tag coverPic:(NSString*)coverpic dateStart:(NSString*)dtstart dateEnd:(NSString*)dtEnd public:(NSString*)public delegate:(id<CSAddEventDelegate>)delegate {
+    
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:username forKey:@"username"];
+    [parameters setObject:idLocation forKey:@"id_location"];
+    [parameters setObject:description forKey:@"description"];
+    [parameters setObject:tag forKey:@"tag"];
+    [parameters setObject:coverpic forKey:@"cover_pic"];
+    [parameters setObject:dtstart forKey:@"dateStart"];
+    [parameters setObject:dtEnd forKey:@"dateEnd"];
+    [parameters setObject:public forKey:@"public"];
 
+    [self httpRequestWithParameters:parameters path:@"/json/users/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        /*
+         NSData *responseData = operation.responseData;
+         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+         NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"meta"] mutableCopy];
+         */
+        [delegate addEventSucceeded:nil];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate addEventError:error ];
+    }];
+    
+}
 -(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate {
     
     NSMutableDictionary *dicUser = [[NSMutableDictionary alloc]init];
@@ -370,7 +396,5 @@
         
         [delegate addUserError:error ];
     }];
-    
-    
 }
 @end
