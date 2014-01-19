@@ -55,16 +55,21 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *username = [prefs stringForKey:@"username"];
     
-    [[CSAPI sharedInstance] addFavoriteLocationWithLocationID:self.idLocation username:username delegate:self];
+    [[CSAPI sharedInstance] addRemoveFavoriteLocationWithLocationID:self.idLocation username:username delegate:self remove:self.isFavorite];
     
 }
--(void)addFavoriteLocationSucceeded:(NSMutableArray *)dictionary {
+-(void)addRemoveFavoriteLocationSucceeded:(NSMutableArray *)dictionary {
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [[NSNotificationCenter defaultCenter]  postNotificationName:@"ADD_REMOVE_FAV" object:self];
+
 }
--(void)addFavoriteLocationError:(NSError *)error {
+-(void)addRemoveFavoriteLocationError:(NSError *)error {
     
     NSLog(@"addFavoriteLocationError %@", error );
     
 }
-
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

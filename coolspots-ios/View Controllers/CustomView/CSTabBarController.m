@@ -22,7 +22,7 @@
     if (self) {
 
         self.rootViewController = [[CSRootViewController alloc] init];
-        self.eventsViewController = [[CSRootViewController alloc] init];
+        self.eventsViewController = [[CSEventsViewController alloc] init];
         self.exploreViewController = [[CSRootViewController alloc] init];
         self.favoritesViewController = [[CSFavoritesViewController  alloc] init];
                 
@@ -48,7 +48,6 @@
         
         self.viewControllers = [NSArray arrayWithObjects: navController,eventNavController,exploreNavController,favoritesNavController, nil];
 
-        
     }
     return self;
 }

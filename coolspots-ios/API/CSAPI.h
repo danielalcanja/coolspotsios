@@ -33,6 +33,13 @@
 @optional
 - (void) getTredingLocationsError:(NSError*)error;
 @end
+// json/Events
+@protocol CSEventsDelegate<NSObject>
+@required
+- (void) getEventsSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getEventsError:(NSError*)error;
+@end
 // json/favorites
 @protocol CSFavoriteLocationsDelegate<NSObject>
 @required
@@ -41,11 +48,11 @@
 - (void) getFavoriteLocationsError:(NSError*)error;
 @end
 // json/favorite/add
-@protocol CSAddFavoriteLocationDelegate<NSObject>
+@protocol CSAddRemoveFavoriteLocationDelegate<NSObject>
 @required
-- (void) addFavoriteLocationSucceeded:(NSMutableArray*)dictionary;
+- (void) addRemoveFavoriteLocationSucceeded:(NSMutableArray*)dictionary;
 @optional
-- (void) addFavoriteLocationError:(NSError*)error;
+- (void) addRemoveFavoriteLocationError:(NSError*)error;
 @end
 // json/location
 @protocol CSLocationDelegate<NSObject>
@@ -94,7 +101,8 @@
 -(void)getInstagramIDLocationWithFoursquareID:(NSString*)foursquareID delegate:(id<CSTredingLocationDelegate>)delegate;
 -(void)getInstagramUserInfoWithToken:(NSString*)token delegate:(id<CSInstagramUserInfoDelegate>)delegate;
 -(void)addLocationWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddLocationDelegate>)delegate;
--(void)addFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddFavoriteLocationDelegate>)delegate;
-
+-(void)addRemoveFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddRemoveFavoriteLocationDelegate>)delegate remove:(BOOL)isRemove;
 -(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate;
+
+-(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSEventsDelegate>)delegate;
 @end

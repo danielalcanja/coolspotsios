@@ -56,11 +56,6 @@
     
     objects = [[NSMutableArray alloc] init];
     
-    
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
-    
     [DejalBezelActivityView activityViewForView:self.view];
     
     if (_refreshHeaderView == nil) {
@@ -79,7 +74,7 @@
     self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
     self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:@"ADD_REMOVE_FAV" object:nil];
     [self loadData];
 
 }

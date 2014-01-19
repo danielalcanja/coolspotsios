@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) CSLocationsViewController *mainViewController;
 @property (strong, nonatomic) CSRootViewController *rootViewController;
-@property (strong, nonatomic) CSRootViewController *eventsViewController;
+@property (strong, nonatomic) CSEventsViewController *eventsViewController;
 @property (strong, nonatomic) CSRootViewController *exploreViewController;
 @property (strong, nonatomic) CSFavoritesViewController   *favoritesViewController;
 

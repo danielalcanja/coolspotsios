@@ -10,7 +10,7 @@
 #import "CSAPI.h"
 
 
-@interface CSFavButton : UIView<CSAddFavoriteLocationDelegate>
+@interface CSFavButton : UIView<CSAddRemoveFavoriteLocationDelegate>
 
 @property   (assign) UIButton *button;
 @property (assign) BOOL isFavorite;

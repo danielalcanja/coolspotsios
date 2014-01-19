@@ -7,15 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CSUtil.h"
-#import <AMScrollingNavbarViewController.h>
-#import <DejalActivityView.h>
 #import <EGORefreshTableHeaderView.h>
-#import <YIFullScreenScroll.h>
-#import "MosaicLayoutDelegate.h"
-#import <CoreLocation/CoreLocation.h>
 #import "CSAPI.h"
 
-@interface CSEventsViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate,CSLocationDelegate>
+@interface CSEventsViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,CSEventsDelegate>
 
 @end

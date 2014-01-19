@@ -127,6 +127,52 @@
         [delegate getBestLocations:error];
     }];
 }
+-(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSEventsDelegate>)delegate {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:page forKey:@"page"];
+    [parameters setObject:city forKey:@"city"];
+    
+    [self httpRequestWithParameters:parameters path:@"/json/events" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSData *responseData = operation.responseData;
+        id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+        
+        NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
+        NSMutableArray *dictionary = [[NSMutableArray alloc] init];
+        
+        for(int i=0;i<[tempObjects count];i++) {
+            
+            CSLocation *location = [[CSLocation alloc] init];
+            location.id = [[tempObjects valueForKey:@"id"][i] intValue];
+            location.name =[tempObjects valueForKey:@"name"][i];
+            location.isFavorite = NO;
+            
+            
+            NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+            location.pics  = [[NSMutableArray alloc] init];
+            
+            for(int i=0;i<[pics count];i++) {
+                
+                CSPic *pic = [[CSPic alloc] init];
+                pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
+                pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
+                pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
+                pic.caption = [pics valueForKey:@"caption"][i];
+                
+                [location.pics addObject:pic];
+            }
+            
+            [dictionary addObject:location];
+        }
+        
+        [delegate getEventsSucceeded:dictionary];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate getEventsError:error];
+    }];
+}
 -(void)getFavoriteLocationsWithPage:(NSNumber*)page username:(NSString*)username delegate:(id<CSFavoriteLocationsDelegate>)delegate {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
@@ -184,7 +230,6 @@
 
 
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate {
-    
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:idLocation forKey:@"id"];
@@ -275,22 +320,27 @@
     }];    
 }
 
--(void)addFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddFavoriteLocationDelegate>)delegate {
+-(void)addRemoveFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddRemoveFavoriteLocationDelegate>)delegate remove:(BOOL)isRemove {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
     [parameters setValue:idlocation forKey:@"id_location"];
     [parameters setValue:username forKey:@"username"];
     
-    [self httpRequestWithParameters:parameters path:@"/json/favorites/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *path = @"/json/favorites/add";
+    if(isRemove) {
+        path = @"/json/favorites/remove";
+    }
+    
+    [self httpRequestWithParameters:parameters path:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
         NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"meta"] mutableCopy];
-        [delegate addFavoriteLocationSucceeded:tempObjects];
+        [delegate addRemoveFavoriteLocationSucceeded:tempObjects];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [delegate addFavoriteLocationError:error];
+        [delegate addRemoveFavoriteLocationError:error];
         
     }];
     
