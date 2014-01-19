@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "BackButton.h"  
 #import "CSUser.h"
+#import "CSSharedData.h"
 
 static NSString *const authUrlString = @"https://api.instagram.com/oauth/authorize";
 static NSString *const tokenUrlString = @"https://api.instagram.com/oauth/access_token/";
@@ -140,6 +141,11 @@ static NSString *const scope = @"basic+comments+likes";
     user.full_name = [dictionary valueForKey:@"full_name"];
     user.profile_picture = [dictionary valueForKey:@"profile_picture"];
 
+    [[CSSharedData sharedInstance] setCurrentUser:user];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:user.username forKey:@"username"];
+    [prefs synchronize];
 
     [[CSAPI sharedInstance] addUserWithUser:user token:appDelegate.instagram.accessToken delegate:self];
     

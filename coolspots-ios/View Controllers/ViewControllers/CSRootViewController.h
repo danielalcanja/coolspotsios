@@ -18,11 +18,6 @@
 #import "NewCityViewController.h"
 
 
-#define kColumnsiPadLandscape 5
-#define kColumnsiPadPortrait 4
-#define kColumnsiPhoneLandscape 3
-#define kColumnsiPhonePortrait 2
-
 @interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate,CSLocationDelegate>
 {
     __weak IBOutlet UICollectionView *_collectionView;

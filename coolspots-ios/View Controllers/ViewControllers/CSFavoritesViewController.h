@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EGORefreshTableHeaderView.h>
+#import "CSAPI.h"
 
-@interface CSFavoritesViewController : UIViewController
+
+@interface CSFavoritesViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,CSFavoriteLocationsDelegate>
 
 @end

@@ -31,7 +31,7 @@
  
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [self.instagram logout];
+    //[self.instagram logout];
 
     
     if ([self.instagram isSessionValid]) {

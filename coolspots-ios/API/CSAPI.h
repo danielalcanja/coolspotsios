@@ -33,6 +33,13 @@
 @optional
 - (void) getTredingLocationsError:(NSError*)error;
 @end
+// json/favorites
+@protocol CSFavoriteLocationsDelegate<NSObject>
+@required
+- (void) getFavoriteLocationsSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getFavoriteLocationsError:(NSError*)error;
+@end
 // json/location
 @protocol CSLocationDelegate<NSObject>
 @required
@@ -69,20 +76,14 @@
 - (void) addUserError:(NSError*)error;
 @end
 
-
-
-
 @interface CSAPI : NSObject
 
-
-
 + (id)sharedInstance;
-
-
 
 -(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSLocationDelegate>)delegate ;
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate;
 -(void)getTredingLocationWithDelegate:(id<CSTredingLocationDelegate>)delegate;
+-(void)getFavoriteLocationsWithPage:(NSNumber*)page username:(NSString*)username delegate:(id<CSFavoriteLocationsDelegate>)delegate;
 -(void)getInstagramIDLocationWithFoursquareID:(NSString*)foursquareID delegate:(id<CSTredingLocationDelegate>)delegate;
 -(void)getInstagramUserInfoWithToken:(NSString*)token delegate:(id<CSInstagramUserInfoDelegate>)delegate;
 -(void)addLocationWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddLocationDelegate>)delegate;

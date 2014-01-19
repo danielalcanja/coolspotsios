@@ -9,6 +9,7 @@
 #import "CSTabBarController.h"
 #import "GTScrollNavigationBar.h"
 
+
 @interface CSTabBarController ()
 
 @end
@@ -23,7 +24,7 @@
         self.rootViewController = [[CSRootViewController alloc] init];
         self.eventsViewController = [[CSRootViewController alloc] init];
         self.exploreViewController = [[CSRootViewController alloc] init];
-        self.favoritesViewController = [[CSRootViewController  alloc] init];
+        self.favoritesViewController = [[CSFavoritesViewController  alloc] init];
                 
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
         

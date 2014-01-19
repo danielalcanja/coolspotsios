@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CSUser.h"
 
 @interface CSSharedData : NSObject
 
@@ -14,7 +15,7 @@
 @property (strong, atomic) NSString *currentCountry;
 @property (strong, atomic) NSString *currentState;
 @property (strong, atomic) NSString *currentCity;
-
+@property (strong, atomic) CSUser *currentUser;
 
 + (id)sharedInstance;
 

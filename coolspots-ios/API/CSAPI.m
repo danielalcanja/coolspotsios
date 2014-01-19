@@ -125,6 +125,58 @@
         [delegate getBestLocations:error];
     }];
 }
+-(void)getFavoriteLocationsWithPage:(NSNumber*)page username:(NSString*)username delegate:(id<CSFavoriteLocationsDelegate>)delegate {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:page forKey:@"page"];
+    [parameters setObject:username forKey:@"username"];
+    
+    
+    [self httpRequestWithParameters:parameters path:@"/json/favorites" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSData *responseData = operation.responseData;
+        id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+        
+        NSMutableArray *dictionary = [[NSMutableArray alloc] init];
+
+        if(![[parsedResponse objectForKey:@"data"]  isEqual:[NSNull null]]) {
+
+            NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
+            
+            for(int i=0;i<[tempObjects count];i++) {
+                
+                CSLocation *location = [[CSLocation alloc] init];
+                location.id = [[tempObjects valueForKey:@"id"][i] intValue];
+                location.name =[tempObjects valueForKey:@"name"][i];
+                
+                NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+                location.pics  = [[NSMutableArray alloc] init];
+                
+                for(int i=0;i<[pics count];i++) {
+                    
+                    CSPic *pic = [[CSPic alloc] init];
+                    pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
+                    pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
+                    pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
+                    pic.caption = [pics valueForKey:@"caption"][i];
+                    
+                    [location.pics addObject:pic];
+                }
+                
+                [dictionary addObject:location];
+            }
+            
+        
+        }
+        
+        [delegate getFavoriteLocationsSucceeded:dictionary];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate getFavoriteLocationsError:error];
+    }];
+}
+
 
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate {
     
