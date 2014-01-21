@@ -11,6 +11,7 @@
 #import "CSLocationDetailViewController.h"
 #import "CSImageView.h"
 #import "CSPic.h"
+#import "CSSlideViewImage.h"
 
 @implementation CSLocationSlideCell {
     
@@ -22,10 +23,16 @@
     UIViewController *_controller;
     CSLocation *_location;
     CSFavButton *buttonFav;
+    
+    CSSlideViewImage *slideViewImage1;
+    CSSlideViewImage *slideViewImage2;
+    CSSlideViewImage *slideViewImage3;
+    CSSlideViewImage *slideViewImage4;
+    CSSlideViewImage *slideViewImage5;
 
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller location:(CSLocation*)location
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -72,6 +79,7 @@
         scrollView.scrollsToTop = NO;
         scrollView.delegate = self;
         scrollView.backgroundColor = [UIColor clearColor];
+        [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 5, scrollView.frame.size.height)];
         
         [self.contentView addSubview:scrollView];
         
@@ -88,43 +96,66 @@
         [pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
 
         [self.contentView addSubview:pageControl];
+        
+        if([location.pics count] > 0) {
+            slideViewImage1 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 0, 0, 320,320)];
+            [scrollView addSubview:slideViewImage1];
+        }
+        if([location.pics count] > 1) {
+            slideViewImage2 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 1, 0, 320,320)];
+            [scrollView addSubview:slideViewImage2];
+
+        }
+        if([location.pics count] > 2) {
+            slideViewImage3 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 2, 0, 320,320)];
+            [scrollView addSubview:slideViewImage3];
+
+        }
+        if([location.pics count] > 3) {
+            slideViewImage4 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 3, 0, 320,320)];
+            [scrollView addSubview:slideViewImage4];
+
+        }
+        if([location.pics count] > 4) {
+            slideViewImage5 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 4, 0, 320,320)];
+            [scrollView addSubview:slideViewImage5];
+
+        }
+        
     }
     return self;
 }
 -(void)reloadCellWithLocation:(CSLocation*)location {
     
     [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",location.id] isFavorite:location.isFavorite];
-    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 5, scrollView.frame.size.height)];
     labelTitlePlace.text = location.name;
     _location = location;
-    
-    for(int i=0;i<[location.pics count];i++) {
-        
-        CSPic *pic = [location.pics objectAtIndex:i] ;
-    
+    if([location.pics count] > 0) {
+        CSPic *pic = [location.pics objectAtIndex:0] ;
         NSString *standard_resolution = pic.standard_resolution;
-
-        
-        CSImageView *imageView = [[CSImageView alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * i, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
-        
-        [imageView setURL:standard_resolution];
-        
-        [scrollView addSubview:imageView];
-        
-        UIImage *image1=[UIImage imageNamed:@"tarja-principal-pic"];
-        UIImageView *image= [[UIImageView alloc] initWithImage:image1];
-        image.frame=CGRectMake(scrollView.frame.size.width * i,270,320,50);
-        //image.alpha = 1.0;
-        [scrollView  addSubview:image];
-        
-        UILabel *labelCaption = [[UILabel alloc] initWithFrame:CGRectMake(6 + scrollView.frame.size.width * i,270,300,50)];
-        [labelCaption setFont:[UIFont fontWithName:@"Helvetica" size:11]];
-        labelCaption.numberOfLines = 3;
-        labelCaption.backgroundColor  = [UIColor clearColor];
-        labelCaption.textColor  = [UIColor whiteColor];
-        labelCaption.text = pic.caption;
-        [scrollView addSubview:labelCaption];
+        [slideViewImage1 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
+    if([location.pics count] > 1) {
+        CSPic *pic = [location.pics objectAtIndex:1] ;
+        NSString *standard_resolution = pic.standard_resolution;
+        [slideViewImage2 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
+    }
+    if([location.pics count] > 2) {
+        CSPic *pic = [location.pics objectAtIndex:2] ;
+        NSString *standard_resolution = pic.standard_resolution;
+        [slideViewImage3 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
+    }
+    if([location.pics count] > 3) {
+        CSPic *pic = [location.pics objectAtIndex:3] ;
+        NSString *standard_resolution = pic.standard_resolution;
+        [slideViewImage4 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
+    }
+    if([location.pics count] > 4) {
+        CSPic *pic = [location.pics objectAtIndex:4] ;
+        NSString *standard_resolution = pic.standard_resolution;
+        [slideViewImage5 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
+    }
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sView
 {

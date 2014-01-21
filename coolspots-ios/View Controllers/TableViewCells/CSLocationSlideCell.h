@@ -13,6 +13,5 @@
 
 @interface CSLocationSlideCell : UITableViewCell<UIScrollViewDelegate>
 -(void)reloadCellWithLocation:(CSLocation*)location;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller;
-
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller location:(CSLocation*)location;
 @end

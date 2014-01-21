@@ -164,7 +164,7 @@
         NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
         CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[CSLocationSlideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withViewController:self];
+            cell = [[CSLocationSlideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withViewController:self location:location];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
