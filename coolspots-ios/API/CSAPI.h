@@ -12,6 +12,13 @@
 #import "CSPic.h"
 #import "CSUser.h"
 
+// Foursquare VenusNear
+@protocol CSFSVenusNearDelegate<NSObject>
+@required
+- (void) getFSVenusNearSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getFSVenusNearError:(NSError*)error;
+@end
 // InstagramUserID
 @protocol CSInstagramUserInfoDelegate<NSObject>
 @required
@@ -114,6 +121,6 @@
 
 -(void)addEventWithUsername:(NSString*)username idLocation:(NSString*)idLocation name:(NSString*)name description:(NSString*)description tag:(NSString*)tag coverPic:(NSString*)coverpic dateStart:(NSString*)dtstart dateEnd:(NSString*)dtEnd public:(NSString*)public delegate:(id<CSAddEventDelegate>)delegate;
 
-
+-(void)getFoursquareVenusNearWithLatitude:(NSString*)latitude  longitude:(NSString*)longitude delegate:(id<CSFSVenusNearDelegate>)delegate;
 -(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSEventsDelegate>)delegate;
 @end

@@ -10,6 +10,6 @@
 #import "CSAPI.h"
 #import <DejalActivityView.h>
 
-@interface CSSearchLocationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,CSLocationDelegate>
+@interface CSSearchLocationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchDisplayDelegate>
 
 @end

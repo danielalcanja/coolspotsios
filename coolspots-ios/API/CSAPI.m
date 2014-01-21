@@ -12,6 +12,9 @@
 #import "CSSharedData.h"
 #import "CSUser.h"
 #import "CSEvent.h" 
+#import <CoreLocation/CoreLocation.h>
+#import "FSLocation.h"
+
 
 @implementation CSAPI
 
@@ -34,17 +37,31 @@
     [operation start];
 
 }
-
 -(void)tredingLocationJsonRequestOperationWithParameters:(NSDictionary*)parameters success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
-                                  failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
+                                                 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
     
     NSString *city = [[CSSharedData sharedInstance] currentCity];
     NSString *state = [[CSSharedData sharedInstance] currentState];
-
+    
     NSString *weatherUrl = [NSString stringWithFormat:@"http://igrejas.mobi/thecoolspots/RTU/index.php?city=%@,%@", city, state];
     NSURL *url = [NSURL URLWithString:weatherUrl];
     
     [self jsonRequestOperationWithParameters:parameters baseURL:url success:success failure:failure];
+    
+}
+
+-(void)getFoursquareVenuesWithQuery:(NSString*)query latitude:(NSString*)latitude  longitude:(NSString*)longitude success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
+                                  failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
+    
+    
+    
+    NSString *todayDate  = @"20140121";
+    NSString *catoryIds = @"4bf58dd8d48988d1e8931735,4bf58dd8d48988d112941735,4bf58dd8d48988d116941735,4bf58dd8d48988d11e941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d119941735,4bf58dd8d48988d120941735,4bf58dd8d48988d11c941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d1ea941735";
+   
+    NSString *weatherUrl = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%@,%@&client_id=GSBHHMI5Z2GTJ2L2UCVBSGIRKCE5MU1JA4XIDBMDOQ11T3LT&client_secret=55L42MW1G40ZF3IXIKD4BSHFNFICQ3E2LV3OPPI5NDNACXPR&categoryId=%@&v=%@%@", latitude, longitude, catoryIds, todayDate, query];
+    NSURL *url = [NSURL URLWithString:weatherUrl];
+    
+    [self jsonRequestOperationWithParameters:nil baseURL:url success:success failure:failure];
     
 }
 
@@ -275,6 +292,57 @@
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [delegate getTredingLocationsError:error];
+    }];
+    
+}
+-(void)getFoursquareVenusNearWithLatitude:(NSString*)latitude  longitude:(NSString*)longitude delegate:(id<CSFSVenusNearDelegate>)delegate {
+    
+    [self getFoursquareVenuesWithQuery:@"" latitude:latitude longitude:longitude success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSDictionary *temDic = (NSDictionary *)JSON;
+        NSMutableArray *tempObjects = [[temDic objectForKey:@"response"] mutableCopy];
+        NSArray *arrayVenues = [tempObjects valueForKey:@"venues"];
+        
+        NSMutableArray *dictionary = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *resultLocation in arrayVenues) {
+            
+            FSLocation *location = [[FSLocation alloc] init];
+            location.id_foursquare = [resultLocation objectForKey:@"id"];
+            location.name = [resultLocation objectForKey:@"name"];
+            location.postal_code = [resultLocation objectForKey:@"postalCode"];
+            NSMutableDictionary *geo = [[NSMutableDictionary alloc]init];
+            NSArray *arrayGeo = [resultLocation valueForKey:@"location"];
+            for (NSDictionary *resultCategory in arrayGeo) {
+                
+
+                [geo setValue:[arrayGeo valueForKey:@"country"] forKey:@"countryName"];
+                [geo setValue:[arrayGeo valueForKey:@"cc"] forKey:@"countryCode"];
+                [geo setValue:[arrayGeo valueForKey:@"state"] forKey:@"stateName"];
+                [geo setValue:[arrayGeo valueForKey:@"state"] forKey:@"stateAbbr"];
+                [geo setValue:[arrayGeo valueForKey:@"city"] forKey:@"cityName"];
+                
+            }
+            
+            location.geo = geo;
+            NSMutableDictionary *category = [[NSMutableDictionary alloc]init];
+            NSArray *arrayCategory = [resultLocation valueForKey:@"categories"];
+            for (NSDictionary *resultCategory in arrayCategory) {
+                
+                [category setValue:@"0" forKey:@"id"];
+                [category setValue:[resultCategory valueForKey:@"name"] forKey:@"name"];
+                [category setValue:[resultCategory valueForKey:@"id"] forKey:@"exid"];
+                
+            }
+            
+            location.category = category;
+            [dictionary addObject:location];
+
+        }
+
+        [delegate getFSVenusNearSucceeded:dictionary];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [delegate getFSVenusNearError:error];
     }];
     
 }

@@ -15,6 +15,7 @@
 @property (strong, atomic) NSString *currentCountry;
 @property (strong, atomic) NSString *currentState;
 @property (strong, atomic) NSString *currentCity;
+@property (strong, atomic) NSMutableArray *nearLocations;
 @property (strong, atomic) CSUser *currentUser;
 
 + (id)sharedInstance;

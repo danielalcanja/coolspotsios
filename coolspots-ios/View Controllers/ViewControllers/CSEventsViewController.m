@@ -99,7 +99,7 @@
     [eventNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
     
     eventNavController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:eventNavController animated:self completion:nil];
+    [self presentViewController:eventNavController animated:YES completion:nil];
     
 }
 -(void)loadData{

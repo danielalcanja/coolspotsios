@@ -37,6 +37,7 @@
 		8F6D01EB18641A9100C7A29A /* tarja-principal-pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01E918641A9100C7A29A /* tarja-principal-pic@2x.png */; };
 		8F6D01EE186486F500C7A29A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01EC186486F500C7A29A /* icon.png */; };
 		8F6D01EF186486F500C7A29A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01ED186486F500C7A29A /* icon@2x.png */; };
+		8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */; };
 		8F8AA2C6187CF1D3001AED3E /* CSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2C5187CF1D3001AED3E /* CSAPI.m */; };
 		8F8AA2C8187E2F89001AED3E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */; };
 		8F8AA2CB187E32C4001AED3E /* NewCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2CA187E32C4001AED3E /* NewCityViewController.m */; };
@@ -175,6 +176,8 @@
 		8F6D01E918641A9100C7A29A /* tarja-principal-pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tarja-principal-pic@2x.png"; sourceTree = "<group>"; };
 		8F6D01EC186486F500C7A29A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8F6D01ED186486F500C7A29A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		8F810732188E3B8400469DD4 /* CSSearchFoursquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSearchFoursquareViewController.h; path = "View Controllers/ViewControllers/CSSearchFoursquareViewController.h"; sourceTree = "<group>"; };
+		8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSearchFoursquareViewController.m; path = "View Controllers/ViewControllers/CSSearchFoursquareViewController.m"; sourceTree = "<group>"; };
 		8F8AA2C4187CF1D3001AED3E /* CSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAPI.h; path = API/CSAPI.h; sourceTree = "<group>"; };
 		8F8AA2C5187CF1D3001AED3E /* CSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAPI.m; path = API/CSAPI.m; sourceTree = "<group>"; };
 		8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -699,6 +702,8 @@
 				8F8AA2CA187E32C4001AED3E /* NewCityViewController.m */,
 				8F93A97018661FC3003D5FA2 /* CSLocationDetailViewController.h */,
 				8F93A97118661FC3003D5FA2 /* CSLocationDetailViewController.m */,
+				8F810732188E3B8400469DD4 /* CSSearchFoursquareViewController.h */,
+				8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */,
 				8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */,
 				8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */,
 				8F9E83E6186E1E550056E095 /* CSEventsViewController.h */,
@@ -923,6 +928,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F9E83EB186E1E6C0056E095 /* CSExploreViewController.m in Sources */,
+				8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */,
 				8F93A94F1865D330003D5FA2 /* CSUtil.m in Sources */,
 				8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */,
 				8F9E83F1186E23AD0056E095 /* CSTabBarController.m in Sources */,

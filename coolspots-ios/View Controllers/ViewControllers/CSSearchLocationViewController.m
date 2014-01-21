@@ -19,6 +19,8 @@
     UITableView *locationsTable;
     NSMutableArray *objects;
     int page;
+    UISearchBar *searchBar;
+    UISearchDisplayController *searchDisplayController;
 
 }
 
@@ -50,19 +52,27 @@
     
     [[CSSharedData sharedInstance] setCurrentCity:@"Everett"];
     [self loadDataView];
+    
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    
+    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    
+    searchDisplayController.delegate = self;
+    searchDisplayController.searchResultsDataSource = self;
+    
+    locationsTable.tableHeaderView = searchBar;
 }
 -(void)loadDataView {
     
-    NSString *city = [[CSSharedData sharedInstance] currentCity];
-    [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city]  delegate:self];
-}
-
--(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {
-    
-    objects = dictionary;
+    objects = [[CSSharedData sharedInstance] nearLocations];
     [locationsTable reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
     
+    return YES;
 }
 
 #pragma mark - Table view data source

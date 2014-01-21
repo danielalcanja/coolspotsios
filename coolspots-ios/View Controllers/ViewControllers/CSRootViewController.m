@@ -16,6 +16,7 @@
 #import "GTScrollNavigationBar.h"
 #import <CURestkit.h>
 #import "CSSharedData.h"
+#import "CSSearchFoursquareViewController.h"
 
 
 @interface CSRootViewController ()
@@ -69,7 +70,7 @@
    
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addLocation:)];
     
     [DejalBezelActivityView activityViewForView:self.view];
     
@@ -97,7 +98,17 @@
     [self.view addSubview:newCityViewController.view];
 
 }
-
+-(IBAction)addLocation:(id)sender {
+    
+    CSSearchFoursquareViewController *goView = [[CSSearchFoursquareViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:goView];
+    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
+    
+    navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:navController animated:YES completion:nil];
+    
+}
 - (void)startStandardUpdates
 {
     // Create the location manager if this object does not
@@ -157,8 +168,7 @@
                        }
 
                    }];
-    
-    
+  
 
 }
 
@@ -178,6 +188,7 @@
     
     isFirstLoad = NO;
     objects = dictionary;
+    [[CSSharedData sharedInstance] setNearLocations:objects];
     [locationsTable reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
     
