@@ -18,6 +18,11 @@
 		8F211F091870888A000485B4 /* tb-icon-explore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211F051870888A000485B4 /* tb-icon-explore@2x.png */; };
 		8F2731771881FAA300A59364 /* CSSharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2731761881FAA300A59364 /* CSSharedData.m */; };
 		8F27317B188223F100A59364 /* FSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F27317A188223F100A59364 /* FSLocation.m */; };
+		8F316805188F3E3800019EC4 /* tb-icon-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F316803188F3E3800019EC4 /* tb-icon-user.png */; };
+		8F316806188F3E3800019EC4 /* tb-icon-user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F316804188F3E3800019EC4 /* tb-icon-user@2x.png */; };
+		8F316809188F3E7300019EC4 /* CSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F316808188F3E7300019EC4 /* CSProfileViewController.m */; };
+		8F497F35188FEDC7008A004F /* num-icon-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F497F33188FEDC7008A004F /* num-icon-user.png */; };
+		8F497F36188FEDC7008A004F /* num-icon-user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F497F34188FEDC7008A004F /* num-icon-user@2x.png */; };
 		8F4FEC411870AB0D00D6D53B /* nav-back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4FEC3F1870AB0D00D6D53B /* nav-back-button.png */; };
 		8F4FEC421870AB0D00D6D53B /* nav-back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4FEC401870AB0D00D6D53B /* nav-back-button@2x.png */; };
 		8F532DD11861243400DDB7EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F532DD01861243400DDB7EC /* Foundation.framework */; };
@@ -153,6 +158,12 @@
 		8F2731761881FAA300A59364 /* CSSharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSharedData.m; path = API/CSSharedData.m; sourceTree = "<group>"; };
 		8F273179188223F100A59364 /* FSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLocation.h; path = API/DataModel/FSLocation.h; sourceTree = "<group>"; };
 		8F27317A188223F100A59364 /* FSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLocation.m; path = API/DataModel/FSLocation.m; sourceTree = "<group>"; };
+		8F316803188F3E3800019EC4 /* tb-icon-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-user.png"; sourceTree = "<group>"; };
+		8F316804188F3E3800019EC4 /* tb-icon-user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-user@2x.png"; sourceTree = "<group>"; };
+		8F316807188F3E7300019EC4 /* CSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSProfileViewController.h; path = "View Controllers/ViewControllers/CSProfileViewController.h"; sourceTree = "<group>"; };
+		8F316808188F3E7300019EC4 /* CSProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSProfileViewController.m; path = "View Controllers/ViewControllers/CSProfileViewController.m"; sourceTree = "<group>"; };
+		8F497F33188FEDC7008A004F /* num-icon-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "num-icon-user.png"; sourceTree = "<group>"; };
+		8F497F34188FEDC7008A004F /* num-icon-user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "num-icon-user@2x.png"; sourceTree = "<group>"; };
 		8F4FEC3F1870AB0D00D6D53B /* nav-back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back-button.png"; sourceTree = "<group>"; };
 		8F4FEC401870AB0D00D6D53B /* nav-back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-back-button@2x.png"; sourceTree = "<group>"; };
 		8F532DCD1861243400DDB7EC /* coolspots-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coolspots-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -493,10 +504,14 @@
 				8F4FEC401870AB0D00D6D53B /* nav-back-button@2x.png */,
 				8F211F021870888A000485B4 /* tb-icon-favorite.png */,
 				8F211F031870888A000485B4 /* tb-icon-favorite@2x.png */,
+				8F497F33188FEDC7008A004F /* num-icon-user.png */,
+				8F497F34188FEDC7008A004F /* num-icon-user@2x.png */,
 				8F211F041870888A000485B4 /* tb-icon-explore.png */,
 				8F211F051870888A000485B4 /* tb-icon-explore@2x.png */,
 				8F211EFE187087FC000485B4 /* tb-icon-location.png */,
 				8F211EFF187087FC000485B4 /* tb-icon-location@2x.png */,
+				8F316803188F3E3800019EC4 /* tb-icon-user.png */,
+				8F316804188F3E3800019EC4 /* tb-icon-user@2x.png */,
 				8F211EFA18708735000485B4 /* tb-icon-event.png */,
 				8F211EFB18708735000485B4 /* tb-icon-event@2x.png */,
 				8F9E83E4186E09F10056E095 /* button-border2.png */,
@@ -730,6 +745,8 @@
 				8FF396D3188653A300754634 /* CSLoginViewController.m */,
 				8FF426B4188C82E900F2781B /* CSSearchLocationViewController.h */,
 				8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */,
+				8F316807188F3E7300019EC4 /* CSProfileViewController.h */,
+				8F316808188F3E7300019EC4 /* CSProfileViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -823,6 +840,8 @@
 			files = (
 				8F211F071870888A000485B4 /* tb-icon-favorite@2x.png in Resources */,
 				8F4FEC421870AB0D00D6D53B /* nav-back-button@2x.png in Resources */,
+				8F316806188F3E3800019EC4 /* tb-icon-user@2x.png in Resources */,
+				8F497F36188FEDC7008A004F /* num-icon-user@2x.png in Resources */,
 				8F93A96C1865E4C2003D5FA2 /* button-bookmark-on.png in Resources */,
 				8F91CFD01863912B00C07D07 /* placeholder-image@2x.png in Resources */,
 				8FF426A0188ADC8600F2781B /* nav-login.png in Resources */,
@@ -846,6 +865,7 @@
 				8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */,
 				8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */,
 				8F9E83E3186E09820056E095 /* button-border.png in Resources */,
+				8F316805188F3E3800019EC4 /* tb-icon-user.png in Resources */,
 				8FE6EECF1867491E005F120C /* Storyboard.storyboard in Resources */,
 				8FF42696188AD55300F2781B /* btn-login-instagram.png in Resources */,
 				8FFF2D701869BDE800DE0D2C /* Default@2x.png in Resources */,
@@ -878,6 +898,7 @@
 				8F9E840C186F942D0056E095 /* CSPrincipalViewController.xib in Resources */,
 				8F93A9641865E36C003D5FA2 /* bar-places-museums.png in Resources */,
 				8F9E83E5186E09F10056E095 /* button-border2.png in Resources */,
+				8F497F35188FEDC7008A004F /* num-icon-user.png in Resources */,
 				8F211F091870888A000485B4 /* tb-icon-explore@2x.png in Resources */,
 				8F211F061870888A000485B4 /* tb-icon-favorite.png in Resources */,
 				8F6D01EA18641A9100C7A29A /* tarja-principal-pic.png in Resources */,
@@ -966,6 +987,7 @@
 				8F9E83E1186E02E20056E095 /* GTScrollNavigationBar.m in Sources */,
 				8F2731771881FAA300A59364 /* CSSharedData.m in Sources */,
 				8F93A97218661FC3003D5FA2 /* CSLocationDetailViewController.m in Sources */,
+				8F316809188F3E7300019EC4 /* CSProfileViewController.m in Sources */,
 				8F93A94718651E5B003D5FA2 /* CSLocationTwoPicCoverCell.m in Sources */,
 				8FEF47DA1874A20700FD2C19 /* CSPicCollectionViewCell2.m in Sources */,
 				8F8AA2C6187CF1D3001AED3E /* CSAPI.m in Sources */,

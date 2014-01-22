@@ -120,7 +120,6 @@
             location.name =[tempObjects valueForKey:@"name"][i];
             location.isFavorite = NO;
 
-            
             NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
             location.pics  = [[NSMutableArray alloc] init];
 

@@ -29,6 +29,9 @@
     CSSlideViewImage *slideViewImage3;
     CSSlideViewImage *slideViewImage4;
     CSSlideViewImage *slideViewImage5;
+    
+    UILabel *labelUsersOnline;
+
 
 }
 
@@ -82,6 +85,19 @@
         [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width * 5, scrollView.frame.size.height)];
         
         [self.contentView addSubview:scrollView];
+        
+        UIImageView *imgOnlineUsers = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"num-icon-user"]];
+        imgOnlineUsers.frame = CGRectMake(250, 10, 20, 18);
+        [self.contentView addSubview:imgOnlineUsers];
+        
+        labelUsersOnline = [[UILabel alloc] init];
+        labelUsersOnline.frame = CGRectMake(277, 11, 40, 20);
+        [labelUsersOnline setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+        labelUsersOnline.backgroundColor = [UIColor clearColor];
+        labelUsersOnline.numberOfLines = 2;
+        labelUsersOnline.text = @"23";
+        [labelUsersOnline setTextColor:[UIColor whiteColor]];
+        [self.contentView addSubview:labelUsersOnline];
         
         CGRect pageViewRect = [self.contentView bounds];
         pageViewRect.size.height = pageControlHeight;
