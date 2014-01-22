@@ -19,7 +19,10 @@
     
     UITableView *locationsTable;
     NSMutableArray *objects;
+    NSMutableArray *filters;
+
     int nextI;
+    BOOL isSearching;
     UISearchBar *searchBar;
     UISearchDisplayController *searchDisplayController;
 }
@@ -49,12 +52,14 @@
     locationsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     locationsTable.delegate = self;
     locationsTable.dataSource = self;
-    locationsTable.backgroundColor = [UIColor clearColor];
     locationsTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:locationsTable];
     
     objects = [[NSMutableArray alloc] init];
+    filters = [[NSMutableArray alloc] init];
     
+    
+
     [DejalBezelActivityView activityViewForView:self.view];
     
     
@@ -62,6 +67,7 @@
     [self loadDataView];
     
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.delegate = self;
     
     searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
     
@@ -72,6 +78,11 @@
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+    
+    isSearching = NO;
+    
+    [filters addObject:[[CSSharedData sharedInstance] currentCity]];
+    [filters addObject:[[CSSharedData sharedInstance] currentCountry]];
     
 }
 -(IBAction)cancel:(id)sender {
@@ -169,8 +180,15 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
+    isSearching = YES;
+    [locationsTable reloadData];
     
     return YES;
+}
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    isSearching = NO;
+    [locationsTable reloadData];
 }
 
 #pragma mark - Table view data source
@@ -184,6 +202,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfRows = [objects count];
+    if(isSearching) {
+        numberOfRows = [filters count];
+    }
     return numberOfRows;
     
 }
@@ -198,21 +219,40 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
-    FSLocation *location = [objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = location.name;
-    
+    if(isSearching) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if(indexPath.row==0) {
+            cell.textLabel.text = [filters objectAtIndex:0];
+        }
+        if(indexPath.row==1) {
+            cell.textLabel.text = [filters objectAtIndex:1];
+        }
+    }else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+
+        FSLocation *location = [objects objectAtIndex:indexPath.row];
+        cell.textLabel.text = location.name;
+        
+    }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [DejalBezelActivityView activityViewForView:self.view];
-
-    nextI = (int)indexPath.row;
-    FSLocation *location = [objects objectAtIndex:indexPath.row];
-    [[CSAPI sharedInstance] getInstagramIDLocationWithFoursquareID:location.id_foursquare delegate:self];
+    if(isSearching) {
+        
+        
+        
+    }else {
+        
+        [DejalBezelActivityView activityViewForView:self.view];
+        nextI = (int)indexPath.row;
+        FSLocation *location = [objects objectAtIndex:indexPath.row];
+        [[CSAPI sharedInstance] getInstagramIDLocationWithFoursquareID:location.id_foursquare delegate:self];
+    }
 
     
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

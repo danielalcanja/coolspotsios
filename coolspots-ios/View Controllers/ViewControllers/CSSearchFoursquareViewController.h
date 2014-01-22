@@ -11,6 +11,6 @@
 #import <DejalActivityView.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface CSSearchFoursquareViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchDisplayDelegate,CSFSVenusNearDelegate,CLLocationManagerDelegate,CSInstagramIDLocationDelegate,CSAddLocationDelegate>
+@interface CSSearchFoursquareViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchDisplayDelegate,CSFSVenusNearDelegate,CLLocationManagerDelegate,CSInstagramIDLocationDelegate,CSAddLocationDelegate,UISearchBarDelegate>
 
 @end

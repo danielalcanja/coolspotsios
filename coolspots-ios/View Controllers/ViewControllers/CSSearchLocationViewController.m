@@ -41,7 +41,6 @@
     locationsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     locationsTable.delegate = self;
     locationsTable.dataSource = self;
-    locationsTable.backgroundColor = [UIColor clearColor];
     locationsTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:locationsTable];
     
