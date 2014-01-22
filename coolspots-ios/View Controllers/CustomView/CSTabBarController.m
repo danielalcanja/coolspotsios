@@ -25,7 +25,9 @@
         self.eventsViewController = [[CSEventsViewController alloc] init];
         self.exploreViewController = [[CSRootViewController alloc] init];
         self.favoritesViewController = [[CSFavoritesViewController  alloc] init];
-                
+        self.profileViewController = [[CSProfileViewController  alloc] init];
+
+        
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
         
         UITabBarItem *tab1 = [[UITabBarItem alloc] initWithTitle:@"Spots" image:[UIImage imageNamed:@"tb-icon-location"] tag:20000];
@@ -40,22 +42,24 @@
     
         UINavigationController *exploreNavController = [[UINavigationController alloc]  initWithRootViewController: self.exploreViewController];
         [exploreNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
-
         
         UITabBarItem *tabExplore = [[UITabBarItem alloc] initWithTitle:@"Explore" image:[UIImage imageNamed:@"tb-icon-explore"] tag:20002];
         exploreNavController.tabBarItem  = tabExplore;
         
         UINavigationController *favoritesNavController = [[UINavigationController alloc]  initWithRootViewController:self.favoritesViewController];
         [favoritesNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
-
         
         UITabBarItem *tabFav = [[UITabBarItem alloc] initWithTitle:@"Favorites" image:[UIImage imageNamed:@"tb-icon-favorite"] tag:20001];
         favoritesNavController.tabBarItem  = tabFav;
         
-        self.viewControllers = [NSArray arrayWithObjects: navController,eventNavController,exploreNavController,favoritesNavController, nil];
+        UINavigationController *profileNavController = [[UINavigationController alloc]  initWithRootViewController: self.profileViewController];
+        [profileNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
         
+        UITabBarItem *tabProfile = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"tb-icon-user"] tag:20001];
+        profileNavController.tabBarItem  = tabProfile;
         
-
+        self.viewControllers = [NSArray arrayWithObjects: navController,eventNavController,exploreNavController,favoritesNavController, profileNavController, nil];
+        
     }
     return self;
 }

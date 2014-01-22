@@ -88,6 +88,7 @@ static NSString *const scope = @"basic+comments+likes";
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
     
+
     NSURL *Url = [request URL];
         
     NSArray *UrlParts = [Url pathComponents];
@@ -114,11 +115,14 @@ static NSString *const scope = @"basic+comments+likes";
                 NSString *access_token = [keyValueArray objectAtIndex:(1)] ;
                 NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                 [prefs setObject:access_token forKey:@"access_token"];
+
                 
                 AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
                 appDelegate.instagram.accessToken = access_token;
                 NSLog(@"access_token %@", appDelegate.instagram.accessToken);
                 [prefs synchronize];
+                [DejalBezelActivityView activityViewForView:self.view];
+
                 
                 [[CSAPI sharedInstance] getInstagramUserInfoWithToken:appDelegate.instagram.accessToken delegate:self];
                 
@@ -140,11 +144,19 @@ static NSString *const scope = @"basic+comments+likes";
     user.id = [dictionary valueForKey:@"id"];
     user.full_name = [dictionary valueForKey:@"full_name"];
     user.profile_picture = [dictionary valueForKey:@"profile_picture"];
+    user.bio = [dictionary valueForKey:@"bio"];
+
 
     [[CSSharedData sharedInstance] setCurrentUser:user];
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:user.username forKey:@"username"];
+    [prefs setObject:user.profile_picture forKey:@"profile_picture"];
+    [prefs setObject:user.full_name forKey:@"full_name"];
+    [prefs setObject:user.bio forKey:@"bio"];
+
+
+
     [prefs synchronize];
 
     [[CSAPI sharedInstance] addUserWithUser:user token:appDelegate.instagram.accessToken delegate:self];
@@ -157,6 +169,8 @@ static NSString *const scope = @"basic+comments+likes";
 }
 -(void)addUserSucceeded:(NSMutableArray *)dictionary {
     
+    [DejalBezelActivityView removeViewAnimated:YES];
+
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 
     CSTabBarController *tabBarController = [[CSTabBarController alloc] init];

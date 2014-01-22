@@ -61,7 +61,6 @@
     locationsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     locationsTable.delegate = self;
     locationsTable.dataSource = self;
-    locationsTable.backgroundColor = [UIColor clearColor];
     locationsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:locationsTable];
     
@@ -126,7 +125,7 @@
     [locationManager startUpdatingLocation];
     
     #if TARGET_IPHONE_SIMULATOR
-        [[CSSharedData sharedInstance] setCurrentCity:@"Everett"];
+        [[CSSharedData sharedInstance] setCurrentCity:@"Cuiaba"];
         [self loadDataView];
     #endif
 

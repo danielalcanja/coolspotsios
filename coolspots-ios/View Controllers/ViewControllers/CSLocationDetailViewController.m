@@ -54,7 +54,6 @@
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 300, 70)];
     labelTitle.text = self.location.name;
     [labelTitle setFont:[UIFont fontWithName:@"Museo-700" size:20]];
-    labelTitle.backgroundColor = [UIColor clearColor];
     labelTitle.textColor = [UIColor whiteColor];
     labelTitle.numberOfLines = 2;
 

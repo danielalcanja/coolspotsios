@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *full_name;
 @property (strong, nonatomic) NSString *profile_picture;
 

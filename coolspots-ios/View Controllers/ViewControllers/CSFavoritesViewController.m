@@ -47,7 +47,6 @@
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     labelTitle.text = @"Favorites";
     [labelTitle setFont:[UIFont fontWithName:@"Museo-700" size:20]];
-    labelTitle.backgroundColor = [UIColor clearColor];
     labelTitle.textAlignment = NSTextAlignmentCenter;
     labelTitle.textColor = [UIColor whiteColor];
     labelTitle.numberOfLines = 2;

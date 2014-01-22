@@ -12,6 +12,7 @@
 #import "CSEventsViewController.h"
 #import "CSFavoritesViewController.h"
 #import "CSLocationsViewController.h"
+#import "CSProfileViewController.h"
 
 @interface CSTabBarController : UITabBarController
 
@@ -20,5 +21,7 @@
 @property (strong, nonatomic) CSEventsViewController *eventsViewController;
 @property (strong, nonatomic) CSRootViewController *exploreViewController;
 @property (strong, nonatomic) CSFavoritesViewController   *favoritesViewController;
+@property (strong, nonatomic) CSProfileViewController   *profileViewController;
+
 
 @end

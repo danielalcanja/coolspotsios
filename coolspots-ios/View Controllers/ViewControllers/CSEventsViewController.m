@@ -58,7 +58,6 @@
     eventsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     eventsTable.delegate = self;
     eventsTable.dataSource = self;
-    eventsTable.backgroundColor = [UIColor clearColor];
     eventsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:eventsTable];
     
