@@ -50,14 +50,21 @@
 	// Do any additional setup after loading the view.
     page = 1;
     
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 300, 70)];
     labelTitle.text = self.location.name;
-    [labelTitle setFont:[UIFont fontWithName:@"Museo-700" size:20]];
+    [labelTitle setFont:[UIFont fontWithName:@"Museo-500" size:20]];
     labelTitle.textColor = [UIColor whiteColor];
     labelTitle.numberOfLines = 2;
 
     self.navigationItem.titleView = labelTitle;
+    
+    UILabel *labelAddress = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 150, 50)];
+    labelAddress.text = @"43 O’Farrel St. San Francisco - CA 94102";
+    [labelAddress setFont:[UIFont fontWithName:@"Museo-300" size:13]];
+    labelAddress.textColor = [UIColor whiteColor];
+    labelAddress.numberOfLines = 2;
     
    
     UIButton* backButton = [[BackButton alloc] backButtonWith:[UIImage imageNamed:@"button-back"] withTtle:@"" leftCapWidth:20];
@@ -65,41 +72,76 @@
     backButton.titleLabel.textColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
    
+    CGFloat headerSize = 120;
     
-    NSString *bgDetail = @"bar-places-museums";
+    UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
+    imageBg.frame = CGRectMake(0, 0, 320, 55);
     
-    UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:bgDetail]];
-    imageBg.frame = CGRectMake(0, 0, 320, 50);
+    UIImageView *bgButtons = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
+    bgButtons.frame = CGRectMake(0, 55.3, 320, 65);
     
-    UIButton *buttonFallow = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonFallow.frame = CGRectMake(15, 8, 35,35);
-    buttonFallow.backgroundColor = [UIColor clearColor];
-    [buttonFallow setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
-    UIImage *buttonImageNormalFallow = [UIImage imageNamed:@"button-bookmark"];
-    UIImage *strechableButtonImageNormalFallow = [buttonImageNormalFallow stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-    [buttonFallow setBackgroundImage:strechableButtonImageNormalFallow forState:UIControlStateNormal];
+    UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, headerSize-100, 320, 30)];
+    labelName.textAlignment = NSTextAlignmentCenter;
+    [labelName setFont:[UIFont fontWithName:@"Museo-500" size:20]];
+    labelName.textColor = [UIColor whiteColor];
+    labelName.text = self.location.name;
     
-    UIImage *buttonImagePressed = [UIImage imageNamed:@"button-bookmark-on"];
-    UIImage *strechableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-    [buttonFallow setBackgroundImage:strechableButtonImagePressed forState:UIControlStateHighlighted];
+    /*
+     
+     - Fav
+     - Share
+     - Checking
+     - Events
+     - Comments
+     - More
+     */
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    CGFloat spaceBtwButtons = 30;
+    
+    CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, headerSize-50, 35,35) isFavorite:NO];
+    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",self.location.id] isFavorite:self.location.isFavorite];
+    
+    CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
+    
+    CSFavButton *buttonEvent = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonShare.frame.origin.x + buttonShare.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    [buttonEvent.button setBackgroundImage:[UIImage imageNamed:@"button-events"] forState:UIControlStateNormal];
+
+    
+    CSFavButton *buttonComments = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonEvent.frame.origin.x + buttonEvent.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    [buttonComments.button setBackgroundImage:[UIImage imageNamed:@"button-comments"] forState:UIControlStateNormal];
+    
+    CSFavButton *buttonMoreInfo = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonComments.frame.origin.x + buttonComments.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    [buttonMoreInfo.button setBackgroundImage:[UIImage imageNamed:@"button-more"] forState:UIControlStateNormal];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, headerSize)];
     [view addSubview:imageBg];
-    [view addSubview:buttonFallow];
-    
+    [view addSubview:bgButtons];
+    [view addSubview:labelAddress];
+
+    [view addSubview:buttonFav];
+    [view addSubview:buttonShare];
+    [view addSubview:buttonEvent];
+    [view addSubview:buttonComments];
+    [view addSubview:buttonMoreInfo];
+
     [self.view addSubview:view];
+    
+    UIView *viewTags = [[UIView alloc] initWithFrame:CGRectMake(0, headerSize, 320, 0)];
+    viewTags.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:viewTags];
     
     page = 1;
     MosaicLayout *layout = [[MosaicLayout alloc] init];
     
     CGRect frameTable = self.view.frame;
-    frameTable.origin.y = 50;
+    frameTable.origin.y = headerSize+viewTags.frame.size.height;
     
     
     picsCollectionView=[[UICollectionView alloc] initWithFrame:frameTable collectionViewLayout:layout];
     [(MosaicLayout *)picsCollectionView.collectionViewLayout setDelegate:self];
-    
     picsCollectionView.delegate = self;
+    picsCollectionView.backgroundColor = [UIColor whiteColor];
     [picsCollectionView setDataSource:self];
     [self.view addSubview:picsCollectionView];
     
@@ -215,12 +257,16 @@
 
 -(void)loadData {
     
+    [DejalBezelActivityView activityViewForView:picsCollectionView];
+
     [[CSAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInt:self.location.id] page:[NSNumber numberWithInt:page]  delegate:self];
 }
 -(void)getPhotosSucceeded:(NSMutableArray *)dictionary {
     
     objects = dictionary;
     [picsCollectionView reloadData];
+    [DejalBezelActivityView removeViewAnimated:YES];
+
     
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -385,7 +431,7 @@
     [super viewWillAppear:animated];
     
     if ([self.navigationController.navigationBar  respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-detail-title-blue"] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
     }
 }
 

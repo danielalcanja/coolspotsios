@@ -61,7 +61,7 @@
 {
     NSInteger numberOfRows = 1;
     if(section==1) {
-        numberOfRows = 6;
+        numberOfRows = 8;
     }
     return numberOfRows;
     
@@ -91,6 +91,95 @@
                 [cell addSubview:profilePic];
                 
             }
+            
+        }
+        if(indexPath.section==1) {
+            
+            if(indexPath.row==0) {
+                
+                UILabel *labelMessages = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                labelMessages.textAlignment = NSTextAlignmentLeft;
+                [labelMessages setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                labelMessages.textColor = [UIColor lightGrayColor];
+                labelMessages.text = @"Mensages";
+                [cell addSubview:labelMessages];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            if(indexPath.row==1) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                label.textAlignment = NSTextAlignmentLeft;
+                [label setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                label.textColor = [UIColor lightGrayColor];
+                label.text = @"Tell a friend";
+                [cell addSubview:label];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            if(indexPath.row==2) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                label.textAlignment = NSTextAlignmentLeft;
+                [label setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                label.textColor = [UIColor lightGrayColor];
+                label.text = @"Give a feedback";
+                [cell addSubview:label];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            if(indexPath.row==3) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                label.textAlignment = NSTextAlignmentLeft;
+                [label setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                label.textColor = [UIColor lightGrayColor];
+                label.text = @"Rate us on Apple Store";
+                [cell addSubview:label];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            if(indexPath.row==4) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                label.textAlignment = NSTextAlignmentLeft;
+                [label setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                label.textColor = [UIColor lightGrayColor];
+                label.text = @"Color";
+                [cell addSubview:label];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            if(indexPath.row==5) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                label.textAlignment = NSTextAlignmentLeft;
+                [label setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                label.textColor = [UIColor lightGrayColor];
+                label.text = @"Settings";
+                [cell addSubview:label];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            if(indexPath.row==6) {
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 190, 50)];
+                label.textAlignment = NSTextAlignmentLeft;
+                [label setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+                label.textColor = [UIColor lightGrayColor];
+                label.text = @"Logout";
+                [cell addSubview:label];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+            }
+            
             
         }
         

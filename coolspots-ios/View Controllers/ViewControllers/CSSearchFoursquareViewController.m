@@ -81,6 +81,10 @@
     
     isSearching = NO;
     
+    #if TARGET_IPHONE_SIMULATOR
+    [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
+    [[CSSharedData sharedInstance] setCurrentCountry:@"US"];
+    #endif
     [filters addObject:[[CSSharedData sharedInstance] currentCity]];
     [filters addObject:[[CSSharedData sharedInstance] currentCountry]];
     
