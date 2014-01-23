@@ -72,13 +72,13 @@
     backButton.titleLabel.textColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
    
-    CGFloat headerSize = 120;
+    CGFloat headerSize = 130;
     
     UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
     imageBg.frame = CGRectMake(0, 0, 320, 55);
     
     UIImageView *bgButtons = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
-    bgButtons.frame = CGRectMake(0, 55.3, 320, 65);
+    bgButtons.frame = CGRectMake(0, 55.3, 320, 75);
     
     UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, headerSize-100, 320, 30)];
     labelName.textAlignment = NSTextAlignmentCenter;
@@ -86,32 +86,23 @@
     labelName.textColor = [UIColor whiteColor];
     labelName.text = self.location.name;
     
-    /*
-     
-     - Fav
-     - Share
-     - Checking
-     - Events
-     - Comments
-     - More
-     */
-    
     CGFloat spaceBtwButtons = 30;
+    CGFloat spaceHight = 65;
     
-    CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, headerSize-50, 35,35) isFavorite:NO];
+    CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",self.location.id] isFavorite:self.location.isFavorite];
     
-    CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
     
-    CSFavButton *buttonEvent = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonShare.frame.origin.x + buttonShare.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    CSFavButton *buttonEvent = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonShare.frame.origin.x + buttonShare.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonEvent.button setBackgroundImage:[UIImage imageNamed:@"button-events"] forState:UIControlStateNormal];
 
     
-    CSFavButton *buttonComments = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonEvent.frame.origin.x + buttonEvent.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    CSFavButton *buttonComments = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonEvent.frame.origin.x + buttonEvent.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonComments.button setBackgroundImage:[UIImage imageNamed:@"button-comments"] forState:UIControlStateNormal];
     
-    CSFavButton *buttonMoreInfo = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonComments.frame.origin.x + buttonComments.frame.size.width + spaceBtwButtons, headerSize-50, 35,35) isFavorite:NO];
+    CSFavButton *buttonMoreInfo = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonComments.frame.origin.x + buttonComments.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonMoreInfo.button setBackgroundImage:[UIImage imageNamed:@"button-more"] forState:UIControlStateNormal];
 
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, headerSize)];
@@ -124,6 +115,12 @@
     [view addSubview:buttonEvent];
     [view addSubview:buttonComments];
     [view addSubview:buttonMoreInfo];
+    
+    UILabel *labelTag = [[UILabel alloc] initWithFrame:CGRectMake(10, headerSize-(spaceHight-40), 320, 20)];
+    labelTag.text = @"#people       #food       #drink";
+    [labelTag setFont:[UIFont fontWithName:@"Museo-500" size:16]];
+    labelTag.textColor = [UIColor whiteColor];
+    [view addSubview:labelTag];
 
     [self.view addSubview:view];
     
