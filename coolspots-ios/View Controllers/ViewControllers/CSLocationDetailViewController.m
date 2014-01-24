@@ -31,7 +31,8 @@
 @implementation CSLocationDetailViewController {
     
     NSMutableArray *objects;
-    
+    CGPoint scroolPointNow;
+    UIView *viewPlaceInfo;
     int page;
 }
 
@@ -105,24 +106,24 @@
     CSFavButton *buttonMoreInfo = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonComments.frame.origin.x + buttonComments.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonMoreInfo.button setBackgroundImage:[UIImage imageNamed:@"button-more"] forState:UIControlStateNormal];
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, headerSize)];
-    [view addSubview:imageBg];
-    [view addSubview:bgButtons];
-    [view addSubview:labelAddress];
+    viewPlaceInfo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, headerSize)];
+    [viewPlaceInfo addSubview:imageBg];
+    [viewPlaceInfo addSubview:bgButtons];
+    [viewPlaceInfo addSubview:labelAddress];
 
-    [view addSubview:buttonFav];
-    [view addSubview:buttonShare];
-    [view addSubview:buttonEvent];
-    [view addSubview:buttonComments];
-    [view addSubview:buttonMoreInfo];
+    [viewPlaceInfo addSubview:buttonFav];
+    [viewPlaceInfo addSubview:buttonShare];
+    [viewPlaceInfo addSubview:buttonEvent];
+    [viewPlaceInfo addSubview:buttonComments];
+    [viewPlaceInfo addSubview:buttonMoreInfo];
     
     UILabel *labelTag = [[UILabel alloc] initWithFrame:CGRectMake(10, headerSize-(spaceHight-40), 320, 20)];
     labelTag.text = @"#people       #food       #drink";
     [labelTag setFont:[UIFont fontWithName:@"Museo-500" size:16]];
     labelTag.textColor = [UIColor whiteColor];
-    [view addSubview:labelTag];
+    [viewPlaceInfo addSubview:labelTag];
 
-    [self.view addSubview:view];
+    [self.view addSubview:viewPlaceInfo];
     
     UIView *viewTags = [[UIView alloc] initWithFrame:CGRectMake(0, headerSize, 320, 0)];
     viewTags.backgroundColor = [UIColor whiteColor];
@@ -147,6 +148,64 @@
     objects = [[NSMutableArray alloc] init];
     [self loadData];
     
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (scrollView.contentOffset.y<scroolPointNow.y) {
+        if(scroolPointNow.y <= 100)
+        {
+            NSLog(@"down %f", scroolPointNow.y);
+            
+            [self swipePlaceInfoToDown];
+        }
+        
+        
+    } else if (scrollView.contentOffset.y>scroolPointNow.y) {
+        NSLog(@"swipeUpNavigationBar");
+        
+        [self swipePlaceInfoToTop];
+
+    }
+    
+}
+-(void)swipePlaceInfoToDown
+{
+    
+    CGRect frameTable = self.view.frame;
+    frameTable.origin.y = 130;
+   
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.1];
+    [UIView setAnimationDelay:0.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    viewPlaceInfo.frame = CGRectMake(0, 0, 320, 130);
+    picsCollectionView.frame = frameTable;
+
+    
+    [UIView commitAnimations];
+
+
+}
+-(void)swipePlaceInfoToTop
+{
+    
+    CGRect frameTable = self.view.frame;
+    frameTable.origin.y = 130-60;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.1];
+    [UIView setAnimationDelay:0.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    viewPlaceInfo.frame = CGRectMake(0, -60, 320, 130);
+    picsCollectionView.frame = frameTable;
+
+    
+    [UIView commitAnimations];
+
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
