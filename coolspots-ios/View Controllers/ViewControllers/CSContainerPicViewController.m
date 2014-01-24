@@ -42,7 +42,9 @@ NSString *const CSPicCollectionViewCellIdentifier = @"picCollectionViewCell";
     currentPage = 0;
 
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(320, 320)];
+    [flowLayout setItemSize:CGSizeMake(320, 548)];
+    [flowLayout setMinimumInteritemSpacing:0.0f];
+    [flowLayout setMinimumLineSpacing:0.0f];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
     picCollectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
@@ -77,7 +79,7 @@ NSString *const CSPicCollectionViewCellIdentifier = @"picCollectionViewCell";
     
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return picCollectionView.frame.size;
+    return CGSizeMake(320, 548);
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -90,6 +92,7 @@ NSString *const CSPicCollectionViewCellIdentifier = @"picCollectionViewCell";
     
     [picCollectionView reloadData];
 }
+
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

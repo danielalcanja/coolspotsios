@@ -155,15 +155,10 @@
     if (scrollView.contentOffset.y<scroolPointNow.y) {
         if(scroolPointNow.y <= 100)
         {
-            NSLog(@"down %f", scroolPointNow.y);
-            
             [self swipePlaceInfoToDown];
         }
         
-        
     } else if (scrollView.contentOffset.y>scroolPointNow.y) {
-        NSLog(@"swipeUpNavigationBar");
-        
         [self swipePlaceInfoToTop];
 
     }
@@ -238,7 +233,7 @@
     viewController.location = self.location;
     viewController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-detail-title-blue"] forBarMetrics:UIBarMetricsDefault];
+    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
     
     [self presentViewController:nav animated:YES completion:nil];
     

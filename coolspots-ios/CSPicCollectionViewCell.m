@@ -12,6 +12,7 @@
 
 @implementation CSPicCollectionViewCell {
     
+    UIScrollView *scrollView;
     EGOImageView *egoImageView;
     UILabel *labelCaption;
     UILabel *labelUser;
@@ -23,35 +24,40 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        egoImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"placeholder-image"] ];
-        egoImageView.frame = CGRectMake(0, 20, 320, 320);
-        [self.contentView addSubview:egoImageView];
+        scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        scrollView.showsVerticalScrollIndicator=YES;
+        scrollView.scrollEnabled=YES;
+        scrollView.userInteractionEnabled=YES;
+        scrollView.alwaysBounceHorizontal = NO;
+        scrollView.backgroundColor = [UIColor clearColor];
         
-        UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar-detail-title-blue"]];
+        egoImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"placeholder-image"] ];
+        egoImageView.frame = CGRectMake(0, 0, 320, 320);
+        [scrollView addSubview:egoImageView];
+        
+        UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
         imageBg.frame = CGRectMake(0, 320, 320, 60);
-        [self.contentView addSubview:imageBg];
+        [scrollView addSubview:imageBg];
         
         labelUser = [[UILabel alloc] initWithFrame:CGRectMake(7, 320, 306, 40)];
         [labelUser setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
         labelUser.numberOfLines = 3;
         labelUser.backgroundColor  = [UIColor clearColor];
         labelUser.textColor  = [UIColor whiteColor];
-        [self.contentView addSubview:labelUser];
+        [scrollView addSubview:labelUser];
         
         UIImageView *imageBgCaption = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-place-detail-blue"]];
         imageBgCaption.frame = CGRectMake(0, 380, 320, 200);
-        [self.contentView addSubview:imageBgCaption];
+        [scrollView addSubview:imageBgCaption];
         
         labelCaption = [[UILabel alloc] initWithFrame:CGRectMake(7, 385, 306, 40)];
         [labelCaption setFont:[UIFont fontWithName:@"Helvetica" size:11]];
         labelCaption.numberOfLines = 3;
         labelCaption.backgroundColor  = [UIColor clearColor];
         labelCaption.textColor  = [UIColor whiteColor];
-        [self.contentView addSubview:labelCaption];
+        [scrollView addSubview:labelCaption];
         
-        
-        
-        
+        [self.contentView addSubview:scrollView];
         
     }
     return self;
@@ -61,6 +67,8 @@
     egoImageView.imageURL = [NSURL URLWithString:pic.standard_resolution];
     labelCaption.text = pic.caption;
     labelUser.text = @"Daniel Alcanja";
+    scrollView.contentSize = CGSizeMake(320,500);
+
 
 }
 
