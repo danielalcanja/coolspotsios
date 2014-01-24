@@ -126,6 +126,8 @@
     
     #if TARGET_IPHONE_SIMULATOR
         [[CSSharedData sharedInstance] setCurrentCity:@"Cuiaba"];
+        [[CSSharedData sharedInstance] setCurrentCountry:@"Brazil"];
+        [[CSSharedData sharedInstance] setCurrentState:@"MT"];
         [self loadDataView];
     #endif
 
@@ -176,7 +178,10 @@
         
         isAlreadyExecuted = YES;
         NSString *city = [[CSSharedData sharedInstance] currentCity];
-            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city]  delegate:self];
+        NSString *country = [[CSSharedData sharedInstance] currentCountry];
+        NSString *state = [[CSSharedData sharedInstance] currentState];
+
+            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
     
     }
 }
@@ -200,7 +205,11 @@
             
             page++;
             
-            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[[CSSharedData sharedInstance] currentCity] delegate:self];
+            NSString *city = [[CSSharedData sharedInstance] currentCity];
+            NSString *country = [[CSSharedData sharedInstance] currentCountry];
+            NSString *state = [[CSSharedData sharedInstance] currentState];
+            
+            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
             
         }
     }

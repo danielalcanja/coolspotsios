@@ -57,9 +57,7 @@
     
     objects = [[NSMutableArray alloc] init];
     filters = [[NSMutableArray alloc] init];
-    
-    
-
+  
     [DejalBezelActivityView activityViewForView:self.view];
     
     
@@ -82,8 +80,8 @@
     isSearching = NO;
     
     #if TARGET_IPHONE_SIMULATOR
-    [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
-    [[CSSharedData sharedInstance] setCurrentCountry:@"US"];
+        [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
+        [[CSSharedData sharedInstance] setCurrentCountry:@"US"];
     #endif
     [filters addObject:[[CSSharedData sharedInstance] currentCity]];
     [filters addObject:[[CSSharedData sharedInstance] currentCountry]];
@@ -106,9 +104,7 @@
     
     // Configure the new event with information from the location
     CLLocationCoordinate2D coordinate = [location coordinate];
-    
-    
-    
+ 
     NSString *latitude = [NSString stringWithFormat:@"%f", coordinate.latitude];
     NSString *longitude = [NSString stringWithFormat:@"%f", coordinate.longitude];
     

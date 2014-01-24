@@ -98,11 +98,18 @@
     
     [self httpRequestWithParameters:parameters baseURL:[NSURL URLWithString:@"http://api.coolspots.com.br"] path:path success:success failure:failure];
 }
--(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSLocationDelegate>)delegate {
+-(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName delegate:(id<CSLocationDelegate>)delegate {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:page forKey:@"page"];
-    [parameters setObject:city forKey:@"city"];
+    if(category) {
+        [parameters setObject:@"" forKey:@"category"];
+    }
+    NSMutableDictionary *geo = [[NSMutableDictionary alloc]init];
+    [geo setObject:countryName forKey:@"countryName"];
+    [geo setObject:stateName forKey:@"stateName"];
+    [geo setObject:city forKey:@"cityName"];
+    [parameters setObject:geo forKey:@"geo"];
 
     
     [self httpRequestWithParameters:parameters path:@"/json/locations" success:^(AFHTTPRequestOperation *operation, id responseObject) {
