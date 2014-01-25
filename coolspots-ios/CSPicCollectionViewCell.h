@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CSPic.h"
+#import "CSImageView.h" 
 
 @interface CSPicCollectionViewCell : UICollectionViewCell
 
 -(void)initWithPic:(CSPic*)pic;
+@property (strong, nonatomic) CSImageView *userPic;
+
 
 @end

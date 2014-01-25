@@ -9,6 +9,7 @@
 #import "CSPicCollectionViewCell.h"
 #import "CSPic.h"
 #import "EGOImageView.h"
+#import "CSFavButton.h"
 
 @implementation CSPicCollectionViewCell {
     
@@ -31,27 +32,47 @@
         scrollView.alwaysBounceHorizontal = NO;
         scrollView.backgroundColor = [UIColor clearColor];
         
+        UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
+        imageBg.frame = self.bounds;
+        [scrollView addSubview:imageBg];
+        
         egoImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"placeholder-image"] ];
         egoImageView.frame = CGRectMake(0, 0, 320, 320);
         [scrollView addSubview:egoImageView];
         
-        UIImageView *imageBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg-blue"]];
-        imageBg.frame = CGRectMake(0, 320, 320, 60);
-        [scrollView addSubview:imageBg];
+        CGFloat  y = 330;
+        CGFloat  spaceBtwButtons = 20;
+    
+        CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, y, 35,35) isFavorite:NO];
+        [scrollView addSubview:buttonFav];
+
+        CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, y, 35,35) isFavorite:NO];
+        [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
+        [scrollView addSubview:buttonShare];
         
-        labelUser = [[UILabel alloc] initWithFrame:CGRectMake(7, 320, 306, 40)];
-        [labelUser setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+        CSFavButton *buttonComments = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonShare.frame.origin.x + buttonShare.frame.size.width + spaceBtwButtons, y, 35,35) isFavorite:NO];
+        [buttonComments.button setBackgroundImage:[UIImage imageNamed:@"button-comments"] forState:UIControlStateNormal];
+       
+        [scrollView addSubview:buttonComments];
+
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, y+45, 320, 0.4)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        [scrollView addSubview:lineView];
+        
+        self.userPic = [[CSImageView alloc] initWithFrame:CGRectMake(15, y+50, 50, 50)];
+        [scrollView addSubview:self.userPic];
+        
+    
+        labelUser = [[UILabel alloc] initWithFrame:CGRectMake(75, y+45, 240, 20)];
+        [labelUser setFont:[UIFont fontWithName:@"Museo-700" size:12]];
         labelUser.numberOfLines = 3;
         labelUser.backgroundColor  = [UIColor clearColor];
         labelUser.textColor  = [UIColor whiteColor];
         [scrollView addSubview:labelUser];
         
-        UIImageView *imageBgCaption = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-place-detail-blue"]];
-        imageBgCaption.frame = CGRectMake(0, 380, 320, 200);
-        [scrollView addSubview:imageBgCaption];
         
-        labelCaption = [[UILabel alloc] initWithFrame:CGRectMake(7, 385, 306, 40)];
-        [labelCaption setFont:[UIFont fontWithName:@"Helvetica" size:11]];
+        labelCaption = [[UILabel alloc] initWithFrame:CGRectMake(75, y+70, 240, 40)];
+        [labelCaption setFont:[UIFont fontWithName:@"Museo-500" size:11]];
         labelCaption.numberOfLines = 3;
         labelCaption.backgroundColor  = [UIColor clearColor];
         labelCaption.textColor  = [UIColor whiteColor];
@@ -66,9 +87,9 @@
     
     egoImageView.imageURL = [NSURL URLWithString:pic.standard_resolution];
     labelCaption.text = pic.caption;
-    labelUser.text = @"Daniel Alcanja";
+    labelUser.text = pic.username;
     scrollView.contentSize = CGSizeMake(320,500);
-
+    [self.userPic setURL:pic.profilePicture];
 
 }
 

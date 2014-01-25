@@ -276,7 +276,10 @@
             pic.thumbnail = [tempObjects valueForKey:@"thumbnail"][i];
             pic.low_resolution = [tempObjects valueForKey:@"lowResolution"][i];
             pic.caption = [tempObjects valueForKey:@"caption"][i];
-
+            
+            NSMutableArray *userObject = [tempObjects valueForKey:@"idUser"][i];
+            pic.profilePicture = [userObject valueForKey:@"profilePicture"];
+            pic.username = [userObject valueForKey:@"username"];
             
             [dictionary addObject:pic];
         }
