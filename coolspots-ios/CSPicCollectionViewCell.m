@@ -11,6 +11,10 @@
 #import "EGOImageView.h"
 #import "CSFavButton.h"
 
+#define FONT_SIZE 12.0f
+#define CELL_CONTENT_WIDTH 240
+#define CELL_CONTENT_MARGIN 2.0f
+
 @implementation CSPicCollectionViewCell {
     
     UIScrollView *scrollView;
@@ -64,18 +68,20 @@
         
     
         labelUser = [[UILabel alloc] initWithFrame:CGRectMake(75, y+45, 240, 20)];
-        [labelUser setFont:[UIFont fontWithName:@"Museo-700" size:12]];
+        [labelUser setFont:[UIFont fontWithName:@"Museo-700" size:13]];
         labelUser.numberOfLines = 3;
         labelUser.backgroundColor  = [UIColor clearColor];
         labelUser.textColor  = [UIColor whiteColor];
         [scrollView addSubview:labelUser];
         
         
-        labelCaption = [[UILabel alloc] initWithFrame:CGRectMake(75, y+70, 240, 40)];
-        [labelCaption setFont:[UIFont fontWithName:@"Museo-500" size:11]];
-        labelCaption.numberOfLines = 3;
+        labelCaption = [[UILabel alloc] initWithFrame:CGRectZero];
+        [labelCaption setFont:[UIFont fontWithName:@"Museo-500" size:FONT_SIZE]];
         labelCaption.backgroundColor  = [UIColor clearColor];
         labelCaption.textColor  = [UIColor whiteColor];
+        [labelCaption setNumberOfLines:0];
+        [labelCaption setLineBreakMode:NSLineBreakByWordWrapping];
+        [labelCaption setMinimumScaleFactor:FONT_SIZE];
         [scrollView addSubview:labelCaption];
         
         [self.contentView addSubview:scrollView];
@@ -90,6 +96,12 @@
     labelUser.text = pic.username;
     scrollView.contentSize = CGSizeMake(320,500);
     [self.userPic setURL:pic.profilePicture];
+    
+    NSString *text = pic.caption;
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+    CGSize expectedSize = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    [labelCaption setFrame:CGRectMake(75, 390, 240, MAX(expectedSize.height, 43.0f))];
+
 
 }
 
