@@ -151,11 +151,18 @@
         [delegate getBestLocations:error];
     }];
 }
--(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSEventsDelegate>)delegate {
+-(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName  delegate:(id<CSEventsDelegate>)delegate {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:page forKey:@"page"];
-    [parameters setObject:city forKey:@"city"];
+    if(category) {
+        [parameters setObject:@"" forKey:@"category"];
+    }
+    NSMutableDictionary *geo = [[NSMutableDictionary alloc]init];
+    [geo setObject:countryName forKey:@"countryName"];
+    [geo setObject:stateName forKey:@"stateName"];
+    [geo setObject:city forKey:@"cityName"];
+    [parameters setObject:geo forKey:@"geo"];
     
     [self httpRequestWithParameters:parameters path:@"/json/events" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -218,16 +225,16 @@
             
             for(int i=0;i<[tempObjects count];i++) {
                 
-                NSMutableArray *favoritesList = [tempObjects valueForKey:@"idLocation"][i];
-                
+                NSMutableArray *locationArray = [tempObjects valueForKey:@"idLocation"][i];
+
                 CSLocation *location = [[CSLocation alloc] init];
-                location.id = [[favoritesList valueForKey:@"id"] intValue];
-                location.name =[favoritesList valueForKey:@"name"];
-                location.isFavorite = YES;
+                location.id = [[locationArray valueForKey:@"id"] intValue];
+                location.name =[locationArray valueForKey:@"name"];
+                location.isFavorite = NO;
                 
-                //NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
+                NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
                 location.pics  = [[NSMutableArray alloc] init];
-                /*
+                
                 for(int i=0;i<[pics count];i++) {
                     
                     CSPic *pic = [[CSPic alloc] init];
@@ -238,7 +245,7 @@
                     
                     [location.pics addObject:pic];
                 }
-                */
+                
                 [dictionary addObject:location];
             }
             
@@ -272,6 +279,8 @@
         for(int i=0;i<[tempObjects count];i++) {
             
             CSPic *pic = [[CSPic alloc] init];
+            pic.id = [tempObjects valueForKey:@"id"][i];
+
             pic.standard_resolution = [tempObjects valueForKey:@"standardResolution"][i];
             pic.thumbnail = [tempObjects valueForKey:@"thumbnail"][i];
             pic.low_resolution = [tempObjects valueForKey:@"lowResolution"][i];
@@ -420,6 +429,32 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         [delegate addRemoveFavoriteLocationError:error];
+        
+    }];
+    
+}
+-(void)addRemoveLikeWithPic:(CSPic*)pic username:(NSString*)username delegate:(id<CSAddRemoveLikeDelegate>)delegate remove:(BOOL)isRemove {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
+    [parameters setValue:pic.id forKey:@"id"];
+    [parameters setValue:username forKey:@"username"];
+    
+    NSString *path = @"/json/photos/likes/add";
+    if(isRemove) {
+        path = @"/json/photos/likes/remove";
+    }
+    
+    [self httpRequestWithParameters:parameters path:path success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //TODO
+       // NSData *responseData = operation.responseData;
+        //id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+        //NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"meta"] mutableCopy];
+        [delegate addRemoveLikeSucceeded:nil];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate addRemoveLikeError:error];
         
     }];
     

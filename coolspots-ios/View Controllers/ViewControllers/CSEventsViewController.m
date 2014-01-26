@@ -104,8 +104,10 @@
 -(void)loadData{
     
     NSString *city = [[CSSharedData sharedInstance] currentCity];
-
-    [[CSAPI sharedInstance] getEventsWithPage:[NSNumber numberWithInt:page] city:city delegate:self];
+    NSString *country = [[CSSharedData sharedInstance] currentCountry];
+    NSString *state = [[CSSharedData sharedInstance] currentState];
+    
+    [[CSAPI sharedInstance] getEventsWithPage:[NSNumber numberWithInt:page] city:city category:nil countryName:country stateName:state delegate:self];
 }
 -(void)getEventsSucceeded:(NSMutableArray *)dictionary {
     

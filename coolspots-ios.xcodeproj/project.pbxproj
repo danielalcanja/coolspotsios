@@ -100,6 +100,7 @@
 		8F9E840B186F942D0056E095 /* CSPrincipalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E8409186F942D0056E095 /* CSPrincipalViewController.m */; };
 		8F9E840C186F942D0056E095 /* CSPrincipalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F9E840A186F942D0056E095 /* CSPrincipalViewController.xib */; };
 		8F9E840F186FA10E0056E095 /* CSLocationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E840E186FA10E0056E095 /* CSLocationCollectionViewCell.m */; };
+		8FA86FC518958526002E9D05 /* CSLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FC418958526002E9D05 /* CSLikeButton.m */; };
 		8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F1A186378FB00AE36C9 /* CSLocation.m */; };
 		8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */; };
 		8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC614E188ED1A400B50DB6 /* CSSlideViewImage.m */; };
@@ -283,6 +284,8 @@
 		8F9E840A186F942D0056E095 /* CSPrincipalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CSPrincipalViewController.xib; path = "View Controllers/ViewControllers/CSPrincipalViewController.xib"; sourceTree = "<group>"; };
 		8F9E840D186FA10E0056E095 /* CSLocationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocationCollectionViewCell.h; path = "View Controllers/TableViewCells/CSLocationCollectionViewCell.h"; sourceTree = "<group>"; };
 		8F9E840E186FA10E0056E095 /* CSLocationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocationCollectionViewCell.m; path = "View Controllers/TableViewCells/CSLocationCollectionViewCell.m"; sourceTree = "<group>"; };
+		8FA86FC318958526002E9D05 /* CSLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLikeButton.h; path = "View Controllers/CustomView/CSLikeButton.h"; sourceTree = "<group>"; };
+		8FA86FC418958526002E9D05 /* CSLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLikeButton.m; path = "View Controllers/CustomView/CSLikeButton.m"; sourceTree = "<group>"; };
 		8FB75F19186378FB00AE36C9 /* CSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocation.h; path = API/DataModel/CSLocation.h; sourceTree = "<group>"; };
 		8FB75F1A186378FB00AE36C9 /* CSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocation.m; path = API/DataModel/CSLocation.m; sourceTree = "<group>"; };
 		8FB75F2318637B8A00AE36C9 /* CSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRootViewController.h; path = "View Controllers/ViewControllers/CSRootViewController.h"; sourceTree = "<group>"; };
@@ -591,6 +594,8 @@
 				8FEF47BD1873213900FD2C19 /* CSImageView.m */,
 				8FF426A5188C0A0400F2781B /* CSFavButton.h */,
 				8FF426A6188C0A0400F2781B /* CSFavButton.m */,
+				8FA86FC318958526002E9D05 /* CSLikeButton.h */,
+				8FA86FC418958526002E9D05 /* CSLikeButton.m */,
 				8FDC614D188ED1A400B50DB6 /* CSSlideViewImage.h */,
 				8FDC614E188ED1A400B50DB6 /* CSSlideViewImage.m */,
 			);
@@ -1032,6 +1037,7 @@
 				8F93A97B18663066003D5FA2 /* CSLocationDetailThreeCell.m in Sources */,
 				8FF426B9188C936A00F2781B /* CSEvent.m in Sources */,
 				8F9E83FE186F854E0056E095 /* MosaicLayout.m in Sources */,
+				8FA86FC518958526002E9D05 /* CSLikeButton.m in Sources */,
 				8FE6EED218674AB0005F120C /* CSLocationTopCell.m in Sources */,
 				8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */,
 				8F9E83EE186E1E800056E095 /* CSFavoritesViewController.m in Sources */,

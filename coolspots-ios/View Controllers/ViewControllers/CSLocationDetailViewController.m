@@ -317,7 +317,6 @@
     objects = dictionary;
     [picsCollectionView reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
-
     
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

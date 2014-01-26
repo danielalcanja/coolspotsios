@@ -10,6 +10,7 @@
 #import "CSPic.h"
 #import "EGOImageView.h"
 #import "CSFavButton.h"
+#import "CSLikeButton.h"
 
 #define FONT_SIZE 12.0f
 #define CELL_CONTENT_WIDTH 240
@@ -21,6 +22,7 @@
     EGOImageView *egoImageView;
     UILabel *labelCaption;
     UILabel *labelUser;
+    CSLikeButton *buttonLike;
     
 }
 
@@ -47,10 +49,10 @@
         CGFloat  y = 330;
         CGFloat  spaceBtwButtons = 20;
     
-        CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, y, 35,35) isFavorite:NO];
-        [scrollView addSubview:buttonFav];
+        buttonLike = [[CSLikeButton alloc] initWithFrame:CGRectMake(15, y, 35,35) isLiked:NO];
+        [scrollView addSubview:buttonLike];
 
-        CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, y, 35,35) isFavorite:NO];
+        CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonLike.frame.origin.x + buttonLike.frame.size.width + spaceBtwButtons, y, 35,35) isFavorite:NO];
         [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
         [scrollView addSubview:buttonShare];
         
@@ -97,11 +99,12 @@
     scrollView.contentSize = CGSizeMake(320,500);
     [self.userPic setURL:pic.profilePicture];
     
+    [buttonLike reloadControlWithPic:pic isLiked:NO];
+    
     NSString *text = pic.caption;
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     CGSize expectedSize = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     [labelCaption setFrame:CGRectMake(75, 390, 240, MAX(expectedSize.height, 43.0f))];
-
 
 }
 

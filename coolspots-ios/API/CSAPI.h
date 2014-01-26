@@ -61,6 +61,13 @@
 @optional
 - (void) addRemoveFavoriteLocationError:(NSError*)error;
 @end
+// /json/photos/likes/add
+@protocol CSAddRemoveLikeDelegate<NSObject>
+@required
+- (void) addRemoveLikeSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) addRemoveLikeError:(NSError*)error;
+@end
 // json/location
 @protocol CSLocationDelegate<NSObject>
 @required
@@ -117,10 +124,11 @@
 -(void)getInstagramUserInfoWithToken:(NSString*)token delegate:(id<CSInstagramUserInfoDelegate>)delegate;
 -(void)addLocationWithDictionary:(NSMutableDictionary*)dictionary delegate:(id<CSAddLocationDelegate>)delegate;
 -(void)addRemoveFavoriteLocationWithLocationID:(NSString*)idlocation username:(NSString*)username delegate:(id<CSAddRemoveFavoriteLocationDelegate>)delegate remove:(BOOL)isRemove;
+-(void)addRemoveLikeWithPic:(CSPic*)pic username:(NSString*)username delegate:(id<CSAddRemoveLikeDelegate>)delegate remove:(BOOL)isRemove;
 -(void)addUserWithUser:(CSUser*)user token:(NSString*)token delegate:(id<CSAddUserDelegate>)delegate;
 
 -(void)addEventWithUsername:(NSString*)username idLocation:(NSString*)idLocation name:(NSString*)name description:(NSString*)description tag:(NSString*)tag coverPic:(NSString*)coverpic dateStart:(NSString*)dtstart dateEnd:(NSString*)dtEnd public:(NSString*)public delegate:(id<CSAddEventDelegate>)delegate;
 
 -(void)getFoursquareVenusNearWithLatitude:(NSString*)latitude  longitude:(NSString*)longitude delegate:(id<CSFSVenusNearDelegate>)delegate;
--(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city delegate:(id<CSEventsDelegate>)delegate;
+-(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName  delegate:(id<CSEventsDelegate>)delegate;
 @end
