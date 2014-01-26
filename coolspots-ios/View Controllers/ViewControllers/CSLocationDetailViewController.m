@@ -20,6 +20,7 @@
 #import "MosaicLayout.h"
 #import "CSLocationCollectionViewCell.h"
 #import "CSPicCollectionViewCell2.h"
+#import "CSCommentButton.h"
 
 
 #define kDoubleColumnProbability 40
@@ -100,8 +101,8 @@
     [buttonEvent.button setBackgroundImage:[UIImage imageNamed:@"button-events"] forState:UIControlStateNormal];
 
     
-    CSFavButton *buttonComments = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonEvent.frame.origin.x + buttonEvent.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
-    [buttonComments.button setBackgroundImage:[UIImage imageNamed:@"button-comments"] forState:UIControlStateNormal];
+    CSCommentButton *buttonComments = [[CSCommentButton alloc] initWithFrame:CGRectMake(buttonEvent.frame.origin.x + buttonEvent.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35)];
+    [buttonComments reloadControlWithLocation:self.location controller:self];
     
     CSFavButton *buttonMoreInfo = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonComments.frame.origin.x + buttonComments.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonMoreInfo.button setBackgroundImage:[UIImage imageNamed:@"button-more"] forState:UIControlStateNormal];
