@@ -50,16 +50,17 @@
     
 }
 
--(void)getFoursquareVenuesWithQuery:(NSString*)query latitude:(NSString*)latitude  longitude:(NSString*)longitude success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
+-(void)getFoursquareVenuesWithQuery:(NSString*)query success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
                                   failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
     
     
     
     NSString *todayDate  = @"20140121";
-    NSString *catoryIds = @"4bf58dd8d48988d1e8931735,4bf58dd8d48988d112941735,4bf58dd8d48988d116941735,4bf58dd8d48988d11e941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d119941735,4bf58dd8d48988d120941735,4bf58dd8d48988d11c941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d1ea941735";
+    NSString *catoryIds = @"4bf58dd8d48988d1e8931735,4bf58dd8d48988d112941735,4bf58dd8d48988d116941735,4bf58dd8d48988d11e941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d119941735,4bf58dd8d48988d120941735,4bf58dd8d48988d11c941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d1ea941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11a941735";
    
-    NSString *weatherUrl = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%@,%@&client_id=GSBHHMI5Z2GTJ2L2UCVBSGIRKCE5MU1JA4XIDBMDOQ11T3LT&client_secret=55L42MW1G40ZF3IXIKD4BSHFNFICQ3E2LV3OPPI5NDNACXPR&categoryId=%@&v=%@%@", latitude, longitude, catoryIds, todayDate, query];
+    NSString *weatherUrl = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?&client_id=GSBHHMI5Z2GTJ2L2UCVBSGIRKCE5MU1JA4XIDBMDOQ11T3LT&client_secret=55L42MW1G40ZF3IXIKD4BSHFNFICQ3E2LV3OPPI5NDNACXPR&categoryId=%@&v=%@%@", catoryIds, todayDate, query];
     NSURL *url = [NSURL URLWithString:weatherUrl];
+    NSLog(@" URL %@", weatherUrl);
     
     [self jsonRequestOperationWithParameters:nil baseURL:url success:success failure:failure];
     
@@ -101,15 +102,23 @@
 -(void)getBestLocationsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName delegate:(id<CSLocationDelegate>)delegate {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *username = [prefs stringForKey:@"username"];
+    
     [parameters setObject:page forKey:@"page"];
     if(category) {
         [parameters setObject:@"" forKey:@"category"];
     }
+    [parameters setObject:username forKey:@"username"];
+
     NSMutableDictionary *geo = [[NSMutableDictionary alloc]init];
     [geo setObject:countryName forKey:@"countryName"];
     [geo setObject:stateName forKey:@"stateName"];
     [geo setObject:city forKey:@"cityName"];
     [parameters setObject:geo forKey:@"geo"];
+    
+    
 
     
     [self httpRequestWithParameters:parameters path:@"/json/locations" success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -125,7 +134,8 @@
             CSLocation *location = [[CSLocation alloc] init];
             location.id = [[tempObjects valueForKey:@"id"][i] intValue];
             location.name =[tempObjects valueForKey:@"name"][i];
-            location.isFavorite = NO;
+            BOOL favorite = [[tempObjects valueForKey:@"favorite"][i] boolValue];
+            location.isFavorite = favorite;
 
             NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
             location.pics  = [[NSMutableArray alloc] init];
@@ -260,6 +270,39 @@
     }];
 }
 
+-(void)getCommentWithIDLocation:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSCommentLocationDelegate>)delegate {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:idLocation forKey:@"id"];
+    [parameters setObject:page forKey:@"page"];
+    
+    [self httpRequestWithParameters:parameters path:@"/json/locations/comments" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSData *responseData = operation.responseData;
+        id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+        
+        NSMutableArray *dictionary = [[NSMutableArray alloc] init];
+
+        if(![[parsedResponse objectForKey:@"data"]  isEqual:[NSNull null]]) {
+
+            NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
+            for(int i=0;i<[tempObjects count];i++) {
+                
+                CSComment *comment = [[CSComment alloc] init];
+                
+            }
+            
+        }
+        
+        [delegate getCommentLocationSucceeded:dictionary];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate getCommentLocationError:error];
+    }];
+    
+}
+
 
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegate>)delegate {
     
@@ -313,9 +356,9 @@
     }];
     
 }
--(void)getFoursquareVenusNearWithLatitude:(NSString*)latitude  longitude:(NSString*)longitude delegate:(id<CSFSVenusNearDelegate>)delegate {
+-(void)getFoursquareVenusNearWithQuery:(NSString*)query delegate:(id<CSFSVenusNearDelegate>)delegate {
     
-    [self getFoursquareVenuesWithQuery:@"" latitude:latitude longitude:longitude success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    [self getFoursquareVenuesWithQuery:query success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSDictionary *temDic = (NSDictionary *)JSON;
         NSMutableArray *tempObjects = [[temDic objectForKey:@"response"] mutableCopy];
         NSArray *arrayVenues = [tempObjects valueForKey:@"venues"];
@@ -338,6 +381,8 @@
                 [geo setValue:[arrayGeo valueForKey:@"state"] forKey:@"stateName"];
                 [geo setValue:[arrayGeo valueForKey:@"state"] forKey:@"stateAbbr"];
                 [geo setValue:[arrayGeo valueForKey:@"city"] forKey:@"cityName"];
+                [geo setValue:[arrayGeo valueForKey:@"address"] forKey:@"address"];
+
                 
             }
             
@@ -485,6 +530,30 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         [delegate addEventError:error ];
+    }];
+    
+}
+
+
+-(void)addCommentWithIDLocation:(NSNumber*)idLocation username:(NSString*)username text:(NSString*)text delegate:(id<CSAddCommentLocationDelegate>)delegate {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
+    [parameters  setValue:idLocation forKey:@"id"];
+    [parameters  setValue:username forKey:@"username"];
+    [parameters  setValue:text forKey:@"comment"];
+    
+    
+    [self httpRequestWithParameters:parameters path:@"/json/locations/comments/add" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        /*
+         NSData *responseData = operation.responseData;
+         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
+         NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"meta"] mutableCopy];
+         */
+        [delegate addCommentLocationSucceeded:nil];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [delegate addCommentLocationError:error ];
     }];
     
 }

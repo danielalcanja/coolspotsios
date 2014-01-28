@@ -11,6 +11,7 @@
 #import "CSLocation.h"
 #import "CSPic.h"
 #import "CSUser.h"
+#import "CSComment.h"
 
 // Foursquare VenusNear
 @protocol CSFSVenusNearDelegate<NSObject>
@@ -60,6 +61,21 @@
 - (void) addRemoveFavoriteLocationSucceeded:(NSMutableArray*)dictionary;
 @optional
 - (void) addRemoveFavoriteLocationError:(NSError*)error;
+@end
+
+// json/CommentLocation
+@protocol CSCommentLocationDelegate<NSObject>
+@required
+- (void) getCommentLocationSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) getCommentLocationError:(NSError*)error;
+@end
+// json/AddCommentLocation
+@protocol CSAddCommentLocationDelegate<NSObject>
+@required
+- (void) addCommentLocationSucceeded:(NSMutableArray*)dictionary;
+@optional
+- (void) addCommentLocationError:(NSError*)error;
 @end
 // /json/photos/likes/add
 @protocol CSAddRemoveLikeDelegate<NSObject>
@@ -129,6 +145,9 @@
 
 -(void)addEventWithUsername:(NSString*)username idLocation:(NSString*)idLocation name:(NSString*)name description:(NSString*)description tag:(NSString*)tag coverPic:(NSString*)coverpic dateStart:(NSString*)dtstart dateEnd:(NSString*)dtEnd public:(NSString*)public delegate:(id<CSAddEventDelegate>)delegate;
 
--(void)getFoursquareVenusNearWithLatitude:(NSString*)latitude  longitude:(NSString*)longitude delegate:(id<CSFSVenusNearDelegate>)delegate;
+-(void)getFoursquareVenusNearWithQuery:(NSString*)query delegate:(id<CSFSVenusNearDelegate>)delegate;
 -(void)getEventsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName  delegate:(id<CSEventsDelegate>)delegate;
+-(void)getCommentWithIDLocation:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSCommentLocationDelegate>)delegate;
+-(void)addCommentWithIDLocation:(NSNumber*)idLocation username:(NSString*)username text:(NSString*)text delegate:(id<CSAddCommentLocationDelegate>)delegate;
+
 @end

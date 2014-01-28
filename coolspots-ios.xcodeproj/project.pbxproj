@@ -103,6 +103,9 @@
 		8FA86FC518958526002E9D05 /* CSLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FC418958526002E9D05 /* CSLikeButton.m */; };
 		8FA86FC818958FA7002E9D05 /* CSCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FC718958FA7002E9D05 /* CSCommentButton.m */; };
 		8FA86FCB189590EC002E9D05 /* CSCommentsLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FCA189590EC002E9D05 /* CSCommentsLocationViewController.m */; };
+		8FA86FCE18959690002E9D05 /* CSCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FCD18959690002E9D05 /* CSCommentCell.m */; };
+		8FA86FD4189597F8002E9D05 /* CSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FD3189597F8002E9D05 /* CSComment.m */; };
+		8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FD81897626F002E9D05 /* CSCitiesViewController.m */; };
 		8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F1A186378FB00AE36C9 /* CSLocation.m */; };
 		8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */; };
 		8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC614E188ED1A400B50DB6 /* CSSlideViewImage.m */; };
@@ -292,6 +295,12 @@
 		8FA86FC718958FA7002E9D05 /* CSCommentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCommentButton.m; path = "View Controllers/CustomView/CSCommentButton.m"; sourceTree = "<group>"; };
 		8FA86FC9189590EC002E9D05 /* CSCommentsLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCommentsLocationViewController.h; path = "View Controllers/ViewControllers/CSCommentsLocationViewController.h"; sourceTree = "<group>"; };
 		8FA86FCA189590EC002E9D05 /* CSCommentsLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCommentsLocationViewController.m; path = "View Controllers/ViewControllers/CSCommentsLocationViewController.m"; sourceTree = "<group>"; };
+		8FA86FCC18959690002E9D05 /* CSCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCommentCell.h; path = "View Controllers/TableViewCells/CSCommentCell.h"; sourceTree = "<group>"; };
+		8FA86FCD18959690002E9D05 /* CSCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCommentCell.m; path = "View Controllers/TableViewCells/CSCommentCell.m"; sourceTree = "<group>"; };
+		8FA86FD2189597F8002E9D05 /* CSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSComment.h; path = API/DataModel/CSComment.h; sourceTree = "<group>"; };
+		8FA86FD3189597F8002E9D05 /* CSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSComment.m; path = API/DataModel/CSComment.m; sourceTree = "<group>"; };
+		8FA86FD71897626F002E9D05 /* CSCitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCitiesViewController.h; path = "View Controllers/ViewControllers/CSCitiesViewController.h"; sourceTree = "<group>"; };
+		8FA86FD81897626F002E9D05 /* CSCitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCitiesViewController.m; path = "View Controllers/ViewControllers/CSCitiesViewController.m"; sourceTree = "<group>"; };
 		8FB75F19186378FB00AE36C9 /* CSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocation.h; path = API/DataModel/CSLocation.h; sourceTree = "<group>"; };
 		8FB75F1A186378FB00AE36C9 /* CSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocation.m; path = API/DataModel/CSLocation.m; sourceTree = "<group>"; };
 		8FB75F2318637B8A00AE36C9 /* CSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRootViewController.h; path = "View Controllers/ViewControllers/CSRootViewController.h"; sourceTree = "<group>"; };
@@ -699,6 +708,8 @@
 				8FF426A3188AF4E200F2781B /* CSUser.m */,
 				8FF426B7188C936A00F2781B /* CSEvent.h */,
 				8FF426B8188C936A00F2781B /* CSEvent.m */,
+				8FA86FD2189597F8002E9D05 /* CSComment.h */,
+				8FA86FD3189597F8002E9D05 /* CSComment.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -735,6 +746,8 @@
 				8F93A97D1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m */,
 				8FE6EED018674AB0005F120C /* CSLocationTopCell.h */,
 				8FE6EED118674AB0005F120C /* CSLocationTopCell.m */,
+				8FA86FCC18959690002E9D05 /* CSCommentCell.h */,
+				8FA86FCD18959690002E9D05 /* CSCommentCell.m */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -786,6 +799,8 @@
 				8F316808188F3E7300019EC4 /* CSProfileViewController.m */,
 				8FA86FC9189590EC002E9D05 /* CSCommentsLocationViewController.h */,
 				8FA86FCA189590EC002E9D05 /* CSCommentsLocationViewController.m */,
+				8FA86FD71897626F002E9D05 /* CSCitiesViewController.h */,
+				8FA86FD81897626F002E9D05 /* CSCitiesViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1009,6 +1024,7 @@
 				8F91CFB418638C9300C07D07 /* CSPic.m in Sources */,
 				8FF426AE188C237800F2781B /* CSAddEventViewController.m in Sources */,
 				8F91CFC618638F7700C07D07 /* EGOImageLoadConnection.m in Sources */,
+				8FA86FD4189597F8002E9D05 /* CSComment.m in Sources */,
 				8F91CFC718638F7700C07D07 /* EGOImageLoader.m in Sources */,
 				8FEF47BE1873213900FD2C19 /* CSImageView.m in Sources */,
 				8F93A97E1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m in Sources */,
@@ -1019,12 +1035,14 @@
 				8F9E8407186F86F50056E095 /* CustomDataSource.m in Sources */,
 				8FF426B6188C82E900F2781B /* CSSearchLocationViewController.m in Sources */,
 				8F93A94418651E33003D5FA2 /* CSLocationLargeCoverCell.m in Sources */,
+				8FA86FCE18959690002E9D05 /* CSCommentCell.m in Sources */,
 				8F6D01E61864095D00C7A29A /* CSNavigationController.m in Sources */,
 				8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */,
 				8F9E8403186F85F50056E095 /* CSLocationsViewController.m in Sources */,
 				8F9E840F186FA10E0056E095 /* CSLocationCollectionViewCell.m in Sources */,
 				8F9E840B186F942D0056E095 /* CSPrincipalViewController.m in Sources */,
 				8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */,
+				8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */,
 				8F8AA2CB187E32C4001AED3E /* NewCityViewController.m in Sources */,
 				8FF396D4188653A300754634 /* CSLoginViewController.m in Sources */,
 				8F9E83FF186F854E0056E095 /* MosaicData.m in Sources */,

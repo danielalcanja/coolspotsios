@@ -13,4 +13,9 @@
 
 @interface CSSearchFoursquareViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchDisplayDelegate,CSFSVenusNearDelegate,CLLocationManagerDelegate,CSInstagramIDLocationDelegate,CSAddLocationDelegate,UISearchBarDelegate>
 
+@property  (nonatomic,strong) NSString *locationCity;
+
+-(void)reloadData;
+
+
 @end

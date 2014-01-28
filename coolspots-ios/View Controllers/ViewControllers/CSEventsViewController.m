@@ -103,6 +103,10 @@
 }
 -(void)loadData{
     
+    [[CSSharedData sharedInstance] setCurrentCity:@"Cuiaba"];
+    [[CSSharedData sharedInstance] setCurrentCountry:@"Brazil"];
+    [[CSSharedData sharedInstance] setCurrentState:@"MT"];
+    
     NSString *city = [[CSSharedData sharedInstance] currentCity];
     NSString *country = [[CSSharedData sharedInstance] currentCountry];
     NSString *state = [[CSSharedData sharedInstance] currentState];

@@ -9,6 +9,7 @@
 #import "CSSearchFoursquareViewController.h"
 #import "CSSharedData.h"
 #import "FSLocation.h"
+#import "CSCitiesViewController.h"
 
 
 @interface CSSearchFoursquareViewController ()
@@ -19,11 +20,10 @@
     
     UITableView *locationsTable;
     NSMutableArray *objects;
-    NSMutableArray *filters;
-
+    
     int nextI;
     BOOL isSearching;
-    UISearchBar *searchBar;
+    UISearchBar *locationSearchBar;
     UISearchDisplayController *searchDisplayController;
 }
 
@@ -56,41 +56,38 @@
     [self.view addSubview:locationsTable];
     
     objects = [[NSMutableArray alloc] init];
-    filters = [[NSMutableArray alloc] init];
   
     [DejalBezelActivityView activityViewForView:self.view];
     
-    
-    [[CSSharedData sharedInstance] setCurrentCity:@"Everett"];
     [self loadDataView];
     
-    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    searchBar.delegate = self;
+    locationSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    locationSearchBar.delegate = self;
     
-    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    
+    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:locationSearchBar contentsController:self];
     
     searchDisplayController.delegate = self;
     searchDisplayController.searchResultsDataSource = self;
+    searchDisplayController.searchResultsDelegate = self;
     
-    locationsTable.tableHeaderView = searchBar;
+    locationsTable.tableHeaderView = locationSearchBar;
     
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
     isSearching = NO;
     
-    #if TARGET_IPHONE_SIMULATOR
-        [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
-        [[CSSharedData sharedInstance] setCurrentCountry:@"US"];
-    #endif
-    [filters addObject:[[CSSharedData sharedInstance] currentCity]];
-    [filters addObject:[[CSSharedData sharedInstance] currentCountry]];
+    self.locationCity  = [NSString stringWithFormat:@"%@,%@,%@", [[CSSharedData sharedInstance] currentCity], [[CSSharedData sharedInstance] currentState], [[CSSharedData sharedInstance] currentCountry]];
     
 }
 -(IBAction)cancel:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+-(void)reloadData {
+    [searchDisplayController.searchResultsTableView reloadData];
 }
 -(void)loadDataView {
     
@@ -113,9 +110,9 @@
     longitude = @"-74";
 #endif
 
-    
-    [[CSAPI sharedInstance] getFoursquareVenusNearWithLatitude:latitude longitude:longitude delegate:self];
-    
+    NSString *query = [NSString stringWithFormat:@"&ll=%@,%@",latitude,longitude];
+
+    [[CSAPI sharedInstance] getFoursquareVenusNearWithQuery:query delegate:self];
     
 }
 -(void)getFSVenusNearSucceeded:(NSDictionary *)dictionary {
@@ -147,7 +144,6 @@
         
         [[CSAPI sharedInstance] addLocationWithDictionary:dicLocation delegate:self];
         
-        
     }
     else {
         
@@ -177,6 +173,10 @@
     NSLog(@"getAddLocationError %@", error);
 }
 
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+
+}
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
@@ -184,6 +184,15 @@
     [locationsTable reloadData];
     
     return YES;
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+   
+    NSString *text   = searchBar.text;
+    isSearching = NO;
+    [searchDisplayController setActive:NO animated:YES];
+    NSString *query = [NSString stringWithFormat:@"&near=%@&query=%@",self.locationCity,text];
+    [[CSAPI sharedInstance] getFoursquareVenusNearWithQuery:query delegate:self];
+    
 }
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     
@@ -203,7 +212,7 @@
 {
     NSInteger numberOfRows = [objects count];
     if(isSearching) {
-        numberOfRows = [filters count];
+        numberOfRows = 1;
     }
     return numberOfRows;
     
@@ -211,27 +220,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *CellIdentifier = @"cellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
     if(isSearching) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if(indexPath.row==0) {
-            cell.textLabel.text = [filters objectAtIndex:0];
+            cell.textLabel.text = self.locationCity;
         }
-        if(indexPath.row==1) {
-            cell.textLabel.text = [filters objectAtIndex:1];
-        }
+       
     }else {
+        
         cell.accessoryType = UITableViewCellAccessoryNone;
-
         FSLocation *location = [objects objectAtIndex:indexPath.row];
-        cell.textLabel.text = location.name;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", location.name, [location.category valueForKey:@"name"]];
+
+        cell.detailTextLabel.text = [location.geo valueForKey:@"address"];
+
         
     }
     return cell;
@@ -240,7 +249,12 @@
     
     if(isSearching) {
         
-        
+        if(indexPath.row==0) {
+
+            CSCitiesViewController *goView = [[CSCitiesViewController alloc] init];
+            [self.navigationController pushViewController:goView animated:YES];
+            
+        }
         
     }else {
         

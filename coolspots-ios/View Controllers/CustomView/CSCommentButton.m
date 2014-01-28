@@ -46,8 +46,10 @@
     CSCommentsLocationViewController *goView = [[CSCommentsLocationViewController alloc] init];
     goView.location = _location;
     goView.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
-    [_controller presentViewController:goView animated:YES completion:nil];
-    goView.view.superview.bounds = CGRectMake(0, 0, 440, 352);
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:goView];
+    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-detail-title-blue"] forBarMetrics:UIBarMetricsDefault];
+    [_controller presentViewController:nav animated:YES completion:nil];
 
 }
 

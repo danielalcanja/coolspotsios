@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CSLocation.h"
+#import "CSCommentCell.h"
+#import "CSAPI.h"
 
-@interface CSCommentsLocationViewController : UIViewController
+@interface CSCommentsLocationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,CSCommentLocationDelegate,CSAddCommentLocationDelegate>
 
 @property  (nonatomic,strong) CSLocation *location;
+@property (assign, nonatomic) NSMutableArray *commentsObjects;
 
 
 @end

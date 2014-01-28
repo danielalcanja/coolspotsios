@@ -125,9 +125,9 @@
     [locationManager startUpdatingLocation];
     
     #if TARGET_IPHONE_SIMULATOR
-        [[CSSharedData sharedInstance] setCurrentCity:@"Cuiaba"];
-        [[CSSharedData sharedInstance] setCurrentCountry:@"Brazil"];
-        [[CSSharedData sharedInstance] setCurrentState:@"MT"];
+        [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
+        [[CSSharedData sharedInstance] setCurrentCountry:@"United States"];
+        [[CSSharedData sharedInstance] setCurrentState:@"MA"];
         [self loadDataView];
     #endif
 
