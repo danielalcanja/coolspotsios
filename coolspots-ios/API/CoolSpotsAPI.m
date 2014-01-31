@@ -71,7 +71,7 @@
                              method:@"POST"
                       expectedClass:[CSLocation class]
                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
-                                CSLocation *result = (CSLocation*)object;
+                                CSResponse *result = (CSResponse*)object;
                                 [delegate getLocationsSucceeded:result];
                             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                 [delegate getLocationsError:error];

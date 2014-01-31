@@ -194,13 +194,13 @@
     
     }
 }
--(void)getLocationsSucceeded:(CSLocation *)location {
+-(void)getLocationsSucceeded:(CSResponse *)response {
     
     isFirstLoad = NO;
     if([objects count] > 0) {
-        [objects addObjectsFromArray:[location.data mutableCopy]];
+        [objects addObjectsFromArray:[response.data mutableCopy]];
     }else {
-        objects = [location.data mutableCopy];
+        objects = [response.data mutableCopy];
     }
     [[CSSharedData sharedInstance] setNearLocations:objects];
     [locationsTable reloadData];

@@ -12,12 +12,13 @@
 #import "CSGeo.h"
 #import "CSParameter.h"
 #import "CSPic.h"
+#import "CSResponse.h"
 
 
 // json/location
 @protocol CSLocationDelegateCaller<NSObject>
 @required
-- (void) getLocationsSucceeded:(CSLocation*)location;
+- (void) getLocationsSucceeded:(CSResponse*)response;
 - (void) getLocationsError:(NSError*)error;
 @end
 

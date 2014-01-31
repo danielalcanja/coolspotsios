@@ -11,11 +11,4 @@
 
 @implementation CSResponse
 
-- (Class)AMCElementClassForCollectionWithKey:(NSString*)key {
-    if ([key isEqualToString:@"data"]) {
-        return [CSLocation class];
-    }
-    return [NSObject class];
-}
-
 @end
