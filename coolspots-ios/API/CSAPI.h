@@ -12,6 +12,7 @@
 #import "CSPic.h"
 #import "CSUser.h"
 #import "CSComment.h"
+#import <GFClient.h>
 
 // Foursquare VenusNear
 @protocol CSFSVenusNearDelegate<NSObject>

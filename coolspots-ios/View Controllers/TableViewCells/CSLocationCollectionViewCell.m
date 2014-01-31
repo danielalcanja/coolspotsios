@@ -117,7 +117,7 @@
 
 -(void)setMosaicData:(CSLocation *)newMosaicData{
     
-    NSString *standard_resolution = [[_location.pics objectAtIndex:0] objectForKey:@"standard_resolution"];
+    NSString *standard_resolution = [[_location.lastPhotos objectAtIndex:0] objectForKey:@"standard_resolution"];
     
     
     //  Image set

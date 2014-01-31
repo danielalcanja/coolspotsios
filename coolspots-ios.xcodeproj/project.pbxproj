@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0B2C485BD59143A488D14CFB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B161DA3CDAB8478F86609927 /* libPods.a */; };
+		8F209CC1189B278F00FF691D /* CoolSpotsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC0189B278F00FF691D /* CoolSpotsAPI.m */; };
+		8F209CC4189B29DF00FF691D /* CSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC3189B29DF00FF691D /* CSResponse.m */; };
+		8F209CC7189B4B1900FF691D /* CSGeo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC6189B4B1900FF691D /* CSGeo.m */; };
+		8F209CCA189B4C9A00FF691D /* CSParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC9189B4C9A00FF691D /* CSParameter.m */; };
 		8F211EFC18708735000485B4 /* tb-icon-event.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211EFA18708735000485B4 /* tb-icon-event.png */; };
 		8F211EFD18708735000485B4 /* tb-icon-event@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211EFB18708735000485B4 /* tb-icon-event@2x.png */; };
 		8F211F00187087FC000485B4 /* tb-icon-location.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F211EFE187087FC000485B4 /* tb-icon-location.png */; };
@@ -108,6 +112,7 @@
 		8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FD81897626F002E9D05 /* CSCitiesViewController.m */; };
 		8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F1A186378FB00AE36C9 /* CSLocation.m */; };
 		8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */; };
+		8FD918C31898AD0D002F81E8 /* CSCurrentLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD918C21898AD0D002F81E8 /* CSCurrentLocationCell.m */; };
 		8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC614E188ED1A400B50DB6 /* CSSlideViewImage.m */; };
 		8FE6EECF1867491E005F120C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FE6EECE1867491E005F120C /* Storyboard.storyboard */; };
 		8FE6EED218674AB0005F120C /* CSLocationTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE6EED118674AB0005F120C /* CSLocationTopCell.m */; };
@@ -160,6 +165,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F209CBF189B278F00FF691D /* CoolSpotsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoolSpotsAPI.h; path = API/CoolSpotsAPI.h; sourceTree = "<group>"; };
+		8F209CC0189B278F00FF691D /* CoolSpotsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoolSpotsAPI.m; path = API/CoolSpotsAPI.m; sourceTree = "<group>"; };
+		8F209CC2189B29DF00FF691D /* CSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSResponse.h; path = API/CSResponse.h; sourceTree = "<group>"; };
+		8F209CC3189B29DF00FF691D /* CSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSResponse.m; path = API/CSResponse.m; sourceTree = "<group>"; };
+		8F209CC5189B4B1900FF691D /* CSGeo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSGeo.h; path = API/DataModel/CSGeo.h; sourceTree = "<group>"; };
+		8F209CC6189B4B1900FF691D /* CSGeo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSGeo.m; path = API/DataModel/CSGeo.m; sourceTree = "<group>"; };
+		8F209CC8189B4C9A00FF691D /* CSParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSParameter.h; path = API/CSParameter.h; sourceTree = "<group>"; };
+		8F209CC9189B4C9A00FF691D /* CSParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSParameter.m; path = API/CSParameter.m; sourceTree = "<group>"; };
 		8F211EFA18708735000485B4 /* tb-icon-event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-event.png"; sourceTree = "<group>"; };
 		8F211EFB18708735000485B4 /* tb-icon-event@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-event@2x.png"; sourceTree = "<group>"; };
 		8F211EFE187087FC000485B4 /* tb-icon-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tb-icon-location.png"; sourceTree = "<group>"; };
@@ -305,6 +318,8 @@
 		8FB75F1A186378FB00AE36C9 /* CSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocation.m; path = API/DataModel/CSLocation.m; sourceTree = "<group>"; };
 		8FB75F2318637B8A00AE36C9 /* CSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRootViewController.h; path = "View Controllers/ViewControllers/CSRootViewController.h"; sourceTree = "<group>"; };
 		8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSRootViewController.m; path = "View Controllers/ViewControllers/CSRootViewController.m"; sourceTree = "<group>"; };
+		8FD918C11898AD0D002F81E8 /* CSCurrentLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCurrentLocationCell.h; path = "View Controllers/TableViewCells/CSCurrentLocationCell.h"; sourceTree = "<group>"; };
+		8FD918C21898AD0D002F81E8 /* CSCurrentLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCurrentLocationCell.m; path = "View Controllers/TableViewCells/CSCurrentLocationCell.m"; sourceTree = "<group>"; };
 		8FDC614D188ED1A400B50DB6 /* CSSlideViewImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSlideViewImage.h; path = "View Controllers/CustomView/CSSlideViewImage.h"; sourceTree = "<group>"; };
 		8FDC614E188ED1A400B50DB6 /* CSSlideViewImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSlideViewImage.m; path = "View Controllers/CustomView/CSSlideViewImage.m"; sourceTree = "<group>"; };
 		8FE6EECE1867491E005F120C /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
@@ -686,6 +701,12 @@
 		8FB75F171863780B00AE36C9 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				8F209CBF189B278F00FF691D /* CoolSpotsAPI.h */,
+				8F209CC0189B278F00FF691D /* CoolSpotsAPI.m */,
+				8F209CC2189B29DF00FF691D /* CSResponse.h */,
+				8F209CC3189B29DF00FF691D /* CSResponse.m */,
+				8F209CC8189B4C9A00FF691D /* CSParameter.h */,
+				8F209CC9189B4C9A00FF691D /* CSParameter.m */,
 				8FB75F18186378B000AE36C9 /* DataModel */,
 			);
 			name = API;
@@ -710,6 +731,8 @@
 				8FF426B8188C936A00F2781B /* CSEvent.m */,
 				8FA86FD2189597F8002E9D05 /* CSComment.h */,
 				8FA86FD3189597F8002E9D05 /* CSComment.m */,
+				8F209CC5189B4B1900FF691D /* CSGeo.h */,
+				8F209CC6189B4B1900FF691D /* CSGeo.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -748,6 +771,8 @@
 				8FE6EED118674AB0005F120C /* CSLocationTopCell.m */,
 				8FA86FCC18959690002E9D05 /* CSCommentCell.h */,
 				8FA86FCD18959690002E9D05 /* CSCommentCell.m */,
+				8FD918C11898AD0D002F81E8 /* CSCurrentLocationCell.h */,
+				8FD918C21898AD0D002F81E8 /* CSCurrentLocationCell.m */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -1026,6 +1051,7 @@
 				8F91CFC618638F7700C07D07 /* EGOImageLoadConnection.m in Sources */,
 				8FA86FD4189597F8002E9D05 /* CSComment.m in Sources */,
 				8F91CFC718638F7700C07D07 /* EGOImageLoader.m in Sources */,
+				8F209CC7189B4B1900FF691D /* CSGeo.m in Sources */,
 				8FEF47BE1873213900FD2C19 /* CSImageView.m in Sources */,
 				8F93A97E1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m in Sources */,
 				8F27317B188223F100A59364 /* FSLocation.m in Sources */,
@@ -1038,12 +1064,15 @@
 				8FA86FCE18959690002E9D05 /* CSCommentCell.m in Sources */,
 				8F6D01E61864095D00C7A29A /* CSNavigationController.m in Sources */,
 				8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */,
+				8F209CC4189B29DF00FF691D /* CSResponse.m in Sources */,
 				8F9E8403186F85F50056E095 /* CSLocationsViewController.m in Sources */,
 				8F9E840F186FA10E0056E095 /* CSLocationCollectionViewCell.m in Sources */,
+				8F209CC1189B278F00FF691D /* CoolSpotsAPI.m in Sources */,
 				8F9E840B186F942D0056E095 /* CSPrincipalViewController.m in Sources */,
 				8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */,
 				8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */,
 				8F8AA2CB187E32C4001AED3E /* NewCityViewController.m in Sources */,
+				8FD918C31898AD0D002F81E8 /* CSCurrentLocationCell.m in Sources */,
 				8FF396D4188653A300754634 /* CSLoginViewController.m in Sources */,
 				8F9E83FF186F854E0056E095 /* MosaicData.m in Sources */,
 				8FEF47D118732E6300FD2C19 /* BackButton.m in Sources */,
@@ -1066,6 +1095,7 @@
 				8FF42693188AD28500F2781B /* CSWelcomeViewController.m in Sources */,
 				8F93A97B18663066003D5FA2 /* CSLocationDetailThreeCell.m in Sources */,
 				8FF426B9188C936A00F2781B /* CSEvent.m in Sources */,
+				8F209CCA189B4C9A00FF691D /* CSParameter.m in Sources */,
 				8F9E83FE186F854E0056E095 /* MosaicLayout.m in Sources */,
 				8FA86FC518958526002E9D05 /* CSLikeButton.m in Sources */,
 				8FE6EED218674AB0005F120C /* CSLocationTopCell.m in Sources */,

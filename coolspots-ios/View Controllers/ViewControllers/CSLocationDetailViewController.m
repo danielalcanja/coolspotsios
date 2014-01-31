@@ -92,7 +92,7 @@
     CGFloat spaceHight = 65;
     
     CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, headerSize-spaceHight, 35,35) isFavorite:NO];
-    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",self.location.id] isFavorite:self.location.isFavorite];
+    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",self.location.id] isFavorite:self.location.favorite];
     
     CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
@@ -307,15 +307,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 -(void)loadData {
     
     [DejalBezelActivityView activityViewForView:picsCollectionView];
 
-    [[CSAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInt:self.location.id] page:[NSNumber numberWithInt:page]  delegate:self];
+    [[CoolSpotsAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInteger:self.location.idLocation] page:[NSNumber numberWithInt:page]  delegate:self];
 }
--(void)getPhotosSucceeded:(NSMutableArray *)dictionary {
+-(void)getPhotosSucceeded:(CSPic *)pic {
     
-    objects = dictionary;
+    objects = [pic.data mutableCopy];
     [picsCollectionView reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
     

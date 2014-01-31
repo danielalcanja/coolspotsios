@@ -10,6 +10,7 @@
 #import "CSLocation.h"
 #import "MosaicLayoutDelegate.h"
 #import "CSAPI.h"
+#import "CoolSpotsAPI.h"
 
 
 @interface CSLocationDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,CSPhotosDelegate> {

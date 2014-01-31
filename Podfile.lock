@@ -15,13 +15,20 @@ PODS:
   - CURestKit (1.0.3):
     - ASIHTTPRequest
   - DCIntrospect-ARC (0.0.6)
-  - DejalActivityView (1.1)
+  - DejalActivityView (1.2)
   - EGOTableViewPullRefresh (0.1.0)
+  - GoldenFleece (1.1):
+    - AFNetworking (~> 1.3.2)
+    - ISO8601DateFormatter (~> 0.6)
+    - NSDate+Helper (~> 0.0.1)
+  - HPGrowingTextView (1.1)
+  - ISO8601DateFormatter (0.7)
   - ISO8601DateFormatterValueTransformer (0.5.0):
     - RKValueTransformers (~> 1.0.0)
   - JRSwizzle (1.0)
-  - JSONModel (0.10.0)
+  - JSONModel (0.11.0)
   - Mixpanel (2.0.0)
+  - NSDate+Helper (0.0.1)
   - Reachability (3.1.1)
   - RestKit (0.22.0):
     - RestKit/Core
@@ -44,7 +51,7 @@ PODS:
   - RKValueTransformers (1.0.1)
   - SOCKit (1.1)
   - TransitionKit (2.0.0)
-  - ViewUtils (1.1.1)
+  - ViewUtils (1.1.2)
   - YIFullScreenScroll (1.2.1):
     - JRSwizzle (~> 1.0)
     - ViewUtils (~> 1.1)
@@ -55,6 +62,8 @@ DEPENDENCIES:
   - DCIntrospect-ARC (~> 0.0.3)
   - DejalActivityView (~> 1.1)
   - EGOTableViewPullRefresh (~> 0.1.0)
+  - GoldenFleece (~> 1.1)
+  - HPGrowingTextView (~> 1.1)
   - JSONModel
   - Mixpanel (= 2.0.0)
   - RestKit (~> 0.22.0)
@@ -66,18 +75,22 @@ SPEC CHECKSUMS:
   ASIHTTPRequest: 162783e0cd71bdd3ff1ceed0cd5fa9505e0116a8
   CURestKit: 0a95dbb18bfddb228050aa05335b6b3b6462670f
   DCIntrospect-ARC: 41cae8dbe48748e77a4466963896df13889df041
-  DejalActivityView: 4cb7aacb4334003203f297d6cc7dcc233a7f3d86
+  DejalActivityView: 3a7f7a2be287c0f25f547762815c40709b02169c
   EGOTableViewPullRefresh: 6ba637ce6dd3186b503d2d91e6b3a08a26d650f5
+  GoldenFleece: f895bc520b47f27c8dc38426c5601a121cda74c4
+  HPGrowingTextView: 4318f557b33c19def1c53ec275d6e2a2d6589cd0
+  ISO8601DateFormatter: 00944e437ea647f4244454ce8809d313861d08de
   ISO8601DateFormatterValueTransformer: d0af1f50a9df42db72d7418db31938b8473e0af8
   JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
-  JSONModel: cecca3c3a9ee1a248b56f7139e2d64b85ce536ec
+  JSONModel: a5f2eb85c46df008a67569447ec408d1040d4bf4
   Mixpanel: e4af97adb60a10541b7869929a83d734025058a6
+  NSDate+Helper: 3015cb57778256bce7c549fca172474308740059
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RestKit: dc107a0aa4f962575ad0385bac5b3c5e4f591f4e
   RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   TransitionKit: 433284465abacdc07852d7db6dd0cc075010059a
-  ViewUtils: 9bb7bebfff73e891eb22c6229a7f798797248da1
+  ViewUtils: e0b147bd0b2acfbf6b030f6a32b0c2bdd959df68
   YIFullScreenScroll: 57631b0da8348caf8a5f2a75ced8703bc4e813df
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.29.0

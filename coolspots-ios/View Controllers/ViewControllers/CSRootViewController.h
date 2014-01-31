@@ -16,9 +16,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CSAPI.h"
 #import "NewCityViewController.h"
+#import "CoolSpotsAPI.h"
 
 
-@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate,CSLocationDelegate>
+@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate,CSLocationDelegate,CSLocationDelegateCaller>
 {
     __weak IBOutlet UICollectionView *_collectionView;
     CLLocationManager *locationManager;

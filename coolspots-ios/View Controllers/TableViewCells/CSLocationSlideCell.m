@@ -113,26 +113,26 @@
 
         [self.contentView addSubview:pageControl];
         
-        if([location.pics count] > 0) {
+        if([location.lastPhotos count] > 0) {
             slideViewImage1 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 0, 0, 320,320)];
             [scrollView addSubview:slideViewImage1];
         }
-        if([location.pics count] > 1) {
+        if([location.lastPhotos count] > 1) {
             slideViewImage2 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 1, 0, 320,320)];
             [scrollView addSubview:slideViewImage2];
 
         }
-        if([location.pics count] > 2) {
+        if([location.lastPhotos count] > 2) {
             slideViewImage3 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 2, 0, 320,320)];
             [scrollView addSubview:slideViewImage3];
 
         }
-        if([location.pics count] > 3) {
+        if([location.lastPhotos count] > 3) {
             slideViewImage4 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 3, 0, 320,320)];
             [scrollView addSubview:slideViewImage4];
 
         }
-        if([location.pics count] > 4) {
+        if([location.lastPhotos count] > 4) {
             slideViewImage5 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 4, 0, 320,320)];
             [scrollView addSubview:slideViewImage5];
 
@@ -143,31 +143,31 @@
 }
 -(void)reloadCellWithLocation:(CSLocation*)location {
     
-    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",location.id] isFavorite:location.isFavorite];
+    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",location.id] isFavorite:location.favorite];
     labelTitlePlace.text = location.name;
     _location = location;
-    if([location.pics count] > 0) {
-        CSPic *pic = [location.pics objectAtIndex:0] ;
+    if([location.lastPhotos count] > 0) {
+        CSPic *pic = [location.lastPhotos objectAtIndex:0] ;
         NSString *standard_resolution = pic.standard_resolution;
         [slideViewImage1 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
-    if([location.pics count] > 1) {
-        CSPic *pic = [location.pics objectAtIndex:1] ;
+    if([location.lastPhotos count] > 1) {
+        CSPic *pic = [location.lastPhotos objectAtIndex:1] ;
         NSString *standard_resolution = pic.standard_resolution;
         [slideViewImage2 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
-    if([location.pics count] > 2) {
-        CSPic *pic = [location.pics objectAtIndex:2] ;
+    if([location.lastPhotos count] > 2) {
+        CSPic *pic = [location.lastPhotos objectAtIndex:2] ;
         NSString *standard_resolution = pic.standard_resolution;
         [slideViewImage3 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
-    if([location.pics count] > 3) {
-        CSPic *pic = [location.pics objectAtIndex:3] ;
+    if([location.lastPhotos count] > 3) {
+        CSPic *pic = [location.lastPhotos objectAtIndex:3] ;
         NSString *standard_resolution = pic.standard_resolution;
         [slideViewImage4 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
-    if([location.pics count] > 4) {
-        CSPic *pic = [location.pics objectAtIndex:4] ;
+    if([location.lastPhotos count] > 4) {
+        CSPic *pic = [location.lastPhotos objectAtIndex:4] ;
         NSString *standard_resolution = pic.standard_resolution;
         [slideViewImage5 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }

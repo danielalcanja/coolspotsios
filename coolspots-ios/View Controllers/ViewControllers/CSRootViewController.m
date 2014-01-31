@@ -17,6 +17,7 @@
 #import <CURestkit.h>
 #import "CSSharedData.h"
 #import "CSSearchFoursquareViewController.h"
+#import "CSCurrentLocationCell.h"
 
 
 @interface CSRootViewController ()
@@ -57,8 +58,9 @@
     isAlreadyExecuted = NO;
     page = 1;
     
-   
-    locationsTable = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    CGRect frameTable = self.view.frame;
+    frameTable.size.height =  frameTable.size.height-50;
+    locationsTable = [[UITableView alloc] initWithFrame:frameTable style:UITableViewStylePlain];
     locationsTable.delegate = self;
     locationsTable.dataSource = self;
     locationsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -126,7 +128,7 @@
     
     #if TARGET_IPHONE_SIMULATOR
         [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
-        [[CSSharedData sharedInstance] setCurrentCountry:@"United States"];
+        [[CSSharedData sharedInstance] setCurrentCountryCode:@"US"];
         [[CSSharedData sharedInstance] setCurrentState:@"MA"];
         [self loadDataView];
     #endif
@@ -161,6 +163,13 @@
                        [[CSSharedData sharedInstance] setCurrentCountryCode:placemark.ISOcountryCode];
                        [[CSSharedData sharedInstance] setCurrentCountry:placemark.country];
                        
+#if TARGET_IPHONE_SIMULATOR
+                       [[CSSharedData sharedInstance] setCurrentCity:@"Boston"];
+                       [[CSSharedData sharedInstance] setCurrentCountryCode:@"US"];
+                       [[CSSharedData sharedInstance] setCurrentState:@"MA"];
+                       [self loadDataView];
+#endif
+                       
                        NSString *city = [[CSSharedData sharedInstance] currentCity];
                        if([city length] > 0) {
                            
@@ -178,14 +187,29 @@
         
         isAlreadyExecuted = YES;
         NSString *city = [[CSSharedData sharedInstance] currentCity];
-        NSString *country = [[CSSharedData sharedInstance] currentCountry];
+        NSString *country = [[CSSharedData sharedInstance] currentCountryCode];
         NSString *state = [[CSSharedData sharedInstance] currentState];
 
-            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
+            [[CoolSpotsAPI sharedInstance] getLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
     
     }
 }
-
+-(void)getLocationsSucceeded:(CSLocation *)location {
+    
+    isFirstLoad = NO;
+    if([objects count] > 0) {
+        [objects addObjectsFromArray:[location.data mutableCopy]];
+    }else {
+        objects = [location.data mutableCopy];
+    }
+    [[CSSharedData sharedInstance] setNearLocations:objects];
+    [locationsTable reloadData];
+    [DejalBezelActivityView removeViewAnimated:YES];
+    
+}
+-(void)getBestLocations:(NSError *)error {
+    
+}
 -(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {
     
     isFirstLoad = NO;
@@ -201,15 +225,13 @@
 
     if([objects count] >= 18)
     {
-        if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
+        CGFloat y = scrollView.contentOffset.y;
+        CGFloat height  = scrollView.contentSize.height - scrollView.frame.size.height;
+        if (y >= height) {
             
             page++;
-            
-            NSString *city = [[CSSharedData sharedInstance] currentCity];
-            NSString *country = [[CSSharedData sharedInstance] currentCountry];
-            NSString *state = [[CSSharedData sharedInstance] currentState];
-            
-            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
+            isAlreadyExecuted = NO;
+            [self loadDataView];
             
         }
     }
@@ -230,6 +252,8 @@
     if (numberOfRows == 0 && !isFirstLoad)
     {
         numberOfRows = 1;
+    }else {
+        numberOfRows  = numberOfRows + 1;
     }
     
     return numberOfRows;
@@ -254,17 +278,39 @@
         
     }else {
         
-        CSLocation *location = [objects objectAtIndex:indexPath.row];
-        
-        NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
-        CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[CSLocationSlideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withViewController:self location:location];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if(indexPath.row==0) {
+            
+            NSString *CellIdentifier = [NSString stringWithFormat:@"currentLocationCell"] ;
+            CSCurrentLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[CSCurrentLocationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            NSString *city = [[CSSharedData sharedInstance] currentCity];
+            NSString *country = [[CSSharedData sharedInstance] currentCountryCode];
+            NSString *state = [[CSSharedData sharedInstance] currentState];
+            [cell reloadDataWithCurrentLocation:[NSString stringWithFormat:@"%@-%@, %@",city, state, country]];
+            
+            return cell;
+            
+        }else  {
+            
+            NSInteger row  = indexPath.row-1;
+            CSLocation *location = [objects objectAtIndex:row];
+            NSLog(@" id location %@", location.idLocation);
+            
+            NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
+            CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[CSLocationSlideCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withViewController:self location:location];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            [cell reloadCellWithLocation:location];
+            return cell;
+            
         }
-        
-        [cell reloadCellWithLocation:location];
-        return cell;
         
     }
     
@@ -274,6 +320,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CGFloat height = 364;
+    if(indexPath.row==0) {
+        height = 30;
+    }
     
     return height;
 }

@@ -79,7 +79,8 @@
     
 }
 -(void)getCommentLocationSucceeded:(NSMutableArray *)dictionary {
-    
+    [DejalBezelActivityView removeViewAnimated:YES];
+
 }
 -(void)getCommentLocationError:(NSError *)error {
     

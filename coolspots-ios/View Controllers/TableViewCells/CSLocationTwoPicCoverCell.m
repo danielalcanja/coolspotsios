@@ -33,8 +33,8 @@
 
 -(void)reloadCellWithLocation:(CSLocation*)location {
     
-    NSString *standard_resolution = [[location.pics objectAtIndex:0] objectForKey:@"standard_resolution"];
-    NSString *secondStandard_resolution = [[location.pics objectAtIndex:1] objectForKey:@"standard_resolution"];
+    NSString *standard_resolution = [[location.lastPhotos objectAtIndex:0] objectForKey:@"standard_resolution"];
+    NSString *secondStandard_resolution = [[location.lastPhotos objectAtIndex:1] objectForKey:@"standard_resolution"];
 
     self.egoImageView.imageURL = [NSURL URLWithString:standard_resolution];
     

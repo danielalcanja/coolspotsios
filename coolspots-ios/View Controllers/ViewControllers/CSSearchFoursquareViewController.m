@@ -137,10 +137,11 @@
         NSMutableDictionary *dicLocation = [[NSMutableDictionary alloc]init];
         [dicLocation setValue:[dictionary valueForKey:@"id"][0] forKey:@"id_instagram"];
         [dicLocation setValue:location.id_foursquare forKey:@"id_foursquare"];
+        [dicLocation setValue:location.address forKey:@"address"];
         [dicLocation setValue:location.geo forKey:@"geo"];
         [dicLocation setValue:location.category forKey:@"category"];
         [dicLocation setValue:location.name forKey:@"name"];
-        [dicLocation setValue:location.postal_code forKey:@"postal_code:"];
+        [dicLocation setValue:location.postal_code forKey:@"postal_code"];
         
         [[CSAPI sharedInstance] addLocationWithDictionary:dicLocation delegate:self];
         

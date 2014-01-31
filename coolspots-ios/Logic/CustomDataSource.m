@@ -50,7 +50,7 @@
         for(int i=0;i<[tempObjects count];i++) {
             
             CSLocation *location = [tempObjects objectAtIndex:i];
-            NSString *standard_resolution = [[location.pics objectAtIndex:0] objectForKey:@"standard_resolution"];
+            NSString *standard_resolution = [[location.lastPhotos objectAtIndex:0] objectForKey:@"standard_resolution"];
             MosaicData *aMosaicModule = [[MosaicData alloc] init];
             aMosaicModule.imageFilename = standard_resolution;
             aMosaicModule.title = location.name;

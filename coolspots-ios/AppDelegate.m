@@ -26,6 +26,11 @@
     
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
+    NSURL *baseURL = [NSURL URLWithString:@"http://api.coolspots.com.br"]; // the base URL of your API
+    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    // initialize GoldenFleece
+    [GFClient createWithHttpClient:client];
+    
     self.instagram = [[Instagram alloc] init];
 
  
@@ -49,6 +54,9 @@
         self.window.rootViewController = navController;
         
     }
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     
     return YES;
 }

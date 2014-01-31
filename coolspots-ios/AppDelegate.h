@@ -11,6 +11,7 @@
 #import <Mixpanel.h>
 #import "CSTabBarController.h"
 #import "Instagram.h"
+#import <GFClient.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

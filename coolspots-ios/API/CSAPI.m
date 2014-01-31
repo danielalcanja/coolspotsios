@@ -132,13 +132,13 @@
         for(int i=0;i<[tempObjects count];i++) {
             
             CSLocation *location = [[CSLocation alloc] init];
-            location.id = [[tempObjects valueForKey:@"id"][i] intValue];
+           // location.id = [[tempObjects valueForKey:@"id"][i] intValue];
             location.name =[tempObjects valueForKey:@"name"][i];
             BOOL favorite = [[tempObjects valueForKey:@"favorite"][i] boolValue];
-            location.isFavorite = favorite;
+            location.favorite = favorite;
 
             NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
-            location.pics  = [[NSMutableArray alloc] init];
+            location.lastPhotos  = [[NSMutableArray alloc] init];
 
             for(int i=0;i<[pics count];i++) {
                 
@@ -148,7 +148,7 @@
                 pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
                 pic.caption = [pics valueForKey:@"caption"][i];
 
-                [location.pics addObject:pic];
+                //[location.lastPhotos addObject:pic];
             }
             
             [dictionary addObject:location];
@@ -238,12 +238,12 @@
                 NSMutableArray *locationArray = [tempObjects valueForKey:@"idLocation"][i];
 
                 CSLocation *location = [[CSLocation alloc] init];
-                location.id = [[locationArray valueForKey:@"id"] intValue];
+               // location.id = [[locationArray valueForKey:@"id"] intValue];
                 location.name =[locationArray valueForKey:@"name"];
-                location.isFavorite = NO;
+                location.favorite = NO;
                 
                 NSMutableArray *pics = [tempObjects valueForKey:@"lastPhotos"][i];
-                location.pics  = [[NSMutableArray alloc] init];
+                location.lastPhotos  = [[NSMutableArray alloc] init];
                 
                 for(int i=0;i<[pics count];i++) {
                     
@@ -253,7 +253,7 @@
                     pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
                     pic.caption = [pics valueForKey:@"caption"][i];
                     
-                    [location.pics addObject:pic];
+                    //[location.lastPhotos addObject:pic];
                 }
                 
                 [dictionary addObject:location];
@@ -280,18 +280,20 @@
         
         NSData *responseData = operation.responseData;
         id parsedResponse = [RKMIMETypeSerialization objectFromData:responseData MIMEType:RKMIMETypeJSON error:nil];
-        
         NSMutableArray *dictionary = [[NSMutableArray alloc] init];
 
-        if(![[parsedResponse objectForKey:@"data"]  isEqual:[NSNull null]]) {
-
-            NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
-            for(int i=0;i<[tempObjects count];i++) {
-                
-                CSComment *comment = [[CSComment alloc] init];
-                
-            }
+        if([parsedResponse count] > 0) {
             
+            if(![[parsedResponse objectForKey:@"data"]  isEqual:[NSNull null]]) {
+                
+                NSMutableArray *tempObjects = [[parsedResponse objectForKey:@"data"] mutableCopy];
+                for(int i=0;i<[tempObjects count];i++) {
+                    
+                    CSComment *comment = [[CSComment alloc] init];
+                    
+                }
+            
+            }
         }
         
         [delegate getCommentLocationSucceeded:dictionary];
@@ -379,9 +381,9 @@
                 [geo setValue:[arrayGeo valueForKey:@"country"] forKey:@"countryName"];
                 [geo setValue:[arrayGeo valueForKey:@"cc"] forKey:@"countryCode"];
                 [geo setValue:[arrayGeo valueForKey:@"state"] forKey:@"stateName"];
-                [geo setValue:[arrayGeo valueForKey:@"state"] forKey:@"stateAbbr"];
                 [geo setValue:[arrayGeo valueForKey:@"city"] forKey:@"cityName"];
-                [geo setValue:[arrayGeo valueForKey:@"address"] forKey:@"address"];
+                location.address = [arrayGeo valueForKey:@"address"];
+
 
                 
             }

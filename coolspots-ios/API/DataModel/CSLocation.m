@@ -7,7 +7,20 @@
 //
 
 #import "CSLocation.h"
+#import "CSPic.h"
 
 @implementation CSLocation
+
+- (Class)AMCElementClassForCollectionWithKey:(NSString*)key {
+    if ([@"data" isEqualToString:key]) {
+        return [CSLocation class];
+    }
+    return [NSObject class];
+}
+- (NSDictionary*)jsonClasses {
+    return @{
+             @"lastPhotos" : [CSPic class],@"id" : @"idLocation"
+             };
+}
 
 @end

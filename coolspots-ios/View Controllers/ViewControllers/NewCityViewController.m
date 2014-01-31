@@ -65,12 +65,12 @@
         FSLocation *location = [[FSLocation alloc] init];
         location.id_foursquare = [dictionary valueForKey:@"id"][i];
         location.name = [dictionary valueForKey:@"name"][i];
+        location.address = [dictionary valueForKey:@"address"][i];
         location.postal_code = [dictionary valueForKey:@"postalCode"][i];
         NSMutableDictionary *geo = [[NSMutableDictionary alloc]init];
         [geo setValue:[dictionary valueForKey:@"countryName"][i] forKey:@"countryName"];
         [geo setValue:[dictionary valueForKey:@"countryCode"][i] forKey:@"countryCode"];
         [geo setValue:[dictionary valueForKey:@"stateName"][i] forKey:@"stateName"];
-        [geo setValue:[dictionary valueForKey:@"stateAbbr"][i] forKey:@"stateAbbr"];
         [geo setValue:[dictionary valueForKey:@"cityName"][i] forKey:@"cityName"];
         location.geo = geo;
         NSMutableDictionary *category = [[NSMutableDictionary alloc]init];
@@ -91,7 +91,7 @@
 }
 -(void)getTredingLocationsError:(NSError *)error {
 
-    
+    NSLog(@"getTredingLocationsError %@", error);
 }
 
 -(void)getInstagramIDLocationSucceeded:(NSMutableArray *)dictionary {
@@ -106,6 +106,7 @@
         [dicLocation setValue:location.geo forKey:@"geo"];
         [dicLocation setValue:location.category forKey:@"category"];
         [dicLocation setValue:location.name forKey:@"name"];
+        [dicLocation setValue:location.address forKey:@"address"];
         [dicLocation setValue:location.postal_code forKey:@"postal_code:"];
         
         [[CSAPI sharedInstance] addLocationWithDictionary:dicLocation delegate:self];
