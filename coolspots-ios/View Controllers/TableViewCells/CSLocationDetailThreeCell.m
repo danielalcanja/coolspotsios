@@ -58,7 +58,7 @@
 }
 -(void)reloadCellWithLocation:(CSPic*)pic1 andPic2:(CSPic*)pic2 andPic3:(CSPic*)pic3 withViewController:(UIViewController*)viewController{
     
-    egoImageView1.imageURL = [NSURL URLWithString:pic1.low_resolution];
+    egoImageView1.imageURL = [NSURL URLWithString:pic1.lowResolution];
     [button1 addTarget:viewController action:@selector(didSelectPic:) forControlEvents:UIControlEventTouchUpInside];
     button1.tag = [pic1.id integerValue];
     egoImageView2.imageURL = [NSURL URLWithString:pic2.thumbnail];

@@ -10,4 +10,13 @@
 
 @implementation CSPic
 
+- (Class)AMCElementClassForCollectionWithKey:(NSString*)key {
+    if ([@"data" isEqualToString:key]) {
+        return [CSPic class];
+    }
+    return [NSObject class];
+}
+
+
+
 @end

@@ -89,7 +89,7 @@
 }
 -(void)setMosaicDataWithPic:(CSPic *)pic{
     
-    NSString *standard_resolution = pic.standard_resolution;
+    NSString *standard_resolution = pic.standardResolution;
     
     
     //  Image set

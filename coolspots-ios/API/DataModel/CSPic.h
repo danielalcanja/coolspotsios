@@ -16,12 +16,10 @@ typedef enum {
 
 @interface CSPic : NSObject
 
-@property (strong, atomic) NSArray *data;
-
 @property (strong, nonatomic) NSString *id;
-@property (strong, nonatomic) NSString *low_resolution;
+@property (strong, nonatomic) NSString *lowResolution;
 @property (strong, nonatomic) NSString *thumbnail;
-@property (strong, nonatomic) NSString *standard_resolution;
+@property (strong, nonatomic) NSString *standardResolution;
 @property (strong, nonatomic) NSString *caption;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *profilePicture;
@@ -29,6 +27,8 @@ typedef enum {
 @property (assign) BOOL firstTimeShown;
 @property (assign) float relativeHeight;
 @property (assign) MosaicPicLayoutType layoutType;
+@property (strong, atomic) NSArray *data;
+
 
 
 

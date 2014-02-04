@@ -92,7 +92,7 @@
     CGFloat spaceHight = 65;
     
     CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, headerSize-spaceHight, 35,35) isFavorite:NO];
-    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",self.location.id] isFavorite:self.location.favorite];
+    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%@",self.location.id] isFavorite:self.location.favorite];
     
     CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
@@ -247,6 +247,7 @@
     float retVal = 1.0;
     
     CSPic *aMosaicModule = [objects objectAtIndex:indexPath.row];
+   
     
     if (aMosaicModule.relativeHeight != 0){
         
@@ -312,11 +313,11 @@
     
     [DejalBezelActivityView activityViewForView:picsCollectionView];
 
-    [[CoolSpotsAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInteger:self.location.idLocation] page:[NSNumber numberWithInt:page]  delegate:self];
+    [[CoolSpotsAPI sharedInstance] getPhotosWithID:self.location.id page:[NSNumber numberWithInt:page]  delegate:self];
 }
--(void)getPhotosSucceeded:(CSPic *)pic {
+-(void)getPhotosSucceeded:(CSResponse *)response {
     
-    objects = [pic.data mutableCopy];
+    objects = [response.data mutableCopy];
     [picsCollectionView reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
     
@@ -329,7 +330,7 @@
             
             page++;
             
-            [[CSAPI sharedInstance] getPhotosWithID:[NSNumber numberWithInt:self.location.id] page:[NSNumber numberWithInt:page]  delegate:self];
+            [[CSAPI sharedInstance] getPhotosWithID:self.location.id page:[NSNumber numberWithInt:page]  delegate:self];
             
         }
     }

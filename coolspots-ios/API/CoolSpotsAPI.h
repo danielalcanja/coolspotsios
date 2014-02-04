@@ -25,8 +25,15 @@
 // json/location/photos
 @protocol CSPhotosDelegateCaller<NSObject>
 @required
-- (void) getPhotosSucceeded:(CSPic*)pic;
+- (void) getPhotosSucceeded:(CSResponse*)response;
 - (void) getPhotosError:(NSError*)error;
+@end
+
+// json/favorities
+@protocol CSFavoriteDelegateCaller<NSObject>
+@required
+- (void) getLocationsSucceeded:(CSResponse*)response;
+- (void) getLocationsError:(NSError*)error;
 @end
 
 @interface CoolSpotsAPI : NSObject

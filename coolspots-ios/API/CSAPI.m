@@ -143,9 +143,9 @@
             for(int i=0;i<[pics count];i++) {
                 
                 CSPic *pic = [[CSPic alloc] init];
-                pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
+                pic.standardResolution = [pics valueForKey:@"standard_resolution"][i];
                 pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
-                pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
+                pic.lowResolution = [pics valueForKey:@"low_resolution"][i];
                 pic.caption = [pics valueForKey:@"caption"][i];
 
                 //[location.lastPhotos addObject:pic];
@@ -248,9 +248,9 @@
                 for(int i=0;i<[pics count];i++) {
                     
                     CSPic *pic = [[CSPic alloc] init];
-                    pic.standard_resolution = [pics valueForKey:@"standard_resolution"][i];
+                    pic.standardResolution = [pics valueForKey:@"standard_resolution"][i];
                     pic.thumbnail = [pics valueForKey:@"thumbnail"][i];
-                    pic.low_resolution = [pics valueForKey:@"low_resolution"][i];
+                    pic.lowResolution = [pics valueForKey:@"low_resolution"][i];
                     pic.caption = [pics valueForKey:@"caption"][i];
                     
                     //[location.lastPhotos addObject:pic];
@@ -326,9 +326,9 @@
             CSPic *pic = [[CSPic alloc] init];
             pic.id = [tempObjects valueForKey:@"id"][i];
 
-            pic.standard_resolution = [tempObjects valueForKey:@"standardResolution"][i];
+            pic.standardResolution = [tempObjects valueForKey:@"standardResolution"][i];
             pic.thumbnail = [tempObjects valueForKey:@"thumbnail"][i];
-            pic.low_resolution = [tempObjects valueForKey:@"lowResolution"][i];
+            pic.lowResolution = [tempObjects valueForKey:@"lowResolution"][i];
             pic.caption = [tempObjects valueForKey:@"caption"][i];
             
             NSMutableArray *userObject = [tempObjects valueForKey:@"idUser"][i];

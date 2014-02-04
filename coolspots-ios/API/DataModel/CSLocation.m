@@ -19,7 +19,7 @@
 }
 - (NSDictionary*)jsonClasses {
     return @{
-             @"lastPhotos" : [CSPic class],@"id" : @"idLocation"
+             @"lastPhotos" : [CSPic class]
              };
 }
 

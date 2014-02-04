@@ -298,7 +298,7 @@
             
             NSInteger row  = indexPath.row-1;
             CSLocation *location = [objects objectAtIndex:row];
-            NSLog(@" id location %@", location.idLocation);
+           /// NSLog(@" id location %@", location.id);
             
             NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;
             CSLocationSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

@@ -89,7 +89,7 @@
                              method:@"POST"
                       expectedClass:[CSPic class]
                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
-                                CSPic *result = (CSPic*)object;
+                                CSResponse *result = (CSResponse*)object;
                                 [delegate getPhotosSucceeded:result];
                             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                 [delegate getPhotosError:error];

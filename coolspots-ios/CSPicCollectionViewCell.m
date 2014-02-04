@@ -93,7 +93,7 @@
 }
 -(void)initWithPic:(CSPic*)pic {
     
-    egoImageView.imageURL = [NSURL URLWithString:pic.standard_resolution];
+    egoImageView.imageURL = [NSURL URLWithString:pic.standardResolution];
     labelCaption.text = pic.caption;
     labelUser.text = pic.username;
     scrollView.contentSize = CGSizeMake(320,500);

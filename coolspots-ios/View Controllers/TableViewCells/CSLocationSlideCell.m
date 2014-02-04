@@ -148,27 +148,27 @@
     _location = location;
     if([location.lastPhotos count] > 0) {
         CSPic *pic = [location.lastPhotos objectAtIndex:0] ;
-        NSString *standard_resolution = pic.standard_resolution;
+        NSString *standard_resolution = pic.standardResolution;
         [slideViewImage1 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
     if([location.lastPhotos count] > 1) {
         CSPic *pic = [location.lastPhotos objectAtIndex:1] ;
-        NSString *standard_resolution = pic.standard_resolution;
+        NSString *standard_resolution = pic.standardResolution;
         [slideViewImage2 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
     if([location.lastPhotos count] > 2) {
         CSPic *pic = [location.lastPhotos objectAtIndex:2] ;
-        NSString *standard_resolution = pic.standard_resolution;
+        NSString *standard_resolution = pic.standardResolution;
         [slideViewImage3 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
     if([location.lastPhotos count] > 3) {
         CSPic *pic = [location.lastPhotos objectAtIndex:3] ;
-        NSString *standard_resolution = pic.standard_resolution;
+        NSString *standard_resolution = pic.standardResolution;
         [slideViewImage4 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
     if([location.lastPhotos count] > 4) {
         CSPic *pic = [location.lastPhotos objectAtIndex:4] ;
-        NSString *standard_resolution = pic.standard_resolution;
+        NSString *standard_resolution = pic.standardResolution;
         [slideViewImage5 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
     }
     
