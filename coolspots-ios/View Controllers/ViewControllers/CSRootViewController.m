@@ -84,10 +84,12 @@
     
     //  update the last update date
     [_refreshHeaderView refreshLastUpdatedDate];
-        
-    self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationsTable];
-    self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
-    self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
+    
+    
+    //self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationsTable];
+    //self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
+
+    
     [self startStandardUpdates];
     
     newCityViewController = [[NewCityViewController alloc] init];
@@ -186,34 +188,6 @@
     }
 }
 
--(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {
-    
-    isFirstLoad = NO;
-    objects = dictionary;
-    [[CSSharedData sharedInstance] setNearLocations:objects];
-    [locationsTable reloadData];
-    [DejalBezelActivityView removeViewAnimated:YES];
-    
-}
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-
-    if([objects count] >= 18)
-    {
-        if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
-            
-            page++;
-            
-            NSString *city = [[CSSharedData sharedInstance] currentCity];
-            NSString *country = [[CSSharedData sharedInstance] currentCountry];
-            NSString *state = [[CSSharedData sharedInstance] currentState];
-            
-            [[CSAPI sharedInstance] getBestLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
-            
-        }
-    }
-}
 
 #pragma mark - Table view data source
 

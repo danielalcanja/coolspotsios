@@ -82,9 +82,9 @@
     //  update the last update date
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:eventsTable];
-    self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
-    self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
+    //self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:eventsTable];
+    //self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
+    //self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:@"ADD_REMOVE_FAV" object:nil];
     [self loadData];
