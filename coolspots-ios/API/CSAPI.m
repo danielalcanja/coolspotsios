@@ -53,8 +53,6 @@
 -(void)getFoursquareVenuesWithQuery:(NSString*)query success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
                                   failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
     
-    
-    
     NSString *todayDate  = @"20140121";
     NSString *catoryIds = @"4bf58dd8d48988d1e8931735,4bf58dd8d48988d112941735,4bf58dd8d48988d116941735,4bf58dd8d48988d11e941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d119941735,4bf58dd8d48988d120941735,4bf58dd8d48988d11c941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d1ea941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11a941735";
    
@@ -117,9 +115,6 @@
     [geo setObject:stateName forKey:@"stateName"];
     [geo setObject:city forKey:@"cityName"];
     [parameters setObject:geo forKey:@"geo"];
-    
-    
-
     
     [self httpRequestWithParameters:parameters path:@"/json/locations" success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

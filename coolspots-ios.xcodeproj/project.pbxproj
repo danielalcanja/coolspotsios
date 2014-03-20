@@ -888,6 +888,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = coolspots;
 				TargetAttributes = {
+					8F532DCC1861243400DDB7EC = {
+						DevelopmentTeam = G8NJQTZJ3M;
+					};
 					8F532DED1861243400DDB7EC = {
 						TestTargetID = 8F532DCC1861243400DDB7EC;
 					};
@@ -1220,11 +1223,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4D83C0A406043798881CE00 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Alcanja (H8EHK7MWP9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Alcanja (H8EHK7MWP9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "coolspots-ios/coolspots-ios-Prefix.pch";
 				INFOPLIST_FILE = "coolspots-ios/coolspots-ios-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CFC1CF3F-A58D-4163-9424-5F2FC59F0143";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1233,11 +1238,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4D83C0A406043798881CE00 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Alcanja (H8EHK7MWP9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "coolspots-ios/coolspots-ios-Prefix.pch";
 				INFOPLIST_FILE = "coolspots-ios/coolspots-ios-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CFC1CF3F-A58D-4163-9424-5F2FC59F0143";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

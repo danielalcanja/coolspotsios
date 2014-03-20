@@ -16,7 +16,7 @@
 
 
 // json/location
-@protocol CSLocationDelegateCaller<NSObject>
+@protocol CSLocationsDelegateCaller<NSObject>
 @required
 - (void) getLocationsSucceeded:(CSResponse*)response;
 - (void) getLocationsError:(NSError*)error;
@@ -41,7 +41,7 @@
 @property (strong, nonatomic) GFClient *gf;
 + (id)sharedInstance;
 
--(void)getLocationsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName delegate:(id<CSLocationDelegateCaller>)delegate;
+-(void)getLocationsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName delegate:(id<CSLocationsDelegateCaller>)delegate;
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegateCaller>)delegate;
 
 @end
