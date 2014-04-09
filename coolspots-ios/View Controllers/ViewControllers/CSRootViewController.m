@@ -86,10 +86,12 @@
     
     //  update the last update date
     [_refreshHeaderView refreshLastUpdatedDate];
-        
-    self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationsTable];
-    self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
-    self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
+    
+    
+    //self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationsTable];
+    //self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
+
+    
     [self startStandardUpdates];
     
     newCityViewController = [[NewCityViewController alloc] init];
@@ -207,17 +209,8 @@
     [DejalBezelActivityView removeViewAnimated:YES];
     
 }
--(void)getBestLocations:(NSError *)error {
-    
-}
--(void)getBestLocationsSucceeded:(NSMutableArray *)dictionary {
-    
-    isFirstLoad = NO;
-    objects = dictionary;
-    [[CSSharedData sharedInstance] setNearLocations:objects];
-    [locationsTable reloadData];
-    [DejalBezelActivityView removeViewAnimated:YES];
-    
+-(void)getLocationsError:(NSError *)error {
+    NSLog(@"getLocationsError %@", error);
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -227,7 +220,7 @@
     {
         CGFloat y = scrollView.contentOffset.y;
         CGFloat height  = scrollView.contentSize.height - scrollView.frame.size.height;
-        if (y >= height) {
+        if (y == height) {
             
             page++;
             isAlreadyExecuted = NO;

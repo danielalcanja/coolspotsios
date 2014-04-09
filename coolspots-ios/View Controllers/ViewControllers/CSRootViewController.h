@@ -14,12 +14,11 @@
 #import <YIFullScreenScroll.h>
 #import "MosaicLayoutDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import "CSAPI.h"
 #import "NewCityViewController.h"
 #import "CoolSpotsAPI.h"
 
 
-@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,MosaicLayoutDelegate,CLLocationManagerDelegate,CSLocationDelegate,CSLocationDelegateCaller>
+@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,CLLocationManagerDelegate,CSLocationsDelegateCaller>
 {
     __weak IBOutlet UICollectionView *_collectionView;
     CLLocationManager *locationManager;
