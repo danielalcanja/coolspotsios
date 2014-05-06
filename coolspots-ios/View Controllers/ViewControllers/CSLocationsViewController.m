@@ -15,6 +15,7 @@
 #import "CSLocationDetailViewController.h"
 
 
+
 #define kDoubleColumnProbability 40
 
 
@@ -47,13 +48,19 @@
     MosaicLayout *layout = [[MosaicLayout alloc] init];
     
     CGRect frame = self.view.frame;
-    frame.size.height = 490;
+    frame.size.height = 520;
     locationCollectionView=[[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
     [(MosaicLayout *)locationCollectionView.collectionViewLayout setDelegate:self];
 
     locationCollectionView.delegate = self;
     [locationCollectionView setDataSource:self];
     [self.view addSubview:locationCollectionView];
+    
+    self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationCollectionView style:YIFullScreenScrollStyleFacebook];
+    self.fullScreenScroll.delegate = self;
+    self.fullScreenScroll.shouldHideNavigationBarOnScroll = YES;
+    self.fullScreenScroll.shouldHideToolbarOnScroll = YES;
+    self.fullScreenScroll.shouldHideTabBarOnScroll = NO;
     
     [locationCollectionView registerClass:[CSLocationCollectionViewCell class] forCellWithReuseIdentifier:@"locationCollectionViewCell"];
     

@@ -12,7 +12,7 @@
 #import "CoolSpotsAPI.h"
 
 
-@interface CSLocationsViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,UIScrollViewDelegate,GetLocationsDelegateCaller> {
+@interface CSLocationsViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,UIScrollViewDelegate,GetLocationsDelegateCaller,YIFullScreenScrollDelegate> {
     UICollectionView *locationCollectionView;
 
 }
