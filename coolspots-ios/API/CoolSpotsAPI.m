@@ -51,7 +51,7 @@
 -(void)getLocationsWithCity:(NSString*)city delegate:(id<GetLocationsDelegateCaller>)delegate{
    
     [self jsonRequestWithParameters:nil
-                               path:@"locations"
+                               path:[NSString stringWithFormat:@"locations?city=%@", city]
                              method:@"GET"
                       expectedClass:[Location class]
                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
