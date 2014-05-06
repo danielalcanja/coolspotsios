@@ -87,9 +87,9 @@
     [self jsonRequestWithParameters:userDict
                                path:@"/users/login"
                              method:@"POST"
-                      expectedClass:[User class]
+                      expectedClass:[NSDictionary class]
                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
-                                CSResponse *result = (CSResponse*)object;
+                                NSDictionary *result = (NSDictionary*)object;
                                 [delegate loggingUserSucceeded:result];
                             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
 

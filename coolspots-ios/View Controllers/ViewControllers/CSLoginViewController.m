@@ -139,8 +139,6 @@ static NSString *const scope = @"basic+comments+likes";
 }
 -(void)getInstagramUserInfoSucceeded:(NSMutableArray *)dictionary {
     
-    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
     user = [[CSUser alloc] init];
     user.username = [dictionary valueForKey:@"username"];
     user.id = [dictionary valueForKey:@"id"];
@@ -182,16 +180,17 @@ static NSString *const scope = @"basic+comments+likes";
     NSLog(@"loggingUserError %@", error);
     
 }
--(void)loggingUserSucceeded:(CSResponse *)response {
-    /*
-     
-     {
-     "path": "/users",
-     "uid": "04327a7a728f3b47",
-     "id": "59851b49cc9e1f0fe0a9128fad47263865aa9fc6c3a724bc65cfb781a61b9c3facb83ecd041b2ce4308384303c88a433ed9450637eebc0d2ce3789de8bec7bcb"
-     }
-     
-     */
+-(void)loggingUserSucceeded:(NSDictionary *)dictionary {
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:[dictionary valueForKey:@"uid"] forKey:@"uid"];
+    [prefs setObject:[dictionary valueForKey:@"id"] forKey:@"sessionID"];
+    
+    [prefs synchronize];
+    
+    NSLog(@"sessionID %@", [dictionary valueForKey:@"id"]);
+
+
     [DejalBezelActivityView removeViewAnimated:YES];
 
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;

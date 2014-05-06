@@ -19,7 +19,7 @@
 // Logging
 @protocol LoggingUserCaller<NSObject>
 @required
-- (void) loggingUserSucceeded:(CSResponse*)response;
+- (void) loggingUserSucceeded:(NSDictionary*)dictionary;
 - (void) loggingUserError:(NSError*)error;
 - (void) unauthorizedError:(NSError*)error;
 @end
