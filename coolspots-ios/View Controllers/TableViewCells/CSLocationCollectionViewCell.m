@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreImage/CoreImage.h>
 
-#define kLabelHeight 40
+#define kLabelHeight 45
 #define kLabelMargin 12
 #define kLabelMarginX 4
 
@@ -39,12 +39,12 @@
         
         _labelTitlePlace = [[UILabel alloc] init];
         _labelTitlePlace.frame = CGRectMake(2, 320, 250, 44);
-        [_labelTitlePlace setFont:[UIFont fontWithName:@"Museo-700" size:20]];
+        [_labelTitlePlace setFont:[UIFont fontWithName:@"Museo-500" size:18]];
         _labelTitlePlace.backgroundColor = [UIColor clearColor];
         _labelTitlePlace.textColor = [UIColor whiteColor];
         _labelTitlePlace.shadowColor = [UIColor blackColor];
         _labelTitlePlace.shadowOffset = CGSizeMake(0, 1);
-        _labelTitlePlace.numberOfLines = 2;
+        _labelTitlePlace.numberOfLines = 3;
         [view addSubview:_labelTitlePlace];
         
         objects = [[NSMutableArray alloc] init];
@@ -180,9 +180,14 @@
     while (![self hasFace:self.imageCover.image]) {
         
         indexImage++;
-        CSPic *pic =  [objects objectAtIndex:indexImage];
-        self.imageCover.imageURL = [NSURL URLWithString:pic.standardResolution];
-        self.imageCover.alpha = 0.0;
+        if([objects count] > indexImage) {
+            CSPic *pic =  [objects objectAtIndex:indexImage];
+            self.imageCover.imageURL = [NSURL URLWithString:pic.standardResolution];
+            self.imageCover.alpha = 0.0;
+            
+        }else {
+            break;
+        }
         
     }
     
