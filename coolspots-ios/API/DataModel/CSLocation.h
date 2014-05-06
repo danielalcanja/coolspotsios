@@ -19,6 +19,7 @@ typedef enum {
 @interface CSLocation : NSObject
 
 @property (assign, nonatomic) NSNumber *id;
+@property (strong, nonatomic) NSString *idInstagram;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *slug;
 @property (assign) BOOL favorite;

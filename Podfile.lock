@@ -14,9 +14,9 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
-  - CURestKit (1.0.3):
+  - CURestKit (1.0.4):
     - ASIHTTPRequest
-  - DCIntrospect-ARC (0.0.6)
+  - DCIntrospect-ARC (0.0.7)
   - DejalActivityView (1.2)
   - EGOTableViewPullRefresh (0.1.0)
   - GoldenFleece (1.1):
@@ -28,7 +28,7 @@ PODS:
   - ISO8601DateFormatterValueTransformer (0.5.0):
     - RKValueTransformers (~> 1.0.0)
   - JRSwizzle (1.0)
-  - JSONModel (0.11.0)
+  - JSONModel (0.12.0)
   - Mixpanel (2.0.0)
   - NSDate+Helper (0.0.1)
   - Reachability (3.1.1)
@@ -74,25 +74,25 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
   AMScrollingNavbar: d56590aa89706c409d1f37c3d806b9d138af507a
-  ASIHTTPRequest: 4bd3ed65bf8a726292c5fa79ea5c0a2e02c97241
-  CURestKit: 0a95dbb18bfddb228050aa05335b6b3b6462670f
-  DCIntrospect-ARC: 41cae8dbe48748e77a4466963896df13889df041
+  ASIHTTPRequest: 0b05282cf3c422c3474eff98c5bb8c1192b91b86
+  CURestKit: 5c80bc716a06a289557ba7ca8035343c21abbdb4
+  DCIntrospect-ARC: bfaf751aa78387777e366364bc85a6c8ec78fbee
   DejalActivityView: 3a7f7a2be287c0f25f547762815c40709b02169c
-  EGOTableViewPullRefresh: 6ba637ce6dd3186b503d2d91e6b3a08a26d650f5
+  EGOTableViewPullRefresh: 7ed130952ccdc745c06835558cb13193fda22d78
   GoldenFleece: f895bc520b47f27c8dc38426c5601a121cda74c4
   HPGrowingTextView: 4318f557b33c19def1c53ec275d6e2a2d6589cd0
   ISO8601DateFormatter: 00944e437ea647f4244454ce8809d313861d08de
   ISO8601DateFormatterValueTransformer: d0af1f50a9df42db72d7418db31938b8473e0af8
   JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
-  JSONModel: a5f2eb85c46df008a67569447ec408d1040d4bf4
+  JSONModel: f391da60a15e11f8fa8950fb980b8f799ae3453f
   Mixpanel: e4af97adb60a10541b7869929a83d734025058a6
-  NSDate+Helper: 3015cb57778256bce7c549fca172474308740059
+  NSDate+Helper: a61b1d5a58cbc6f114b0a50a1c02c46bb7236b78
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RestKit: dc107a0aa4f962575ad0385bac5b3c5e4f591f4e
   RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
-  SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
+  SOCKit: 8871d058926a6c6cc144f0c5eee82c5d0ec274a3
   TransitionKit: 433284465abacdc07852d7db6dd0cc075010059a
-  ViewUtils: e0b147bd0b2acfbf6b030f6a32b0c2bdd959df68
+  ViewUtils: a36a113fb22cdbd27d048540906e294f92c016fc
   YIFullScreenScroll: 57631b0da8348caf8a5f2a75ced8703bc4e813df
 
 COCOAPODS: 0.29.0

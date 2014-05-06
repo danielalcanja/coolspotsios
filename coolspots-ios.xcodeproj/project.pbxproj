@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0B2C485BD59143A488D14CFB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B161DA3CDAB8478F86609927 /* libPods.a */; };
+		8F07E6A818F6543A001F745F /* APIInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F07E6A718F6543A001F745F /* APIInstagram.m */; };
+		8F07E6AD18F8679B001F745F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F07E6AC18F8679B001F745F /* Location.m */; };
+		8F07E6B018F8745B001F745F /* Geo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F07E6AF18F8745B001F745F /* Geo.m */; };
 		8F209CC1189B278F00FF691D /* CoolSpotsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC0189B278F00FF691D /* CoolSpotsAPI.m */; };
 		8F209CC4189B29DF00FF691D /* CSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC3189B29DF00FF691D /* CSResponse.m */; };
 		8F209CC7189B4B1900FF691D /* CSGeo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F209CC6189B4B1900FF691D /* CSGeo.m */; };
@@ -89,6 +92,7 @@
 		8F93A9781866283E003D5FA2 /* Museo300.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F93A973186626D0003D5FA2 /* Museo300.otf */; };
 		8F93A97B18663066003D5FA2 /* CSLocationDetailThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F93A97A18663066003D5FA2 /* CSLocationDetailThreeCell.m */; };
 		8F93A97E1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F93A97D1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m */; };
+		8F947EF519130059002D8CA0 /* CSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F947EF419130059002D8CA0 /* CSModel.m */; };
 		8F9E83E1186E02E20056E095 /* GTScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E83E0186E02E20056E095 /* GTScrollNavigationBar.m */; };
 		8F9E83E3186E09820056E095 /* button-border.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F9E83E2186E09820056E095 /* button-border.png */; };
 		8F9E83E5186E09F10056E095 /* button-border2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F9E83E4186E09F10056E095 /* button-border2.png */; };
@@ -165,6 +169,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F07E6A618F65439001F745F /* APIInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIInstagram.h; path = API/APIInstagram.h; sourceTree = "<group>"; };
+		8F07E6A718F6543A001F745F /* APIInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIInstagram.m; path = API/APIInstagram.m; sourceTree = "<group>"; };
+		8F07E6AB18F8679B001F745F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = API/DataModel/Location.h; sourceTree = "<group>"; };
+		8F07E6AC18F8679B001F745F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = API/DataModel/Location.m; sourceTree = "<group>"; };
+		8F07E6AE18F8745B001F745F /* Geo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Geo.h; path = API/DataModel/Geo.h; sourceTree = "<group>"; };
+		8F07E6AF18F8745B001F745F /* Geo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Geo.m; path = API/DataModel/Geo.m; sourceTree = "<group>"; };
 		8F209CBF189B278F00FF691D /* CoolSpotsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoolSpotsAPI.h; path = API/CoolSpotsAPI.h; sourceTree = "<group>"; };
 		8F209CC0189B278F00FF691D /* CoolSpotsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoolSpotsAPI.m; path = API/CoolSpotsAPI.m; sourceTree = "<group>"; };
 		8F209CC2189B29DF00FF691D /* CSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSResponse.h; path = API/CSResponse.h; sourceTree = "<group>"; };
@@ -274,6 +284,8 @@
 		8F93A97A18663066003D5FA2 /* CSLocationDetailThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocationDetailThreeCell.m; path = "View Controllers/TableViewCells/CSLocationDetailThreeCell.m"; sourceTree = "<group>"; };
 		8F93A97C1866604A003D5FA2 /* CSLocationDetailSmallPicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocationDetailSmallPicCell.h; path = "View Controllers/TableViewCells/CSLocationDetailSmallPicCell.h"; sourceTree = "<group>"; };
 		8F93A97D1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocationDetailSmallPicCell.m; path = "View Controllers/TableViewCells/CSLocationDetailSmallPicCell.m"; sourceTree = "<group>"; };
+		8F947EF319130059002D8CA0 /* CSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSModel.h; path = API/CSModel.h; sourceTree = "<group>"; };
+		8F947EF419130059002D8CA0 /* CSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSModel.m; path = API/CSModel.m; sourceTree = "<group>"; };
 		8F9E83DF186E02E20056E095 /* GTScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTScrollNavigationBar.h; sourceTree = "<group>"; };
 		8F9E83E0186E02E20056E095 /* GTScrollNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTScrollNavigationBar.m; sourceTree = "<group>"; };
 		8F9E83E2186E09820056E095 /* button-border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-border.png"; sourceTree = "<group>"; };
@@ -405,6 +417,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F07E6B118F87464001F745F /* PikiAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8F07E6AB18F8679B001F745F /* Location.h */,
+				8F07E6AC18F8679B001F745F /* Location.m */,
+				8F07E6AE18F8745B001F745F /* Geo.h */,
+				8F07E6AF18F8745B001F745F /* Geo.m */,
+			);
+			name = PikiAPI;
+			sourceTree = "<group>";
+		};
 		8F532DC41861243400DDB7EC = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +724,8 @@
 		8FB75F171863780B00AE36C9 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				8F07E6A618F65439001F745F /* APIInstagram.h */,
+				8F07E6A718F6543A001F745F /* APIInstagram.m */,
 				8F209CBF189B278F00FF691D /* CoolSpotsAPI.h */,
 				8F209CC0189B278F00FF691D /* CoolSpotsAPI.m */,
 				8F209CC2189B29DF00FF691D /* CSResponse.h */,
@@ -715,6 +740,7 @@
 		8FB75F18186378B000AE36C9 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				8F07E6B118F87464001F745F /* PikiAPI */,
 				8FB75F19186378FB00AE36C9 /* CSLocation.h */,
 				8FB75F1A186378FB00AE36C9 /* CSLocation.m */,
 				8F91CFB218638C9300C07D07 /* CSPic.h */,
@@ -782,6 +808,8 @@
 			children = (
 				8F532DDF1861243400DDB7EC /* AppDelegate.h */,
 				8F532DE01861243400DDB7EC /* AppDelegate.m */,
+				8F947EF319130059002D8CA0 /* CSModel.h */,
+				8F947EF419130059002D8CA0 /* CSModel.m */,
 			);
 			name = Root;
 			sourceTree = "<group>";
@@ -1044,6 +1072,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F9E83EB186E1E6C0056E095 /* CSExploreViewController.m in Sources */,
+				8F07E6AD18F8679B001F745F /* Location.m in Sources */,
 				8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */,
 				8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */,
 				8F93A94F1865D330003D5FA2 /* CSUtil.m in Sources */,
@@ -1055,6 +1084,7 @@
 				8FA86FD4189597F8002E9D05 /* CSComment.m in Sources */,
 				8F91CFC718638F7700C07D07 /* EGOImageLoader.m in Sources */,
 				8F209CC7189B4B1900FF691D /* CSGeo.m in Sources */,
+				8F947EF519130059002D8CA0 /* CSModel.m in Sources */,
 				8FEF47BE1873213900FD2C19 /* CSImageView.m in Sources */,
 				8F93A97E1866604A003D5FA2 /* CSLocationDetailSmallPicCell.m in Sources */,
 				8F27317B188223F100A59364 /* FSLocation.m in Sources */,
@@ -1075,6 +1105,7 @@
 				8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */,
 				8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */,
 				8F8AA2CB187E32C4001AED3E /* NewCityViewController.m in Sources */,
+				8F07E6B018F8745B001F745F /* Geo.m in Sources */,
 				8FD918C31898AD0D002F81E8 /* CSCurrentLocationCell.m in Sources */,
 				8FF396D4188653A300754634 /* CSLoginViewController.m in Sources */,
 				8F9E83FF186F854E0056E095 /* MosaicData.m in Sources */,
@@ -1084,6 +1115,7 @@
 				8FF396D11886538300754634 /* Instagram.m in Sources */,
 				8F9E83E1186E02E20056E095 /* GTScrollNavigationBar.m in Sources */,
 				8F2731771881FAA300A59364 /* CSSharedData.m in Sources */,
+				8F07E6A818F6543A001F745F /* APIInstagram.m in Sources */,
 				8F93A97218661FC3003D5FA2 /* CSLocationDetailViewController.m in Sources */,
 				8F316809188F3E7300019EC4 /* CSProfileViewController.m in Sources */,
 				8FA86FC818958FA7002E9D05 /* CSCommentButton.m in Sources */,

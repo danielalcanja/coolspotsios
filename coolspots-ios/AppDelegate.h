@@ -12,11 +12,14 @@
 #import "CSTabBarController.h"
 #import "Instagram.h"
 #import <GFClient.h>
+#import "APIInstagram.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) Instagram *instagram;
+@property (nonatomic, strong) APIInstagram* apiInstagram;
 
 
 

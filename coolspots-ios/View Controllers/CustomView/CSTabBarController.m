@@ -21,20 +21,20 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
-        self.rootViewController = [[CSRootViewController alloc] init];
-        self.eventsViewController = [[CSEventsViewController alloc] init];
+        self.mainViewController = [[CSLocationsViewController alloc] init];
+        //self.eventsViewController = [[CSEventsViewController alloc] init];
         self.exploreViewController = [[CSRootViewController alloc] init];
         self.favoritesViewController = [[CSFavoritesViewController  alloc] init];
         self.profileViewController = [[CSProfileViewController  alloc] init];
 
         
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
         
         UITabBarItem *tab1 = [[UITabBarItem alloc] initWithTitle:@"Spots" image:[UIImage imageNamed:@"tb-icon-location"] tag:20000];
         navController.tabBarItem  = tab1;
         
         UINavigationController *eventNavController = [[UINavigationController alloc] initWithRootViewController:self.eventsViewController];
-        [eventNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
+        //[eventNavController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-blue"] forBarMetrics:UIBarMetricsDefault];
 
         
         UITabBarItem *tabEvent = [[UITabBarItem alloc] initWithTitle:@"Events" image:[UIImage imageNamed:@"tb-icon-event"] tag:20001];
@@ -58,7 +58,7 @@
         UITabBarItem *tabProfile = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"tb-icon-user"] tag:20001];
         profileNavController.tabBarItem  = tabProfile;
         
-        self.viewControllers = [NSArray arrayWithObjects: navController,eventNavController,exploreNavController,favoritesNavController, profileNavController, nil];
+        self.viewControllers = [NSArray arrayWithObjects: navController,exploreNavController,favoritesNavController, profileNavController, nil];
         
     }
     return self;

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CSLocation.h"
 #import "CSPic.h"
+#import "EGOImageView.h"
 
 @interface CSPicCollectionViewCell2 : UICollectionViewCell {
-    UIImageView *_imageView;
+    EGOImageView *_imageView;
 
 }
 

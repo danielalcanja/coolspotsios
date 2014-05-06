@@ -10,8 +10,10 @@
 #import "CSAPI.h"
 #import <DejalActivityView.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CoolSpotsAPI.h"
 
-@interface CSSearchFoursquareViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchDisplayDelegate,CSFSVenusNearDelegate,CLLocationManagerDelegate,CSInstagramIDLocationDelegate,CSAddLocationDelegate,UISearchBarDelegate>
+
+@interface CSSearchFoursquareViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchDisplayDelegate,CSFSVenusNearDelegate,CLLocationManagerDelegate,CSInstagramIDLocationDelegate,CSAddLocationDelegate,UISearchBarDelegate,AddLocationCaller>
 
 @property  (nonatomic,strong) NSString *locationCity;
 

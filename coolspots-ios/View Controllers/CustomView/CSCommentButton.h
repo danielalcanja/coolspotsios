@@ -10,7 +10,7 @@
 #import "CSLocation.h"
 
 @interface CSCommentButton : UIView
-@property   (assign) UIButton *button;
+@property   (strong) UIButton *button;
 
 -(void)reloadControlWithLocation:(CSLocation*)location controller:(UIViewController *)controller;
 

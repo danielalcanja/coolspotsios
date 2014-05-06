@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "EGOImageView.h"
-#import "CSLocation.h"
+#import "Location.h"
 
 @interface CSLocationTopCell : UITableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withLocation:(CSLocation*)location;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withLocation:(Location*)location;
 
 @end

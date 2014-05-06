@@ -12,7 +12,7 @@
 
 @interface CSFavButton : UIView<CSAddRemoveFavoriteLocationDelegate>
 
-@property   (assign) UIButton *button;
+@property   (strong) UIButton *button;
 @property (assign) BOOL isFavorite;
 @property  (nonatomic,strong) NSString *idLocation;
 

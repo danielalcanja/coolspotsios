@@ -13,13 +13,28 @@
 #import "CSParameter.h"
 #import "CSPic.h"
 #import "CSResponse.h"
+#import "Location.h"
 
+
+// location
+@protocol GetLocationsDelegateCaller<NSObject>
+@required
+- (void) getLocationsSucceeded:(NSArray*)response;
+- (void) getLocationsError:(NSError*)error;
+@end
 
 // json/location
 @protocol CSLocationsDelegateCaller<NSObject>
 @required
 - (void) getLocationsSucceeded:(CSResponse*)response;
 - (void) getLocationsError:(NSError*)error;
+@end
+
+// Add
+@protocol AddLocationCaller<NSObject>
+@required
+- (void) addLocationSucceeded:(NSArray*)response;
+- (void) addLocationError:(NSError*)error;
 @end
 
 // json/location/photos
@@ -43,5 +58,7 @@
 
 -(void)getLocationsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName delegate:(id<CSLocationsDelegateCaller>)delegate;
 -(void)getPhotosWithID:(NSNumber*)idLocation page:(NSNumber*)page delegate:(id<CSPhotosDelegateCaller>)delegate;
+-(void)getLocationsWithCity:(NSString*)city delegate:(id<GetLocationsDelegateCaller>)delegate;
+- (void)addLocationWithLocation:(Location*)location delegate:(id<AddLocationCaller>)delegate;
 
 @end

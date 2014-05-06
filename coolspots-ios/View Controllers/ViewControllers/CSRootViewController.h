@@ -18,7 +18,7 @@
 #import "CoolSpotsAPI.h"
 
 
-@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,CLLocationManagerDelegate,CSLocationsDelegateCaller>
+@interface CSRootViewController : UIViewController<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,CLLocationManagerDelegate,CSLocationsDelegateCaller,GetLocationsDelegateCaller>
 {
     __weak IBOutlet UICollectionView *_collectionView;
     CLLocationManager *locationManager;

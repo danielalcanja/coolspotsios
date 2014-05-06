@@ -8,20 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "EGOImageView.h"
-#import "CSLocation.h"
+#import "Location.h"
 #import "CSPic.h"
+#import "AppDelegate.h"
+#import "CSModel.h"
 
-@interface CSLocationCollectionViewCell : UICollectionViewCell {
+@interface CSLocationCollectionViewCell : UICollectionViewCell<CSGetMediaCaller> {
 
-    UIImageView *_imageView;
     UILabel *_labelTitlePlace;
     UIView *view;
     UIImageView *imageTarja;
+    NSInteger indexImage;
 
 }
-@property (strong) CSLocation *location;
+@property (strong) EGOImageView *imageCover;
 
+@property (strong) Location *location;
+@property (strong) NSString *standard_resolution;
 
--(void)setMosaicData:(CSLocation *)newMosaicData;
--(void)setMosaicDataWithPic:(CSPic *)pic;
+-(void)setMosaicData:(Location *)newMosaicData;
+-(void)reloadCellWithLocation:(Location*)location ;
 @end

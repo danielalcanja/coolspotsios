@@ -142,8 +142,16 @@
         [dicLocation setValue:location.category forKey:@"category"];
         [dicLocation setValue:location.name forKey:@"name"];
         [dicLocation setValue:location.postal_code forKey:@"postal_code"];
+        Location *l = [[Location alloc] init];
+        l.name = location.name;
+        l.foursquqreid = location.id_foursquare;
+        l.instagramid = [dictionary valueForKey:@"id"][0];
+        l.city = [location.geo objectForKey:@"cityName"];
+        l.state = [location.geo objectForKey:@"stateName"];
+        l.cc = [location.geo objectForKey:@"countryCode"];
+
         
-        [[CSAPI sharedInstance] addLocationWithDictionary:dicLocation delegate:self];
+        [[CoolSpotsAPI sharedInstance] addLocationWithLocation:l delegate:self];
         
     }
     else {
@@ -154,7 +162,7 @@
     }
     
 }
--(void)getAddLocationSucceeded:(NSMutableArray *)dictionary {
+-(void)addLocationSucceeded:(NSArray *)response {
     
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
@@ -169,7 +177,7 @@
 
     
 }
--(void)getAddLocationError:(NSError *)error {
+-(void)addLocationError:(NSError *)error{
     
     NSLog(@"getAddLocationError %@", error);
 }

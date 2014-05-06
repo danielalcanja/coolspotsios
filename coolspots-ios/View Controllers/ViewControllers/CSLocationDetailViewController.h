@@ -10,14 +10,15 @@
 #import "CSLocation.h"
 #import "MosaicLayoutDelegate.h"
 #import "CoolSpotsAPI.h"
+#import "APIInstagram.h"
 
-
-@interface CSLocationDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,CSPhotosDelegateCaller> {
+@interface CSLocationDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,CSPhotosDelegateCaller,CSGetMediaCaller> {
     UICollectionView *picsCollectionView;
 
 }
 
-@property  (nonatomic,strong) CSLocation *location;
+@property  (nonatomic,strong) Location *location;
+@property (strong) NSString *maxID;
 
 
 @end

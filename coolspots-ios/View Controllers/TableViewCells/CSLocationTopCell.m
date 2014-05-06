@@ -18,7 +18,7 @@
     
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withLocation:(CSLocation*)location
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withLocation:(Location*)location
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -69,7 +69,7 @@
     }
     return self;
 }
--(void)reloadCellWithLocation:(CSLocation*)location {
+-(void)reloadCellWithLocation:(Location*)location {
     
 }
 

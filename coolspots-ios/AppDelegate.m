@@ -12,6 +12,9 @@
 #import "CSLoginViewController.h"
 #import "CSWelcomeViewController.h"
 #import "CSNavigationController.h"
+#import <GFClient.h>
+
+
 
 #define MIXPANEL_TOKEN @"afc6f3a3605c0f7a10c5f5a76c7a586d"
 
@@ -26,10 +29,20 @@
     
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
-    NSURL *baseURL = [NSURL URLWithString:@"http://api.coolspots.com.br"]; // the base URL of your API
+    NSURL *baseURL = [NSURL URLWithString:@"http://107.170.132.4:5000/"]; // the base URL of your API
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     // initialize GoldenFleece
-    [GFClient createWithHttpClient:client];
+    GFClient __unused *gf = [GFClient createWithHttpClient:client];
+
+
+    //API INSTAGRAM
+    // initialize HTTPClient
+    NSURL *baseURL3 = [NSURL URLWithString:@"https://api.instagram.com/v1/"];
+    AFHTTPClient* client3 = [[AFHTTPClient alloc] initWithBaseURL:baseURL3];
+    // initialize GoldenFleece
+    GFClient __unused *gfInstagram = [[GFClient alloc] initWithHttpClient:client3];
+    self.apiInstagram = [[APIInstagram alloc] initWithGFClient:gfInstagram];
+    
     
     self.instagram = [[Instagram alloc] init];
 

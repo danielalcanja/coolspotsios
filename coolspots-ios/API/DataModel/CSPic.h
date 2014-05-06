@@ -29,6 +29,8 @@ typedef enum {
 @property (assign) MosaicPicLayoutType layoutType;
 @property (strong, atomic) NSArray *data;
 
+@property (assign) NSInteger  numberOfLike;
+
 
 
 

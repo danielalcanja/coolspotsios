@@ -48,6 +48,41 @@
     
     
 }
+-(void)getLocationsWithCity:(NSString*)city delegate:(id<GetLocationsDelegateCaller>)delegate{
+   
+    [self jsonRequestWithParameters:nil
+                               path:@"locations"
+                             method:@"GET"
+                      expectedClass:[Location class]
+                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
+                                NSArray *msResponse = (NSArray*)object;
+                                [delegate getLocationsSucceeded:msResponse];
+                            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                [delegate getLocationsError:error];
+                                
+                            }
+     ];
+}
+- (void)addLocationWithLocation:(Location*)location delegate:(id<AddLocationCaller>)delegate
+{
+    NSString *path = @"locations";
+    
+    
+    [self jsonRequestWithParameters:location
+                               path:path
+                             method:@"POST"
+                      expectedClass:[NSDictionary class]
+                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
+                                NSArray *msResponse = (NSArray*)object;
+                                [delegate addLocationSucceeded:msResponse];
+                            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                
+                                [delegate addLocationError:error];
+                                
+                            }
+     ];
+}
+
 
 -(void)getLocationsWithPage:(NSNumber*)page city:(NSString*)city category:(NSString*)category countryName:(NSString*)countryName stateName:(NSString*)stateName delegate:(id<CSLocationsDelegateCaller>)delegate{
     

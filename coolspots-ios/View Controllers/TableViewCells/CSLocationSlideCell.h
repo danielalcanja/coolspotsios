@@ -10,8 +10,10 @@
 #import "EGOImageView.h"
 #import "CSLocation.h"
 #import "CSFavButton.h"
+#import "APIInstagram.h"
+#import "AppDelegate.h"
 
-@interface CSLocationSlideCell : UITableViewCell<UIScrollViewDelegate>
--(void)reloadCellWithLocation:(CSLocation*)location;
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller location:(CSLocation*)location;
+@interface CSLocationSlideCell : UITableViewCell<UIScrollViewDelegate,CSGetMediaCaller>
+-(void)reloadCellWithLocation:(Location*)location;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller location:(Location*)location;
 @end

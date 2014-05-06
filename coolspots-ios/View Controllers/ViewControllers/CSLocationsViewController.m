@@ -46,8 +46,9 @@
     page = 1;
     MosaicLayout *layout = [[MosaicLayout alloc] init];
     
-    
-    locationCollectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    CGRect frame = self.view.frame;
+    frame.size.height = 490;
+    locationCollectionView=[[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
     [(MosaicLayout *)locationCollectionView.collectionViewLayout setDelegate:self];
 
     locationCollectionView.delegate = self;
@@ -56,52 +57,28 @@
     
     [locationCollectionView registerClass:[CSLocationCollectionViewCell class] forCellWithReuseIdentifier:@"locationCollectionViewCell"];
     
-    self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationCollectionView];
-    self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
-    self.fullScreenScroll.shouldHideNavigationBarOnScroll = NO;
-    
-    
     [self loadData];
 }
 -(void)loadData {
-    
-    RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[CSLocation class]];
-    [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"id":   @"id",
-                                                  @"name":     @"name",
-                                                  @"slug":        @"slug",
-                                                  @"lastPhotos": @"pics"
-                                                  }];
-    
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:nil];
-    //NSString *urlstring = [NSString stringWithFormat:@"http://coolspot/web/json/location?page=%d", page];
-    NSString *urlstring = [NSString stringWithFormat:@"http://api.coolspots.com.br/json/location?page=%d", page];
-    
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
-    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-        /*
-         CSLocation *location = [result firstObject];
-         NSMutableArray *pics = location.pics;
-         CSPic *pic = [[CSPic alloc] init];
-         pic.standard_resolution = [pics objectAtIndex:0];
-         NSLog(@"The public timeline Tweets: %@ - %@", location.name, pic.standard_resolution);
-         */
-        NSMutableArray *tempObjects = [[result array] mutableCopy];
-        
-        for(int i=0;i<[tempObjects count];i++) {
-            
-            CSLocation *location = [tempObjects objectAtIndex:i];
-            [objects addObject:location];
-            
-        }
-        [locationCollectionView reloadData];
-        
-    } failure:nil];
-    [operation start];
+   
+    NSString *city = @"Boston";
+    [[CoolSpotsAPI sharedInstance] getLocationsWithCity:city delegate:self];
     
 }
+-(void)getLocationsSucceeded:(NSArray *)response {
+    
+    if([objects count] > 0) {
+        [objects addObjectsFromArray:[response mutableCopy]];
+    }else {
+        objects = [response mutableCopy];
+    }
+    [locationCollectionView reloadData];
+    
+}
+-(void)getLocationsError:(NSError *)error {
+    NSLog(@"getLocationsError %@", error);
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -128,26 +105,28 @@
     
     static NSString *cellIdentifier = @"locationCollectionViewCell";
     
-    CSLocation *location = [objects objectAtIndex:indexPath.row];
+    Location *location = [objects objectAtIndex:indexPath.row];
+    location.firstTimeShown = YES;
+
 
     CSLocationCollectionViewCell *cell = (CSLocationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     cell.location = location;
-    [cell setMosaicData:location];
+    [cell reloadCellWithLocation:location];
+    
+    float randomWhite = (arc4random() % 40 + 10) / 255.0;
+    cell.backgroundColor = [UIColor colorWithWhite:randomWhite alpha:1];
     
     return cell;
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    CSLocation *location = [objects objectAtIndex:indexPath.row];
-
+    Location *location = [objects objectAtIndex:indexPath.row];
+    
     CSLocationDetailViewController *goView = [[CSLocationDetailViewController alloc] init];
     goView.location = location;
-    
     goView.hidesBottomBarWhenPushed = YES;
-
-    
     goView.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController pushViewController:goView animated:YES];
     
@@ -159,7 +138,7 @@
     //  Base relative height for simple layout type. This is 1.0 (height equals to width)
     float retVal = 1.0;
     
-    CSLocation *aMosaicModule = [objects objectAtIndex:indexPath.row];
+    Location *aMosaicModule = [objects objectAtIndex:indexPath.row];
     
     if (aMosaicModule.relativeHeight != 0){
         
@@ -197,8 +176,7 @@
         /*  First layout. We have to decide if the MosaicData should be
          *  double column (if possible) or not. */
         
-        NSUInteger random = arc4random() % 100;
-        if (random < kDoubleColumnProbability){
+        if ((indexPath.row % 5)==0){
             aMosaicModule.layoutType = kMosaicLayoutTypeDouble;
         }else{
             aMosaicModule.layoutType = kMosaicLayoutTypeSingle;

@@ -87,11 +87,6 @@
     //  update the last update date
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    
-    //self.fullScreenScroll = [[YIFullScreenScroll alloc] initWithViewController:self scrollView:locationsTable];
-    //self.fullScreenScroll.shouldShowUIBarsOnScrollUp = NO;
-
-    
     [self startStandardUpdates];
     
     newCityViewController = [[NewCityViewController alloc] init];
@@ -192,17 +187,17 @@
         NSString *country = [[CSSharedData sharedInstance] currentCountryCode];
         NSString *state = [[CSSharedData sharedInstance] currentState];
 
-            [[CoolSpotsAPI sharedInstance] getLocationsWithPage:[NSNumber numberWithInt:page] city:[NSString stringWithFormat:@"%@",city] category:nil countryName:country stateName:state  delegate:self];
+            [[CoolSpotsAPI sharedInstance] getLocationsWithCity:city delegate:self];
     
     }
 }
--(void)getLocationsSucceeded:(CSResponse *)response {
+-(void)getLocationsSucceeded:(NSArray *)response {
     
     isFirstLoad = NO;
     if([objects count] > 0) {
-        [objects addObjectsFromArray:[response.data mutableCopy]];
+        [objects addObjectsFromArray:[response mutableCopy]];
     }else {
-        objects = [response.data mutableCopy];
+        objects = [response mutableCopy];
     }
     [[CSSharedData sharedInstance] setNearLocations:objects];
     [locationsTable reloadData];
@@ -290,7 +285,7 @@
         }else  {
             
             NSInteger row  = indexPath.row-1;
-            CSLocation *location = [objects objectAtIndex:row];
+            Location *location = [objects objectAtIndex:row];
            /// NSLog(@" id location %@", location.id);
             
             NSString *CellIdentifier = [NSString stringWithFormat:@"locationSlideCell"] ;

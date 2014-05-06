@@ -35,7 +35,7 @@
 
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller location:(CSLocation*)location
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withViewController:(UIViewController*)controller location:(Location*)location
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -113,65 +113,65 @@
 
         [self.contentView addSubview:pageControl];
         
-        if([location.lastPhotos count] > 0) {
-            slideViewImage1 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 0, 0, 320,320)];
-            [scrollView addSubview:slideViewImage1];
-        }
-        if([location.lastPhotos count] > 1) {
-            slideViewImage2 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 1, 0, 320,320)];
-            [scrollView addSubview:slideViewImage2];
-
-        }
-        if([location.lastPhotos count] > 2) {
-            slideViewImage3 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 2, 0, 320,320)];
-            [scrollView addSubview:slideViewImage3];
-
-        }
-        if([location.lastPhotos count] > 3) {
-            slideViewImage4 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 3, 0, 320,320)];
-            [scrollView addSubview:slideViewImage4];
-
-        }
-        if([location.lastPhotos count] > 4) {
-            slideViewImage5 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 4, 0, 320,320)];
-            [scrollView addSubview:slideViewImage5];
-
-        }
+        slideViewImage1 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 0, 0, 320,320)];
+        [scrollView addSubview:slideViewImage1];
+        slideViewImage2 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 1, 0, 320,320)];
+        [scrollView addSubview:slideViewImage2];
+        slideViewImage3 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 2, 0, 320,320)];
+        [scrollView addSubview:slideViewImage3];
+        
+        slideViewImage4 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 3, 0, 320,320)];
+        [scrollView addSubview:slideViewImage4];
+        
+        slideViewImage5 = [[CSSlideViewImage alloc] initWithFrame:CGRectMake(scrollView.frame.size.width * 4, 0, 320,320)];
+        [scrollView addSubview:slideViewImage5];
         
     }
     return self;
 }
--(void)reloadCellWithLocation:(CSLocation*)location {
+-(void)reloadCellWithLocation:(Location*)location {
     
-    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%d",location.id] isFavorite:location.favorite];
     labelTitlePlace.text = location.name;
-    _location = location;
-    if([location.lastPhotos count] > 0) {
-        CSPic *pic = [location.lastPhotos objectAtIndex:0] ;
-        NSString *standard_resolution = pic.standardResolution;
-        [slideViewImage1 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
-    }
-    if([location.lastPhotos count] > 1) {
-        CSPic *pic = [location.lastPhotos objectAtIndex:1] ;
-        NSString *standard_resolution = pic.standardResolution;
-        [slideViewImage2 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
-    }
-    if([location.lastPhotos count] > 2) {
-        CSPic *pic = [location.lastPhotos objectAtIndex:2] ;
-        NSString *standard_resolution = pic.standardResolution;
-        [slideViewImage3 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
-    }
-    if([location.lastPhotos count] > 3) {
-        CSPic *pic = [location.lastPhotos objectAtIndex:3] ;
-        NSString *standard_resolution = pic.standardResolution;
-        [slideViewImage4 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
-    }
-    if([location.lastPhotos count] > 4) {
-        CSPic *pic = [location.lastPhotos objectAtIndex:4] ;
-        NSString *standard_resolution = pic.standardResolution;
-        [slideViewImage5 reloadDataWithImageUrl:standard_resolution caption:pic.caption];
-    }
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [[appDelegate apiInstagram] getMediaWithID:location.instagramid MAX_ID:nil delegate:self];
     
+}
+-(void)getMediaSucceeded:(NSDictionary *)response {
+    
+    NSArray *data = [response objectForKey:@"data"];
+    int i=0;
+    for(NSDictionary *media in data) {
+        
+        NSDictionary *images = [media valueForKey:@"images"];
+        NSDictionary *caption = [media valueForKey:@"caption"];
+        NSDictionary *image = [images valueForKey:@"standard_resolution"];
+        NSString *standard_resolution = [image valueForKey:@"url"];
+        NSString *text = [caption valueForKey:@"text"];
+
+        //NSLog(@"_________________________________________________________response %@", standard_resolution);
+
+        if(i==0 && [data count]>1) {
+            [slideViewImage1 reloadDataWithImageUrl:standard_resolution caption:text];
+        }
+        if(i==1 && [data count]>2) {
+            [slideViewImage2 reloadDataWithImageUrl:standard_resolution caption:text];
+        }
+        if(i==2 && [data count]>3) {
+            [slideViewImage3 reloadDataWithImageUrl:standard_resolution caption:text];
+        }
+        if(i==3 && [data count]>4) {
+            [slideViewImage4 reloadDataWithImageUrl:standard_resolution caption:text];
+        }
+        if(i==4 && [data count]>5) {
+            [slideViewImage5 reloadDataWithImageUrl:standard_resolution caption:text];
+        }
+        i++;
+
+    }
+}
+-(void)getMediaError:(NSError *)error {
+    NSLog(@"getMediaError %@", error);
+
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sView
 {

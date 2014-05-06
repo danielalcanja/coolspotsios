@@ -23,6 +23,7 @@
 #import "CSCommentButton.h"
 
 
+
 #define kDoubleColumnProbability 40
 
 @interface CSLocationDetailViewController ()
@@ -92,7 +93,7 @@
     CGFloat spaceHight = 65;
     
     CSFavButton *buttonFav = [[CSFavButton alloc] initWithFrame:CGRectMake(15, headerSize-spaceHight, 35,35) isFavorite:NO];
-    [buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%@",self.location.id] isFavorite:self.location.favorite];
+    //[buttonFav reloadControlWithIdLocation:[NSString stringWithFormat:@"%@",self.location.id] isFavorite:self.location.favorite];
     
     CSFavButton *buttonShare = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonFav.frame.origin.x + buttonFav.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonShare.button setBackgroundImage:[UIImage imageNamed:@"button-share"] forState:UIControlStateNormal];
@@ -102,7 +103,7 @@
 
     
     CSCommentButton *buttonComments = [[CSCommentButton alloc] initWithFrame:CGRectMake(buttonEvent.frame.origin.x + buttonEvent.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35)];
-    [buttonComments reloadControlWithLocation:self.location controller:self];
+    //[buttonComments reloadControlWithLocation:self.location controller:self];
     
     CSFavButton *buttonMoreInfo = [[CSFavButton alloc] initWithFrame:CGRectMake(buttonComments.frame.origin.x + buttonComments.frame.size.width + spaceBtwButtons, headerSize-spaceHight, 35,35) isFavorite:NO];
     [buttonMoreInfo.button setBackgroundImage:[UIImage imageNamed:@"button-more"] forState:UIControlStateNormal];
@@ -134,6 +135,7 @@
     MosaicLayout *layout = [[MosaicLayout alloc] init];
     
     CGRect frameTable = self.view.frame;
+    frameTable.size.height -= headerSize+viewTags.frame.size.height;
     frameTable.origin.y = headerSize+viewTags.frame.size.height;
     
     
@@ -313,26 +315,50 @@
     
     [DejalBezelActivityView activityViewForView:picsCollectionView];
 
-    [[CoolSpotsAPI sharedInstance] getPhotosWithID:self.location.id page:[NSNumber numberWithInt:page]  delegate:self];
-}
--(void)getPhotosSucceeded:(CSResponse *)response {
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [[appDelegate apiInstagram] getMediaWithID:self.location.instagramid MAX_ID:nil delegate:self];
     
-    objects = [response.data mutableCopy];
+}
+-(void)getMediaSucceeded:(NSDictionary *)response {
+    
+    NSArray *data = [response objectForKey:@"data"];
+    
+    for(NSDictionary *media in data) {
+        
+        NSDictionary *images = [media valueForKey:@"images"];
+        //NSDictionary *caption = [media valueForKey:@"caption"];
+        NSDictionary *image = [images valueForKey:@"standard_resolution"];
+        NSString *standard_resolution = [image valueForKey:@"url"];
+        NSString *text = [image valueForKey:@"caption"];
+        
+        CSPic *pic = [[CSPic alloc] init];
+        pic.standardResolution = standard_resolution;
+        pic.caption = text;
+        
+        [objects addObject:pic];
+    }
+    NSArray *pagination = [response objectForKey:@"pagination"];
+    self.maxID = [pagination valueForKey:@"next_max_id"];
+
+
     [picsCollectionView reloadData];
     [DejalBezelActivityView removeViewAnimated:YES];
     
 }
+-(void)getMediaError:(NSError *)error {
+    NSLog(@"getMediaError %@", error);
+    
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if([objects count] >= 18)
-    {
-        if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
-            
-            page++;
-            
-            [[CSAPI sharedInstance] getPhotosWithID:self.location.id page:[NSNumber numberWithInt:page]  delegate:self];
-            
-        }
+    if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
+        
+        page++;
+        
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [[appDelegate apiInstagram] getMediaWithID:self.location.instagramid MAX_ID:self.maxID delegate:self];
+        
+        
     }
 }
 
@@ -387,7 +413,6 @@
             
             [cell reloadCellWithLocation:pic1 andPic2:pic2 andPic3:pic3 withViewController:self];
             return cell;
-            
             
         }else {
             

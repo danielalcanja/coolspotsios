@@ -20,7 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _imageView = [[EGOImageView alloc] initWithFrame:self.bounds];
         _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:_imageView];
         

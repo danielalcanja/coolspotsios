@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MosaicLayoutDelegate.h"
 #import <YIFullScreenScroll.h>
+#import "CoolSpotsAPI.h"
 
 
-@interface CSLocationsViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,UIScrollViewDelegate> {
+@interface CSLocationsViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,MosaicLayoutDelegate,UIScrollViewDelegate,GetLocationsDelegateCaller> {
     UICollectionView *locationCollectionView;
 
 }

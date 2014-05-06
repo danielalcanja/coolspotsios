@@ -37,7 +37,9 @@
 -(void)reloadDataWithImageUrl:(NSString*)imageUrl caption:(NSString*)caption {
  
      [self.imageView setURL:imageUrl];
-    self.labelCaption.text = caption;
+    if(caption) {
+        self.labelCaption.text = [NSString stringWithFormat:@"%@",caption];
+    }
 
     
 }
