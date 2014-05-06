@@ -34,6 +34,7 @@ static NSString *const scope = @"basic+comments+likes";
     
     UIWebView *webView;
     UIActivityIndicatorView * _activityIndicator;
+    CSUser *user;
 
 }
 
@@ -76,7 +77,7 @@ static NSString *const scope = @"basic+comments+likes";
     backButton.titleLabel.textColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     
 }
 
@@ -85,10 +86,10 @@ static NSString *const scope = @"basic+comments+likes";
 }
 
 // GRAB THE URL TRAFFIC TO CATCH THE ACCESS TOKEN OUT OF THE RETURN URL
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
+- (BOOL)webView:(UIWebView *)webView2 shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
 
+    
     NSURL *Url = [request URL];
         
     NSArray *UrlParts = [Url pathComponents];
@@ -122,6 +123,7 @@ static NSString *const scope = @"basic+comments+likes";
                 NSLog(@"access_token %@", appDelegate.instagram.accessToken);
                 [prefs synchronize];
                 [DejalBezelActivityView activityViewForView:self.view];
+                webView.hidden = YES;
 
                 
                 [[CSAPI sharedInstance] getInstagramUserInfoWithToken:appDelegate.instagram.accessToken delegate:self];
@@ -139,7 +141,7 @@ static NSString *const scope = @"basic+comments+likes";
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
-    CSUser *user = [[CSUser alloc] init];
+    user = [[CSUser alloc] init];
     user.username = [dictionary valueForKey:@"username"];
     user.id = [dictionary valueForKey:@"id"];
     user.full_name = [dictionary valueForKey:@"full_name"];
@@ -155,20 +157,41 @@ static NSString *const scope = @"basic+comments+likes";
     [prefs setObject:user.full_name forKey:@"full_name"];
     [prefs setObject:user.bio forKey:@"bio"];
 
-
-
     [prefs synchronize];
 
-    [[CSAPI sharedInstance] addUserWithUser:user token:appDelegate.instagram.accessToken delegate:self];
+    [[CoolSpotsAPI sharedInstance] loggingInWithUsername:user.username password:user.id delegate:self];
     
 }
--(void)getInstagramUserInfoError:(NSError *)error {
+-(void)unauthorizedError:(NSError *)error {
     
-    NSLog(@"Error %@", error);
+
+    [[CoolSpotsAPI sharedInstance] addUserWithUsername:user.username password:user.id fullname:user.full_name pic:user.profile_picture bio:user.bio delegate:self];
+
     
 }
--(void)addUserSucceeded:(NSMutableArray *)dictionary {
+-(void)addUserSucceeded:(CSResponse *)response {
+    [[CoolSpotsAPI sharedInstance] loggingInWithUsername:user.username password:user.id delegate:self];
+
+}
+-(void)addUserError:(NSError *)error {
+    NSLog(@"addUserError %@", error);
+
+}
+-(void)loggingUserError:(NSError *)error {
     
+    NSLog(@"loggingUserError %@", error);
+    
+}
+-(void)loggingUserSucceeded:(CSResponse *)response {
+    /*
+     
+     {
+     "path": "/users",
+     "uid": "04327a7a728f3b47",
+     "id": "59851b49cc9e1f0fe0a9128fad47263865aa9fc6c3a724bc65cfb781a61b9c3facb83ecd041b2ce4308384303c88a433ed9450637eebc0d2ce3789de8bec7bcb"
+     }
+     
+     */
     [DejalBezelActivityView removeViewAnimated:YES];
 
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
@@ -177,11 +200,7 @@ static NSString *const scope = @"basic+comments+likes";
     appDelegate.window.rootViewController = tabBarController;
     
 }
--(void)addUserError:(NSError *)error {
-    
-    NSLog(@"Error %@", error);
-    
-}
+
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {

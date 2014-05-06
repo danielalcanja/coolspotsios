@@ -57,6 +57,7 @@
 		8F6D01EB18641A9100C7A29A /* tarja-principal-pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01E918641A9100C7A29A /* tarja-principal-pic@2x.png */; };
 		8F6D01EE186486F500C7A29A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01EC186486F500C7A29A /* icon.png */; };
 		8F6D01EF186486F500C7A29A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01ED186486F500C7A29A /* icon@2x.png */; };
+		8F7188941919025E00D03DF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7188931919025E00D03DF4 /* User.m */; };
 		8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */; };
 		8F8AA2C6187CF1D3001AED3E /* CSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2C5187CF1D3001AED3E /* CSAPI.m */; };
 		8F8AA2C8187E2F89001AED3E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */; };
@@ -233,6 +234,8 @@
 		8F6D01E918641A9100C7A29A /* tarja-principal-pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tarja-principal-pic@2x.png"; sourceTree = "<group>"; };
 		8F6D01EC186486F500C7A29A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8F6D01ED186486F500C7A29A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		8F7188921919025E00D03DF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = API/DataModel/User.h; sourceTree = "<group>"; };
+		8F7188931919025E00D03DF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = API/DataModel/User.m; sourceTree = "<group>"; };
 		8F810732188E3B8400469DD4 /* CSSearchFoursquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSearchFoursquareViewController.h; path = "View Controllers/ViewControllers/CSSearchFoursquareViewController.h"; sourceTree = "<group>"; };
 		8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSearchFoursquareViewController.m; path = "View Controllers/ViewControllers/CSSearchFoursquareViewController.m"; sourceTree = "<group>"; };
 		8F8AA2C4187CF1D3001AED3E /* CSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAPI.h; path = API/CSAPI.h; sourceTree = "<group>"; };
@@ -424,6 +427,8 @@
 				8F07E6AC18F8679B001F745F /* Location.m */,
 				8F07E6AE18F8745B001F745F /* Geo.h */,
 				8F07E6AF18F8745B001F745F /* Geo.m */,
+				8F7188921919025E00D03DF4 /* User.h */,
+				8F7188931919025E00D03DF4 /* User.m */,
 			);
 			name = PikiAPI;
 			sourceTree = "<group>";
@@ -508,6 +513,19 @@
 				8F532DF81861243400DDB7EC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F718891191893D300D03DF4 /* v1 */ = {
+			isa = PBXGroup;
+			children = (
+				8F9E8401186F85F50056E095 /* CSLocationsViewController.h */,
+				8F9E8402186F85F50056E095 /* CSLocationsViewController.m */,
+				8FF396D2188653A300754634 /* CSLoginViewController.h */,
+				8FF396D3188653A300754634 /* CSLoginViewController.m */,
+				8F93A97018661FC3003D5FA2 /* CSLocationDetailViewController.h */,
+				8F93A97118661FC3003D5FA2 /* CSLocationDetailViewController.m */,
+			);
+			name = v1;
 			sourceTree = "<group>";
 		};
 		8F91CFB918638F7700C07D07 /* Library */ = {
@@ -766,6 +784,7 @@
 		8FB75F1C186379EA00AE36C9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8F718891191893D300D03DF4 /* v1 */,
 				8F9E83DE186E02E20056E095 /* GTScrollNavigationBar */,
 				8F93A9531865DA28003D5FA2 /* CustomView */,
 				8FB75F2218637B4E00AE36C9 /* ViewControllers */,
@@ -823,8 +842,6 @@
 				8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */,
 				8F8AA2C9187E32C4001AED3E /* NewCityViewController.h */,
 				8F8AA2CA187E32C4001AED3E /* NewCityViewController.m */,
-				8F93A97018661FC3003D5FA2 /* CSLocationDetailViewController.h */,
-				8F93A97118661FC3003D5FA2 /* CSLocationDetailViewController.m */,
 				8F810732188E3B8400469DD4 /* CSSearchFoursquareViewController.h */,
 				8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */,
 				8FFF2D651868966600DE0D2C /* CSContainerPicViewController.h */,
@@ -839,13 +856,9 @@
 				8F9E83EA186E1E6C0056E095 /* CSExploreViewController.m */,
 				8F9E83EC186E1E800056E095 /* CSFavoritesViewController.h */,
 				8F9E83ED186E1E800056E095 /* CSFavoritesViewController.m */,
-				8F9E8401186F85F50056E095 /* CSLocationsViewController.h */,
-				8F9E8402186F85F50056E095 /* CSLocationsViewController.m */,
 				8F9E8408186F942D0056E095 /* CSPrincipalViewController.h */,
 				8F9E8409186F942D0056E095 /* CSPrincipalViewController.m */,
 				8F9E840A186F942D0056E095 /* CSPrincipalViewController.xib */,
-				8FF396D2188653A300754634 /* CSLoginViewController.h */,
-				8FF396D3188653A300754634 /* CSLoginViewController.m */,
 				8FF426B4188C82E900F2781B /* CSSearchLocationViewController.h */,
 				8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */,
 				8F316807188F3E7300019EC4 /* CSProfileViewController.h */,
@@ -1075,6 +1088,7 @@
 				8F07E6AD18F8679B001F745F /* Location.m in Sources */,
 				8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */,
 				8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */,
+				8F7188941919025E00D03DF4 /* User.m in Sources */,
 				8F93A94F1865D330003D5FA2 /* CSUtil.m in Sources */,
 				8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */,
 				8F9E83F1186E23AD0056E095 /* CSTabBarController.m in Sources */,

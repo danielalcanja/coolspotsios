@@ -7,6 +7,8 @@
 //
 
 #import "CoolSpotsAPI.h"
+#import <NSObject+GFJson.h>
+
 
 @implementation CoolSpotsAPI
 
@@ -47,6 +49,58 @@
                                failure:failure];
     
     
+}
+-(void)addUserWithUsername:(NSString*)username password:(NSString*)password fullname:(NSString*)fullname pic:(NSString*)pic bio:(NSString*)bio delegate:(id<AddUserCaller>)delegate{
+    
+    User *user = [[User alloc] init];
+    user.username = username;
+    user.password = password;
+    user.fullname = fullname;
+    user.bio = bio;
+    user.profilepicture = pic;
+    [self jsonRequestWithParameters:user
+                               path:@"/users"
+                             method:@"POST"
+                      expectedClass:[CSLocation class]
+                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
+                                CSResponse *result = (CSResponse*)object;
+                                [delegate addUserSucceeded:result];
+                            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                
+                                [delegate addUserError:error];
+
+                                
+                            }
+     ];
+}
+-(void)loggingInWithUsername:(NSString*)username password:(NSString*)password delegate:(id<LoggingUserCaller>)delegate{
+    
+    User *user = [[User alloc] init];
+    user.username = username;
+    user.password = password;
+    
+    NSMutableDictionary *userDict = [user jsonObject];
+    [userDict removeObjectForKey:@"profilepicture"];
+    [userDict removeObjectForKey:@"fullname"];
+    [userDict removeObjectForKey:@"bio"];
+
+    [self jsonRequestWithParameters:userDict
+                               path:@"/users/login"
+                             method:@"POST"
+                      expectedClass:[User class]
+                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id object) {
+                                CSResponse *result = (CSResponse*)object;
+                                [delegate loggingUserSucceeded:result];
+                            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+
+                                if (response.statusCode == 401) {
+                                    [delegate unauthorizedError:error];
+                                }else {
+                                    [delegate loggingUserError:error];
+                                }
+                                
+                            }
+     ];
 }
 -(void)getLocationsWithCity:(NSString*)city delegate:(id<GetLocationsDelegateCaller>)delegate{
    

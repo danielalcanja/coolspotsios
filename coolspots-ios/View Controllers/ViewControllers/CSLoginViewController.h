@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CSAPI.h"
+#import "CoolSpotsAPI.h"
 
 
-@interface CSLoginViewController : UIViewController<UIWebViewDelegate,CSInstagramUserInfoDelegate,CSAddUserDelegate>
+
+@interface CSLoginViewController : UIViewController<UIWebViewDelegate,CSInstagramUserInfoDelegate,AddUserCaller,LoggingUserCaller>
 
 @end
