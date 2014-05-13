@@ -120,6 +120,7 @@
 		8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FD81897626F002E9D05 /* CSCitiesViewController.m */; };
 		8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F1A186378FB00AE36C9 /* CSLocation.m */; };
 		8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */; };
+		8FBAB0EF1922A00A00EEDD0F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FBAB0EE1922A00A00EEDD0F /* Crashlytics.framework */; };
 		8FC4D752191C5D42003BB639 /* XLMediaZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC4D74F191C5D42003BB639 /* XLMediaZoom.m */; };
 		8FC4D753191C5D42003BB639 /* XLVideoZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC4D751191C5D42003BB639 /* XLVideoZoom.m */; };
 		8FC4D756192139FD003BB639 /* DetailCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC4D755192139FD003BB639 /* DetailCollectionViewFlowLayout.m */; };
@@ -355,6 +356,7 @@
 		8FB75F1A186378FB00AE36C9 /* CSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocation.m; path = API/DataModel/CSLocation.m; sourceTree = "<group>"; };
 		8FB75F2318637B8A00AE36C9 /* CSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRootViewController.h; path = "View Controllers/ViewControllers/CSRootViewController.h"; sourceTree = "<group>"; };
 		8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSRootViewController.m; path = "View Controllers/ViewControllers/CSRootViewController.m"; sourceTree = "<group>"; };
+		8FBAB0EE1922A00A00EEDD0F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		8FC4D74E191C5D42003BB639 /* XLMediaZoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMediaZoom.h; sourceTree = "<group>"; };
 		8FC4D74F191C5D42003BB639 /* XLMediaZoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMediaZoom.m; sourceTree = "<group>"; };
 		8FC4D750191C5D42003BB639 /* XLVideoZoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVideoZoom.h; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				8F532DD31861243400DDB7EC /* CoreGraphics.framework in Frameworks */,
 				8F532DD51861243400DDB7EC /* UIKit.framework in Frameworks */,
 				8F532DD11861243400DDB7EC /* Foundation.framework in Frameworks */,
+				8FBAB0EF1922A00A00EEDD0F /* Crashlytics.framework in Frameworks */,
 				0B2C485BD59143A488D14CFB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +489,7 @@
 		8F532DCF1861243400DDB7EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FBAB0EE1922A00A00EEDD0F /* Crashlytics.framework */,
 				8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */,
 				8F532DD01861243400DDB7EC /* Foundation.framework */,
 				8F532DD21861243400DDB7EC /* CoreGraphics.framework */,
@@ -943,6 +947,7 @@
 				8F532DCB1861243400DDB7EC /* Resources */,
 				023FE1EAF2B94F8D8797D2D3 /* Copy Pods Resources */,
 				8F7188A11919643100D03DF4 /* CopyFiles */,
+				8FBAB0ED19229FD000EEDD0F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1127,6 +1132,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		8FBAB0ED19229FD000EEDD0F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run bf801b7bbff2efa6f6be22b50c82f0325652fe5c b1c916c61ded832c0e0b1b487e10507691bcd33a4f08f641afb2df73cce0f555";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1328,6 +1346,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Alcanja (H8EHK7MWP9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Alcanja (H8EHK7MWP9)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "coolspots-ios/coolspots-ios-Prefix.pch";
 				INFOPLIST_FILE = "coolspots-ios/coolspots-ios-Info.plist";
@@ -1342,6 +1364,10 @@
 			baseConfigurationReference = A4D83C0A406043798881CE00 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Alcanja (H8EHK7MWP9)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "coolspots-ios/coolspots-ios-Prefix.pch";
 				INFOPLIST_FILE = "coolspots-ios/coolspots-ios-Info.plist";

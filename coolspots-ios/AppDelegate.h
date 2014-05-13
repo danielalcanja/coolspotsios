@@ -13,6 +13,7 @@
 #import "Instagram.h"
 #import <GFClient.h>
 #import "APIInstagram.h"
+#import <Crashlytics/Crashlytics.h>
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

@@ -15,7 +15,6 @@
 #import <GFClient.h>
 
 
-
 #define MIXPANEL_TOKEN @"afc6f3a3605c0f7a10c5f5a76c7a586d"
 
 
@@ -50,7 +49,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //[self.instagram logout];
-
+    [Crashlytics startWithAPIKey:@"bf801b7bbff2efa6f6be22b50c82f0325652fe5c"];
     
     if ([self.instagram isSessionValid]) {
 
