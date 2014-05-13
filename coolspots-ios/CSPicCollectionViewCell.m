@@ -95,16 +95,20 @@
     
     egoImageView.imageURL = [NSURL URLWithString:pic.standardResolution];
     labelCaption.text = pic.caption;
-    labelUser.text = pic.username;
+    labelUser.text = pic.userFullname;
     scrollView.contentSize = CGSizeMake(320,500);
     [self.userPic setURL:pic.profilePicture];
     
     [buttonLike reloadControlWithPic:pic isLiked:NO];
     
     NSString *text = pic.caption;
-    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    CGSize expectedSize = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
-    [labelCaption setFrame:CGRectMake(75, 390, 240, MAX(expectedSize.height, 43.0f))];
+    if(![text isKindOfClass:[NSNull class]]){
+        if([text length]>0) {
+            CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+            CGSize expectedSize = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+            [labelCaption setFrame:CGRectMake(75, 390, 240, MAX(expectedSize.height, 43.0f))];
+        }
+    }
 
 }
 

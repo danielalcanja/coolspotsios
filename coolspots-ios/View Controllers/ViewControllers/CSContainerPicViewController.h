@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CSLocation.h"
+#import "Location.h"
 
 
 @interface CSContainerPicViewController : UIViewController
 
 @property (assign, nonatomic) NSMutableArray *picObjects;
 @property (nonatomic, assign) NSInteger  index;
-@property  (nonatomic,strong) CSLocation *location;
+@property  (nonatomic,strong) Location *location;
 
 
 

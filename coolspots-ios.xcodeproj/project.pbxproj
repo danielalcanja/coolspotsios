@@ -58,6 +58,9 @@
 		8F6D01EE186486F500C7A29A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01EC186486F500C7A29A /* icon.png */; };
 		8F6D01EF186486F500C7A29A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F6D01ED186486F500C7A29A /* icon@2x.png */; };
 		8F7188941919025E00D03DF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7188931919025E00D03DF4 /* User.m */; };
+		8F71889D1919605300D03DF4 /* CSLocationCollectionViewCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F71889C1919605300D03DF4 /* CSLocationCollectionViewCell3.m */; };
+		8F7188A0191962D000D03DF4 /* CSLocationDetailViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F71889F191962D000D03DF4 /* CSLocationDetailViewController2.m */; };
+		8F7188A21919644C00D03DF4 /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */; };
 		8F8AA2C6187CF1D3001AED3E /* CSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8AA2C5187CF1D3001AED3E /* CSAPI.m */; };
 		8F8AA2C8187E2F89001AED3E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8AA2C7187E2F89001AED3E /* CoreLocation.framework */; };
@@ -117,10 +120,14 @@
 		8FA86FD91897626F002E9D05 /* CSCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA86FD81897626F002E9D05 /* CSCitiesViewController.m */; };
 		8FB75F1B186378FB00AE36C9 /* CSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F1A186378FB00AE36C9 /* CSLocation.m */; };
 		8FB75F2518637B8A00AE36C9 /* CSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */; };
+		8FC4D752191C5D42003BB639 /* XLMediaZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC4D74F191C5D42003BB639 /* XLMediaZoom.m */; };
+		8FC4D753191C5D42003BB639 /* XLVideoZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC4D751191C5D42003BB639 /* XLVideoZoom.m */; };
+		8FC4D756192139FD003BB639 /* DetailCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC4D755192139FD003BB639 /* DetailCollectionViewFlowLayout.m */; };
 		8FD918C31898AD0D002F81E8 /* CSCurrentLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD918C21898AD0D002F81E8 /* CSCurrentLocationCell.m */; };
 		8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC614E188ED1A400B50DB6 /* CSSlideViewImage.m */; };
 		8FE6EECF1867491E005F120C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FE6EECE1867491E005F120C /* Storyboard.storyboard */; };
 		8FE6EED218674AB0005F120C /* CSLocationTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE6EED118674AB0005F120C /* CSLocationTopCell.m */; };
+		8FE9A7A8191999A500526255 /* CSInfoLocationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE9A7A7191999A500526255 /* CSInfoLocationCollectionViewCell.m */; };
 		8FEF47BE1873213900FD2C19 /* CSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEF47BD1873213900FD2C19 /* CSImageView.m */; };
 		8FEF47C518732D9B00FD2C19 /* nav-detail-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FEF47BF18732D9B00FD2C19 /* nav-detail-blue@2x.png */; };
 		8FEF47C618732D9B00FD2C19 /* nav-detail-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FEF47C018732D9B00FD2C19 /* nav-detail-blue.png */; };
@@ -151,7 +158,6 @@
 		8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B0188C736700F2781B /* CSDatePickerViewController.m */; };
 		8FF426B6188C82E900F2781B /* CSSearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B5188C82E900F2781B /* CSSearchLocationViewController.m */; };
 		8FF426B9188C936A00F2781B /* CSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF426B8188C936A00F2781B /* CSEvent.m */; };
-		8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFF2D661868966600DE0D2C /* CSContainerPicViewController.m */; };
 		8FFF2D6E1869BDE800DE0D2C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6B1869BDE800DE0D2C /* Default-568h@2x.png */; };
 		8FFF2D6F1869BDE800DE0D2C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6C1869BDE800DE0D2C /* Default.png */; };
 		8FFF2D701869BDE800DE0D2C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFF2D6D1869BDE800DE0D2C /* Default@2x.png */; };
@@ -168,6 +174,18 @@
 			remoteInfo = "coolspots-ios";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F7188A11919643100D03DF4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8F07E6A618F65439001F745F /* APIInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIInstagram.h; path = API/APIInstagram.h; sourceTree = "<group>"; };
@@ -236,6 +254,10 @@
 		8F6D01ED186486F500C7A29A /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		8F7188921919025E00D03DF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = API/DataModel/User.h; sourceTree = "<group>"; };
 		8F7188931919025E00D03DF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = API/DataModel/User.m; sourceTree = "<group>"; };
+		8F71889B1919605300D03DF4 /* CSLocationCollectionViewCell3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocationCollectionViewCell3.h; path = "View Controllers/TableViewCells/CSLocationCollectionViewCell3.h"; sourceTree = "<group>"; };
+		8F71889C1919605300D03DF4 /* CSLocationCollectionViewCell3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocationCollectionViewCell3.m; path = "View Controllers/TableViewCells/CSLocationCollectionViewCell3.m"; sourceTree = "<group>"; };
+		8F71889E191962D000D03DF4 /* CSLocationDetailViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocationDetailViewController2.h; path = "View Controllers/ViewControllers/CSLocationDetailViewController2.h"; sourceTree = "<group>"; };
+		8F71889F191962D000D03DF4 /* CSLocationDetailViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocationDetailViewController2.m; path = "View Controllers/ViewControllers/CSLocationDetailViewController2.m"; sourceTree = "<group>"; };
 		8F810732188E3B8400469DD4 /* CSSearchFoursquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSearchFoursquareViewController.h; path = "View Controllers/ViewControllers/CSSearchFoursquareViewController.h"; sourceTree = "<group>"; };
 		8F810733188E3B8400469DD4 /* CSSearchFoursquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSearchFoursquareViewController.m; path = "View Controllers/ViewControllers/CSSearchFoursquareViewController.m"; sourceTree = "<group>"; };
 		8F8AA2C4187CF1D3001AED3E /* CSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAPI.h; path = API/CSAPI.h; sourceTree = "<group>"; };
@@ -333,6 +355,12 @@
 		8FB75F1A186378FB00AE36C9 /* CSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocation.m; path = API/DataModel/CSLocation.m; sourceTree = "<group>"; };
 		8FB75F2318637B8A00AE36C9 /* CSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRootViewController.h; path = "View Controllers/ViewControllers/CSRootViewController.h"; sourceTree = "<group>"; };
 		8FB75F2418637B8A00AE36C9 /* CSRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSRootViewController.m; path = "View Controllers/ViewControllers/CSRootViewController.m"; sourceTree = "<group>"; };
+		8FC4D74E191C5D42003BB639 /* XLMediaZoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMediaZoom.h; sourceTree = "<group>"; };
+		8FC4D74F191C5D42003BB639 /* XLMediaZoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMediaZoom.m; sourceTree = "<group>"; };
+		8FC4D750191C5D42003BB639 /* XLVideoZoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVideoZoom.h; sourceTree = "<group>"; };
+		8FC4D751191C5D42003BB639 /* XLVideoZoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLVideoZoom.m; sourceTree = "<group>"; };
+		8FC4D754192139FD003BB639 /* DetailCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCollectionViewFlowLayout.h; path = "View Controllers/TableViewCells/DetailCollectionViewFlowLayout.h"; sourceTree = "<group>"; };
+		8FC4D755192139FD003BB639 /* DetailCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCollectionViewFlowLayout.m; path = "View Controllers/TableViewCells/DetailCollectionViewFlowLayout.m"; sourceTree = "<group>"; };
 		8FD918C11898AD0D002F81E8 /* CSCurrentLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCurrentLocationCell.h; path = "View Controllers/TableViewCells/CSCurrentLocationCell.h"; sourceTree = "<group>"; };
 		8FD918C21898AD0D002F81E8 /* CSCurrentLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCurrentLocationCell.m; path = "View Controllers/TableViewCells/CSCurrentLocationCell.m"; sourceTree = "<group>"; };
 		8FDC614D188ED1A400B50DB6 /* CSSlideViewImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSlideViewImage.h; path = "View Controllers/CustomView/CSSlideViewImage.h"; sourceTree = "<group>"; };
@@ -340,6 +368,8 @@
 		8FE6EECE1867491E005F120C /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		8FE6EED018674AB0005F120C /* CSLocationTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLocationTopCell.h; path = "View Controllers/TableViewCells/CSLocationTopCell.h"; sourceTree = "<group>"; };
 		8FE6EED118674AB0005F120C /* CSLocationTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLocationTopCell.m; path = "View Controllers/TableViewCells/CSLocationTopCell.m"; sourceTree = "<group>"; };
+		8FE9A7A6191999A500526255 /* CSInfoLocationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSInfoLocationCollectionViewCell.h; path = "View Controllers/TableViewCells/CSInfoLocationCollectionViewCell.h"; sourceTree = "<group>"; };
+		8FE9A7A7191999A500526255 /* CSInfoLocationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSInfoLocationCollectionViewCell.m; path = "View Controllers/TableViewCells/CSInfoLocationCollectionViewCell.m"; sourceTree = "<group>"; };
 		8FEF47BC1873213900FD2C19 /* CSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSImageView.h; path = "View Controllers/CustomView/CSImageView.h"; sourceTree = "<group>"; };
 		8FEF47BD1873213900FD2C19 /* CSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSImageView.m; path = "View Controllers/CustomView/CSImageView.m"; sourceTree = "<group>"; };
 		8FEF47BF18732D9B00FD2C19 /* nav-detail-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-detail-blue@2x.png"; sourceTree = "<group>"; };
@@ -524,6 +554,10 @@
 				8FF396D3188653A300754634 /* CSLoginViewController.m */,
 				8F93A97018661FC3003D5FA2 /* CSLocationDetailViewController.h */,
 				8F93A97118661FC3003D5FA2 /* CSLocationDetailViewController.m */,
+				8F71889E191962D000D03DF4 /* CSLocationDetailViewController2.h */,
+				8F71889F191962D000D03DF4 /* CSLocationDetailViewController2.m */,
+				8FC4D754192139FD003BB639 /* DetailCollectionViewFlowLayout.h */,
+				8FC4D755192139FD003BB639 /* DetailCollectionViewFlowLayout.m */,
 			);
 			name = v1;
 			sourceTree = "<group>";
@@ -531,6 +565,7 @@
 		8F91CFB918638F7700C07D07 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8FC4D74D191C5D42003BB639 /* XL */,
 				8FF396CE1886538300754634 /* Instagram */,
 				8F9E83F2186F854E0056E095 /* MosaicLayout */,
 				8F91CFBA18638F7700C07D07 /* EGOCache */,
@@ -818,6 +853,10 @@
 				8FA86FCD18959690002E9D05 /* CSCommentCell.m */,
 				8FD918C11898AD0D002F81E8 /* CSCurrentLocationCell.h */,
 				8FD918C21898AD0D002F81E8 /* CSCurrentLocationCell.m */,
+				8F71889B1919605300D03DF4 /* CSLocationCollectionViewCell3.h */,
+				8F71889C1919605300D03DF4 /* CSLocationCollectionViewCell3.m */,
+				8FE9A7A6191999A500526255 /* CSInfoLocationCollectionViewCell.h */,
+				8FE9A7A7191999A500526255 /* CSInfoLocationCollectionViewCell.m */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -871,6 +910,17 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		8FC4D74D191C5D42003BB639 /* XL */ = {
+			isa = PBXGroup;
+			children = (
+				8FC4D74E191C5D42003BB639 /* XLMediaZoom.h */,
+				8FC4D74F191C5D42003BB639 /* XLMediaZoom.m */,
+				8FC4D750191C5D42003BB639 /* XLVideoZoom.h */,
+				8FC4D751191C5D42003BB639 /* XLVideoZoom.m */,
+			);
+			path = XL;
+			sourceTree = "<group>";
+		};
 		8FF396CE1886538300754634 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,6 +942,7 @@
 				8F532DCA1861243400DDB7EC /* Frameworks */,
 				8F532DCB1861243400DDB7EC /* Resources */,
 				023FE1EAF2B94F8D8797D2D3 /* Copy Pods Resources */,
+				8F7188A11919643100D03DF4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1084,13 +1135,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F7188A21919644C00D03DF4 /* CSContainerPicViewController.m in Sources */,
 				8F9E83EB186E1E6C0056E095 /* CSExploreViewController.m in Sources */,
 				8F07E6AD18F8679B001F745F /* Location.m in Sources */,
 				8F810734188E3B8400469DD4 /* CSSearchFoursquareViewController.m in Sources */,
 				8FDC614F188ED1A400B50DB6 /* CSSlideViewImage.m in Sources */,
 				8F7188941919025E00D03DF4 /* User.m in Sources */,
+				8F7188A0191962D000D03DF4 /* CSLocationDetailViewController2.m in Sources */,
+				8F71889D1919605300D03DF4 /* CSLocationCollectionViewCell3.m in Sources */,
 				8F93A94F1865D330003D5FA2 /* CSUtil.m in Sources */,
-				8FFF2D671868966600DE0D2C /* CSContainerPicViewController.m in Sources */,
 				8F9E83F1186E23AD0056E095 /* CSTabBarController.m in Sources */,
 				8F91CFB418638C9300C07D07 /* CSPic.m in Sources */,
 				8FF426AE188C237800F2781B /* CSAddEventViewController.m in Sources */,
@@ -1110,6 +1163,7 @@
 				8F93A94418651E33003D5FA2 /* CSLocationLargeCoverCell.m in Sources */,
 				8FA86FCE18959690002E9D05 /* CSCommentCell.m in Sources */,
 				8F6D01E61864095D00C7A29A /* CSNavigationController.m in Sources */,
+				8FC4D756192139FD003BB639 /* DetailCollectionViewFlowLayout.m in Sources */,
 				8FF426B1188C736700F2781B /* CSDatePickerViewController.m in Sources */,
 				8F209CC4189B29DF00FF691D /* CSResponse.m in Sources */,
 				8F9E8403186F85F50056E095 /* CSLocationsViewController.m in Sources */,
@@ -1123,8 +1177,10 @@
 				8FD918C31898AD0D002F81E8 /* CSCurrentLocationCell.m in Sources */,
 				8FF396D4188653A300754634 /* CSLoginViewController.m in Sources */,
 				8F9E83FF186F854E0056E095 /* MosaicData.m in Sources */,
+				8FC4D752191C5D42003BB639 /* XLMediaZoom.m in Sources */,
 				8FEF47D118732E6300FD2C19 /* BackButton.m in Sources */,
 				8F9E8400186F854E0056E095 /* MosaicCell.m in Sources */,
+				8FC4D753191C5D42003BB639 /* XLVideoZoom.m in Sources */,
 				8FF426A4188AF4E200F2781B /* CSUser.m in Sources */,
 				8FF396D11886538300754634 /* Instagram.m in Sources */,
 				8F9E83E1186E02E20056E095 /* GTScrollNavigationBar.m in Sources */,
@@ -1144,6 +1200,7 @@
 				8FF42693188AD28500F2781B /* CSWelcomeViewController.m in Sources */,
 				8F93A97B18663066003D5FA2 /* CSLocationDetailThreeCell.m in Sources */,
 				8FF426B9188C936A00F2781B /* CSEvent.m in Sources */,
+				8FE9A7A8191999A500526255 /* CSInfoLocationCollectionViewCell.m in Sources */,
 				8F209CCA189B4C9A00FF691D /* CSParameter.m in Sources */,
 				8F9E83FE186F854E0056E095 /* MosaicLayout.m in Sources */,
 				8FA86FC518958526002E9D05 /* CSLikeButton.m in Sources */,

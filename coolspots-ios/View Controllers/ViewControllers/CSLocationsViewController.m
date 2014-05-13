@@ -13,6 +13,8 @@
 #import <RestKit.h>
 #import "CSLocationCollectionViewCell.h"
 #import "CSLocationDetailViewController.h"
+#import "CSLocationDetailViewController2.h"
+
 
 
 
@@ -48,10 +50,10 @@
     MosaicLayout *layout = [[MosaicLayout alloc] init];
     
     CGRect frame = self.view.frame;
-    frame.size.height = 520;
+    frame.size.height = 518;
     locationCollectionView=[[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
     [(MosaicLayout *)locationCollectionView.collectionViewLayout setDelegate:self];
-
+    
     locationCollectionView.delegate = self;
     [locationCollectionView setDataSource:self];
     [self.view addSubview:locationCollectionView];
@@ -89,7 +91,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if([objects count] >= 18)
+    if([objects count] >= 10)
     {
         if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
             
@@ -131,7 +133,7 @@
 
     Location *location = [objects objectAtIndex:indexPath.row];
     
-    CSLocationDetailViewController *goView = [[CSLocationDetailViewController alloc] init];
+    CSLocationDetailViewController2 *goView = [[CSLocationDetailViewController2 alloc] init];
     goView.location = location;
     goView.hidesBottomBarWhenPushed = YES;
     goView.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
@@ -204,7 +206,9 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-ios7"] forBarMetrics:UIBarMetricsDefault];
+    if ([self.navigationController.navigationBar  respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bg-ios7"] forBarMetrics:UIBarMetricsDefault];
+    }
     
 }
 

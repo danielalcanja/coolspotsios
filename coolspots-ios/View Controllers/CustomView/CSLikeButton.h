@@ -12,7 +12,7 @@
 
 @interface CSLikeButton : UIView<CSAddRemoveLikeDelegate>
 
-@property   (assign) UIButton *button;
+@property   (strong) UIButton *button;
 @property (assign) BOOL isLiked;
 @property  (nonatomic,strong) CSPic *pic;
 

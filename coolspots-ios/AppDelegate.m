@@ -29,7 +29,7 @@
     
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
-    NSURL *baseURL = [NSURL URLWithString:@"http://107.170.132.4:5000/"]; // the base URL of your API
+    NSURL *baseURL = [NSURL URLWithString:@"http://107.170.132.4/"]; // the base URL of your API
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     // initialize GoldenFleece
     GFClient __unused *gf = [GFClient createWithHttpClient:client];

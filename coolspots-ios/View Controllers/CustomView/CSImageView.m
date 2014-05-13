@@ -9,7 +9,14 @@
 #import "CSImageView.h"
 #import "AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EGOCache.h"
 
+
+inline static NSString* keyForURL(NSURL* url, NSString* style) {
+	
+    return [NSString stringWithFormat:@"EGOImageLoader-%lu", (unsigned long)[[url description] hash]];
+    
+}
 @implementation CSImageView
 
 
@@ -70,18 +77,28 @@
     //  Image set
     if ([imageURL hasPrefix:@"http://"] ||
         [imageURL hasPrefix:@"https://"]){
-        //  Download image from the web
-        void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
-            
-            self.image = downloadedImage;
-            
-        };
-        
         NSURL *anURL = [NSURL URLWithString:imageURL];
-        NSURLRequest *anURLRequest = [NSURLRequest requestWithURL:anURL];
-        AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:anURLRequest
-                                                                                               success:imageSuccess];
-        [operation start];
+        
+        UIImage* anImage = [[EGOCache currentCache] imageForKey:keyForURL(anURL,nil)];
+        if(anImage) {
+            self.image = anImage;
+        }else {
+            
+            //  Download image from the web
+            void (^imageSuccess)(UIImage *downloadedImage) = ^(UIImage *downloadedImage){
+                
+                self.image = downloadedImage;
+                [[EGOCache currentCache] setImage:self.image forKey:keyForURL(anURL, nil) withTimeoutInterval:604800];
+                
+            };
+            
+            NSURL *anURL = [NSURL URLWithString:imageURL];
+            NSURLRequest *anURLRequest = [NSURLRequest requestWithURL:anURL];
+            AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:anURLRequest
+                                                                                                   success:imageSuccess];
+            [operation start];
+            
+        }
     }else{
         //  Load image from bundle
         self.image = [UIImage imageNamed:imageURL];

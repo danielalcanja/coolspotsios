@@ -27,6 +27,8 @@ typedef enum {
 @property (strong, nonatomic) NSString *city;
 @property (strong, nonatomic) NSString *state;
 @property (strong, nonatomic) NSString *cc;
+@property (strong, nonatomic) NSString *coverpic;
+
 
 @property (assign) BOOL firstTimeShown;
 @property (assign) float relativeHeight;

@@ -122,8 +122,8 @@
     CSModel *model = [CSModel sharedInstance];
     Location *cacheLocation = [[model assetsThumbnail] objectForKey:location.id];
     if(!cacheLocation) {
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        [[appDelegate apiInstagram] getMediaWithID:location.instagramid MAX_ID:nil delegate:self];
+        [self setMosaicData:self.location];
+
     }
     
 }
@@ -173,31 +173,14 @@
 }
 -(void)setMosaicData:(Location *)newMosaicData{
     
-    CSPic *pic =  [objects objectAtIndex:indexImage];
-    self.imageCover.imageURL = [NSURL URLWithString:pic.standardResolution];
+    self.imageCover.imageURL = [NSURL URLWithString:newMosaicData.coverpic];
     self.imageCover.alpha = 0.0;
-
-    while (![self hasFace:self.imageCover.image]) {
-        
-        indexImage++;
-        if([objects count] > indexImage) {
-            CSPic *pic =  [objects objectAtIndex:indexImage];
-            self.imageCover.imageURL = [NSURL URLWithString:pic.standardResolution];
-            self.imageCover.alpha = 0.0;
-            
-        }else {
-            break;
-        }
-        
-    }
     
     [self prepareImage];
 }
 
+
 #pragma mark - Public
-
-
-
 
 -(void)layoutSubviews{
     [super layoutSubviews];

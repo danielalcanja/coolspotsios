@@ -42,7 +42,7 @@ NSString *const CSPicCollectionViewCellIdentifier = @"picCollectionViewCell";
     currentPage = 0;
 
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(320, 548)];
+    [flowLayout setItemSize:CGSizeMake(320, 567)];
     [flowLayout setMinimumInteritemSpacing:0.0f];
     [flowLayout setMinimumLineSpacing:0.0f];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -79,7 +79,7 @@ NSString *const CSPicCollectionViewCellIdentifier = @"picCollectionViewCell";
     
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(320, 548);
+    return CGSizeMake(320, 567);
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

@@ -17,6 +17,15 @@
     return [NSObject class];
 }
 
+-(id)init {
+    
+    self = [super init];
+    if (self){
 
+        self.firstTimeShown = YES;
+    }
+    return self;
+
+}
 
 @end
